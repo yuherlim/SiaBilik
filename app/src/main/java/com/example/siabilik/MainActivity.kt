@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(Listing())
+        replaceFragment(MyListing())
 
         binding.bv.setOnItemSelectedListener {
 
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.listing -> replaceFragment(Profile())
+                R.id.profile -> replaceFragment(Profile())
 
                 else ->{
 
@@ -39,12 +39,15 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+
     }
 
     private fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.host,fragment)
+        fragmentTransaction.replace(R.id.main,fragment)
         fragmentTransaction.commit()
     }
+
+
 }
