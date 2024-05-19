@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806092954513",
+    "project_id": "siabilik",
+    "storage_bucket": "siabilik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806092954513:android:134d9385420cd4dfda9830",
+        "android_client_info": {
+          "package_name": "com.example.siabilik"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8oDgmLW_oqbW2OoRB2dgpJg3vfU-KkIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
