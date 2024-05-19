@@ -35,6 +35,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:src="@drawable/editbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.728"
+        app:layout_constraintRight_toRightOf="@+id/imageView12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/text1"
         android:layout_width="300dp"
@@ -42,7 +53,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:hint="input"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="15dp"
+        android:drawablePadding="12dp"
+        android:background="@drawable/textview_border"
+        android:hint="Title"
         android:inputType="text"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +68,14 @@
     <EditText
         android:id="@+id/text2"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
         android:hint="Description"
+        android:background="@drawable/textview_border"
         android:inputType="text"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,15 +86,41 @@
         android:id="@+id/text3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:hint="Cost"
-        android:inputType="number"
+        android:hint="Address"
+        android:background="@drawable/textview_border"
+        android:inputType="text"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

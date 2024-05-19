@@ -31,6 +31,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/home"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_gravity="end"
+            android:layout_marginRight="20dp"
             app:srcCompat="@drawable/account" />
 
 
@@ -190,4 +192,17 @@
         android:text="Create New"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="4dp"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myTextView3"
+        tools:listitem="@layout/itemlist"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

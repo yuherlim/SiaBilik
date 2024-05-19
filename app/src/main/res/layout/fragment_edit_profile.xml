@@ -8,7 +8,7 @@
     tools:context=".MyListing">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/backListing"
+        android:id="@+id/editProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#495D92"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back"
-        app:title="Add Listing"
+        app:title="Edit Profile"
         app:titleTextColor="#FAFDFD">
 
     </androidx.appcompat.widget.Toolbar>
@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toTopOf="@+id/text1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backListing" />
+        app:layout_constraintTop_toBottomOf="@+id/editProfile" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -53,12 +53,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="15dp"
-        android:drawablePadding="12dp"
-        android:background="@drawable/textview_border"
-        android:hint="Title"
+        android:hint="Owner Name"
         android:inputType="text"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,15 +63,12 @@
     <EditText
         android:id="@+id/text2"
         android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:hint="Description"
-        android:background="@drawable/textview_border"
-        android:inputType="text"
+        android:hint="Owner Email"
+        android:inputType="textEmailAddress"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,15 +78,11 @@
         android:id="@+id/text3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:paddingTop="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
-        android:hint="Address"
-        android:background="@drawable/textview_border"
-        android:inputType="text"
+        android:hint="Owner Phone Number"
+        android:inputType="number"
         android:paddingBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,4 +109,6 @@
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
