@@ -5,17 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.siabilik.R
-import com.example.siabilik.databinding.FragmentAccountApproveBinding
+import com.example.siabilik.databinding.FragmentAdminAccountApproveDetailsBinding
 
-class AccountApproveFragment : Fragment() {
+class AdminAccountApproveDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentAccountApproveBinding
+    private lateinit var binding: FragmentAdminAccountApproveDetailsBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentAccountApproveBinding.inflate(inflater, container, false)
+        binding = FragmentAdminAccountApproveDetailsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
-
 }

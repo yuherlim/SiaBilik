@@ -11,8 +11,8 @@
         android:id="@+id/lblNumberAdmins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Number of Admin(s) : "
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,16 +22,16 @@
         android:id="@+id/numberOfAdmins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/lblNumberAdmins"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lblNumberAdmins"
         tools:text="x" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adminsRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layoutManager="LinearLayoutManager"
@@ -39,14 +39,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblNumberAdmins"
-        tools:listitem="@layout/admins_list" />
+        tools:listitem="@layout/admin_list" />
 
     <Button
         android:id="@+id/addAdminButton"
         android:layout_width="0dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="Add Admin"
         app:icon="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"
