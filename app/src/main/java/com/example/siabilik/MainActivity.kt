@@ -33,8 +33,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(Profile())
-
+                R.id.profile -> replaceFragment(UserManagement.Register())
                 else ->{
 
                 }
