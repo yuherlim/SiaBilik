@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(UserManagement.Login())
+                R.id.profile -> replaceFragment(UserManagement.ForgotPassword())
                 else ->{
 
                 }
