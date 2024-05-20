@@ -5,15 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.siabilik.databinding.FragmentAddAdminBinding
+import com.example.siabilik.databinding.FragmentAdminListingApproveBinding
 
-class AddAdminFragment : Fragment() {
+class AdminListingApproveFragment : Fragment() {
 
-    private lateinit var binding:FragmentAddAdminBinding
+    private lateinit var binding: FragmentAdminListingApproveBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentAddAdminBinding.inflate(inflater, container, false)
+        binding = FragmentAdminListingApproveBinding.inflate(inflater, container, false)
 
         return binding.root
     }
-
 }
