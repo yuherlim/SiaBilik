@@ -44,6 +44,16 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <ImageView
+                        android:id="@+id/imgUser"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/userBar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/userBar"
+                        tools:src="@tools:sample/avatars" />
+
                     <TextView
                         android:id="@+id/txtUser"
                         android:layout_width="wrap_content"
@@ -74,16 +84,6 @@
                         app:layout_constraintBottom_toBottomOf="@+id/userBar"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/userBar" />
-
-                    <ImageView
-                        android:id="@+id/imgUser"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/userBar"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/userBar"
-                        tools:src="@tools:sample/avatars" />
 
                     <ImageView
                         android:id="@+id/imgListing"
@@ -131,18 +131,9 @@
                         android:id="@+id/btnContactOwner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:text="Contact Owner"
-                        app:layout_constraintEnd_toStartOf="@+id/btnFindCompanion"
-                        app:layout_constraintTop_toTopOf="@+id/btnFindCompanion" />
-
-                    <Button
-                        android:id="@+id/btnFindCompanion"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="32dp"
                         android:layout_marginEnd="16dp"
-                        android:text="Find Companion"
+                        android:text="Contact Owner"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
