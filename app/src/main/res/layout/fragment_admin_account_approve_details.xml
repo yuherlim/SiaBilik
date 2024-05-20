@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adminAcc.ui.AccountApproveDetailsFragment">
+    tools:context=".adminAcc.ui.AdminAccountApproveDetailsFragment">
 
 
     <ImageView
         android:id="@+id/accountProfileImg"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/account"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="2dp"
-        android:textSize="14sp"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintStart_toEndOf="@+id/accountProfileImg"
         app:layout_constraintTop_toTopOf="@+id/accountProfileImg"
         tools:text="Name" />
@@ -34,91 +34,133 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
-        android:textSize="10sp"
+        android:fontFamily="@font/roboto"
         app:layout_constraintStart_toEndOf="@+id/accountProfileImg"
         app:layout_constraintTop_toTopOf="@+id/accountProfileImg"
         tools:text="Email" />
 
+    <!-- Front Image Label -->
     <TextView
         android:id="@+id/lblFront"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
         android:text="Front"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/accountProfileImg" />
 
-    <ImageView
-        android:id="@+id/imgFront"
+    <!-- Front Image -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardFront"
         android:layout_width="200dp"
         android:layout_height="120dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFront"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/lblFront">
 
+        <ImageView
+            android:id="@+id/imgFront"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Back Image Label -->
     <TextView
         android:id="@+id/lblBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgFront" />
+        app:layout_constraintTop_toBottomOf="@+id/cardFront" />
 
-    <ImageView
-        android:id="@+id/imgBack"
+    <!-- Back Image -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBack"
         android:layout_width="200dp"
         android:layout_height="120dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblBack"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/lblBack">
 
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Selfie Image Label -->
     <TextView
         android:id="@+id/lblSelfie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
         android:text="Selfie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBack" />
+        app:layout_constraintTop_toBottomOf="@+id/cardBack" />
 
-    <ImageView
-        android:id="@+id/imageView13"
+    <!-- Selfie Image -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardSelfie"
         android:layout_width="200dp"
         android:layout_height="120dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblSelfie"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/lblSelfie">
+
+        <ImageView
+            android:id="@+id/imgSelfie"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/rejectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:text="Reject"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintTop_toBottomOf="@+id/cardSelfie" />
 
     <Button
         android:id="@+id/approveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="25dp"
         android:text="Approve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintTop_toBottomOf="@+id/cardSelfie" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
