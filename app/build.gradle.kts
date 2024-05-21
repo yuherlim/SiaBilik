@@ -53,9 +53,4 @@ dependencies {
     // for firebase
     implementation("com.google.firebase:firebase-firestore:24.11.0")
 
-    //
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-    implementation("io.coil-kt:coil:2.4.0")
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
 }
