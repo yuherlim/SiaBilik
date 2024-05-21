@@ -7,8 +7,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.siabilik.UserManagement.RegisterFragment
 import com.example.siabilik.databinding.ActivityMainBinding
-import com.example.siabilik.ownerAcc.ui.Listing
-import com.example.siabilik.ownerAcc.ui.MyListing
+import com.example.siabilik.ownerAcc.ui.OwnerListing
+import com.example.siabilik.ownerAcc.ui.OwnerMyListing
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 //        super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
 //        setContentView(R.layout.activity_main)
@@ -33,37 +34,37 @@ class MainActivity : AppCompatActivity() {
 //        replaceFragment(MyListing())
 
         // Action bar
-        setupActionBarWithNavController(nav)
-
-        binding.bv.setOnItemSelectedListener {
-
-            when(it.itemId){
-
-                R.id.listing -> replaceFragment(Listing())
-                R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(RegisterFragment())
-                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.RegisterFragment())
-                else ->{
-
-                }
-
-            }
-            true
-        }
-
-    }
-
-    // Action bar up button
-    override fun onSupportNavigateUp(): Boolean {
-        return nav.navigateUp() || super.onSupportNavigateUp()
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main,fragment)
-        fragmentTransaction.commit()
-    }
+//        setupActionBarWithNavController(nav)
+//
+//        binding.bv.setOnItemSelectedListener {
+//
+//            when(it.itemId){
+//
+//                R.id.listing -> replaceFragment(OwnerListing())
+//                R.id.myListing -> replaceFragment(OwnerMyListing())
+//                R.id.profile -> replaceFragment(RegisterFragment())
+//                R.id.profile -> replaceFragment(com.example.siabilik.ownerAcc.ui.OwnerMyListing())
+//                else ->{
+//
+//                }
+//
+//            }
+//            true
+//        }
+//
+//    }
+//
+//    // Action bar up button
+//    override fun onSupportNavigateUp(): Boolean {
+//        return nav.navigateUp() || super.onSupportNavigateUp()
+//    }
+//
+//    private fun replaceFragment(fragment : Fragment){
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.main,fragment)
+//        fragmentTransaction.commit()
+//    }
 
 
 

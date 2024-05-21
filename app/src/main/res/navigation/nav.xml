@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/adminListFragment">
+    app:startDestination="@id/ownerMyListing">
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
@@ -39,4 +39,9 @@
         android:name="com.example.siabilik.adminAcc.ui.AdminListingApproveDetailsFragment"
         android:label="Listing Approval"
         tools:layout="@layout/fragment_admin_listing_approve_details" />
+    <fragment
+        android:id="@+id/ownerMyListing"
+        android:name="com.example.siabilik.ownerAcc.ui.OwnerMyListing"
+        android:label="fragment_owner_my_listing"
+        tools:layout="@layout/fragment_owner_my_listing" />
 </navigation>
