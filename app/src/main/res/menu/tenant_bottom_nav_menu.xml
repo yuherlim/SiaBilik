@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    tenant menu-->
+    <item
+        android:id="@+id/tenantViewListingsFragment"
+        android:title="Listings"
+        android:icon="@drawable/listings" />
+
+    <item
+        android:id="@+id/tenantViewStarredListingsFragment"
+        android:title="Starred"
+        android:icon="@drawable/filled_star" />
+
+    <item
+        android:id="@+id/tenantViewRequestsFragment"
+        android:title="Requests"
+        android:icon="@drawable/baseline_contact_mail_24" />
+
+    <item
+        android:id="@+id/tenantAccountFragment"
+        android:title="Account"
+        android:icon="@drawable/account" />
+</menu>
