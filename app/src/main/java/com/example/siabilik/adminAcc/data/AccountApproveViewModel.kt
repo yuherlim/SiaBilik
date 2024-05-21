@@ -2,7 +2,7 @@ package com.example.siabilik.adminAcc.data
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import ownerAcc.ui.Listing
+import com.example.siabilik.ownerAcc.ui.Listing
 import com.google.firebase.firestore.ListenerRegistration
 
 class AccountApproveViewModel(app : Application) : AndroidViewModel(app) {
