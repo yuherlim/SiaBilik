@@ -1,11 +1,7 @@
 package com.example.siabilik
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -46,10 +42,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // Action bar up button
-//    override fun onSupportNavigateUp(): Boolean {
-//        return nav.navigateUp() || super.onSupportNavigateUp()
-//    }
+    //Action bar up button
+    override fun onSupportNavigateUp(): Boolean {
+        return nav.navigateUp() || super.onSupportNavigateUp()
+    }
 
     private fun replaceFragment(fragment : Fragment){
         val fragmentManager = supportFragmentManager
