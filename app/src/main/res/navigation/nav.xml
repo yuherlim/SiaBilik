@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
     app:startDestination="@id/adminAccountApproveFragment">
-
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
@@ -47,37 +46,37 @@
         tools:layout="@layout/fragment_owner_my_listing" />
     <fragment
         android:id="@+id/tenantViewListingsFragment"
-        android:name="com.example.siabilik.tenantAcc.listings.TenantViewListingsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantViewListingsFragment"
         android:label="SiaBilik"
         tools:layout="@layout/fragment_tenant_view_listings" />
     <fragment
         android:id="@+id/tenantViewListingsDetailsFragment"
-        android:name="com.example.siabilik.tenantAcc.listings.TenantViewListingsDetailsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantViewListingsDetailsFragment"
         android:label="Listing Details"
         tools:layout="@layout/fragment_tenant_view_listings_details" />
     <fragment
         android:id="@+id/tenantAccountFragment"
-        android:name="com.example.siabilik.tenantAcc.account.TenantAccountFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantAccountFragment"
         android:label="Account"
         tools:layout="@layout/fragment_tenant_account" />
     <fragment
         android:id="@+id/tenantContactOwnerDetailsFragment"
-        android:name="com.example.siabilik.tenantAcc.listings.TenantContactOwnerDetailsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantContactOwnerDetailsFragment"
         android:label="Contact Owner"
         tools:layout="@layout/fragment_tenant_contact_owner_details" />
     <fragment
         android:id="@+id/tenantRequestDetailsFragment"
-        android:name="com.example.siabilik.tenantAcc.requests.TenantRequestDetailsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantRequestDetailsFragment"
         android:label="Edit Contact Request"
         tools:layout="@layout/fragment_tenant_request_details" />
     <fragment
         android:id="@+id/tenantViewRequestsFragment"
-        android:name="com.example.siabilik.tenantAcc.requests.TenantViewRequestsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantViewRequestsFragment"
         android:label="Contact Requests"
         tools:layout="@layout/fragment_tenant_view_requests" />
     <fragment
         android:id="@+id/tenantViewStarredListingsFragment"
-        android:name="com.example.siabilik.tenantAcc.starred.TenantViewStarredListingsFragment"
+        android:name="com.example.siabilik.tenantAcc.ui.TenantViewStarredListingsFragment"
         android:label="Starred Listings"
         tools:layout="@layout/fragment_tenant_view_starred_listings" />
     <fragment
