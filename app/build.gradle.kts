@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.siabilik"
-        minSdk = 26
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -56,8 +56,8 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.11.0")
 
     // for navigation
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 }
 
 
