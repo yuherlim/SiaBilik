@@ -1,4 +1,4 @@
-package ownerAcc.ui
+package com.example.siabilik.ownerAcc.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
