@@ -18,6 +18,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -90,15 +91,23 @@ class Login : Fragment() {
                         //REMEMBER FIX THIS
                         /*"NA" -> errorDialog("Invalid login credentials.")*/
                         "Tenant" -> {
-                            nav.popBackStack(R.id.tvlConstraintLayout, false)
-                            nav.navigateUp()
+                            nav.navigate(R.id.tenantViewListingsFragment, bundleOf(
+                                "userID" to "userID",
+                                "userType" to "userType"
+                            ))
                         } // remember to change both of the layout
                         "Owner" -> {
-                            nav.popBackStack(R.id.relativeLayout, false)
-                            nav.navigateUp()
+                            nav.navigate(R.id.ownerMyListing, bundleOf(
+                                "userID" to "userID",
+                                "userType" to "userType"
+                            ))
                         }
-                    }
-                }
+                        "Admin" -> {
+                            nav.navigate(R.id.adminListingApproveFragment, bundleOf(
+                                "userID" to "userID",
+                                "userType" to "userType"
+                            ))
+                }}}
             }
         }
 
