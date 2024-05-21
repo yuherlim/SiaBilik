@@ -5,7 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.siabilik.data.ADMIN
 import com.example.siabilik.data.Admin
-import com.example.siabilik.ownerAcc.ui.Listing
+import com.example.siabilik.data.LISTING
+import com.example.siabilik.data.Listing
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.toObjects
 

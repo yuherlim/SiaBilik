@@ -26,7 +26,7 @@ class CardViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
         holder.binding.Approvalstatus.text = listing.approvalStatus
         holder.binding.features.text = listing.features
         holder.binding.Listingstatus.text = listing.status
-        holder.binding.rental.text = String.format("RM %.2f",listing.rental.toString())
+        holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
         //Date
         //Photo
         fn(holder, listing)

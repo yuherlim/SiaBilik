@@ -19,17 +19,6 @@ data class Admin (
 val ADMIN = Firebase.firestore.collection("Admin")
 
 
-data class Owner(
-    @DocumentId
-    var ownerID : String = "",
-    var email : String = "",
-    var password : String = "",
-    var phoneNumber : String = "",
-    var profilePic : String = "",
-    var userName : String = ""
-)
-
-
 val OWNER = Firebase.firestore.collection("Owner")
 
 data class Tenant (
