@@ -4,8 +4,9 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Blob
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.firestore
+import java.sql.ClientInfoStatus
 
-data class Admin(
+data class Admin (
     @DocumentId
     var id : String = "",
     var email : String = "",
@@ -28,7 +29,34 @@ data class Owner(
     var userName : String = ""
 )
 
+
 val OWNER = Firebase.firestore.collection("Owner")
+
+data class Tenant (
+    @DocumentId
+    var id: String = "",
+    var email : String = "",
+    var password : String = "",
+    var phoneNumber : String = "",
+    var profilePic : Blob = Blob.fromBytes(ByteArray(0)),
+    var userName : String = "",
+    var verificationStatus: String = "",
+    var aboutDescription: String = "",
+    var selfiePhoto : Blob = Blob.fromBytes(ByteArray(0)),
+)
+
+data class Owner (
+    @DocumentId
+    var id: String = "",
+    var email : String = "",
+    var password : String = "",
+    var phoneNumber : String = "",
+    var profilePic : Blob = Blob.fromBytes(ByteArray(0)),
+    var userName : String = "",
+    var aboutDescription: String = "",
+
+)
+
 
 data class Listing(
     @DocumentId

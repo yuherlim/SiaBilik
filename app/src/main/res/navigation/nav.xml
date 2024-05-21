@@ -40,7 +40,6 @@
         android:label="Listing Approval"
         tools:layout="@layout/fragment_admin_listing_approve_details" />
     <fragment
-
         android:id="@+id/ownerMyListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerMyListing"
         android:label="fragment_owner_my_listing"
@@ -140,4 +139,5 @@
         android:name="com.example.siabilik.UserManagement.VerificationApplicationFragment"
         android:label="fragment_verification_application"
         tools:layout="@layout/fragment_verification_application" />
+
 </navigation>

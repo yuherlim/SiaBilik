@@ -1,7 +1,11 @@
 package com.example.siabilik
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         abc = AppBarConfiguration(
             setOf(
                 R.id.tenantViewListingsFragment,
@@ -36,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.topAppBar)
         setupActionBarWithNavController(nav, abc)
         binding.bv.setupWithNavController(nav)
+
 
 
     }
