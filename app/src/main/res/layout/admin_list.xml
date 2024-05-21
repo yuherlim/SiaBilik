@@ -49,7 +49,7 @@
             android:background="?attr/selectableItemBackground"
             android:contentDescription="@string/delete"
             app:srcCompat="@android:drawable/ic_menu_delete"
-            app:tint="@color/colorAccent"
+            app:tint="@android:color/widget_edittext_dark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnMore"
             app:layout_constraintTop_toTopOf="parent" />
