@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/tenantViewListingsFragment">
+    app:startDestination="@id/adminListFragment">
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"

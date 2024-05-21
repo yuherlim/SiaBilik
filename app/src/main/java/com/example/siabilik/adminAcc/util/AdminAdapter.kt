@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.siabilik.data.Admin
 import com.example.siabilik.databinding.AdminListBinding
+import com.example.siabilik.setImageBlob
 
 class AdminAdapter (
     val fn: (ViewHolder, Admin) -> Unit = { _, _ -> }
@@ -29,6 +30,7 @@ class AdminAdapter (
         // TODO : set profile image
 
         holder.binding.adminName.text = admin.userName
+        holder.binding.adminCoverPhoto.setImageBlob(admin.adminPhoto)
 
         fn(holder, admin)
     }

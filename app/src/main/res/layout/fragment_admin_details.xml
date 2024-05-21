@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="Admin ID :"
+        android:text="Admin ID          :"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
@@ -34,7 +34,7 @@
         android:id="@+id/textID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="8dp"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/lblAdminId"
         app:layout_constraintTop_toTopOf="@+id/lblAdminId"
@@ -44,12 +44,12 @@
         android:id="@+id/lblName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Admin Name :"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_medium"
+        android:text="Admin Name   :"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/lblAdminId"
-        app:layout_constraintTop_toBottomOf="@+id/lblAdminId"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/lblAdminId" />
 
     <TextView
         android:id="@+id/textName"
@@ -65,18 +65,18 @@
         android:id="@+id/lblEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email :"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/roboto_medium"
+        android:text="Email                :"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/lblName"
-        app:layout_constraintTop_toBottomOf="@+id/lblName"
-        android:layout_marginTop="20dp" />
+        app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
     <TextView
         android:id="@+id/textEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="8dp"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/lblEmail"
         app:layout_constraintTop_toTopOf="@+id/lblEmail"
