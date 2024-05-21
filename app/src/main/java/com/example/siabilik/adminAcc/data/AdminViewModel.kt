@@ -19,6 +19,26 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
+    fun init() = Unit
+
+    fun getAdminLD() = adminLD
+
+    fun get(id: String) = adminLD.value?.find { it.id == id }
+
+    fun delete(id : String){
+        ADMIN.document(id).delete()
+    }
+
+    fun set(a : Admin) {
+        ADMIN.document(a.id).set(a)
+    }
+
+    fun validate(a: Admin, insert: Boolean = true): String {
+        //validation to do
+        var e = ""
+
+        return e
+    }
 
 
 }
