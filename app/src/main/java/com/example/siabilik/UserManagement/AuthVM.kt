@@ -100,7 +100,7 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         TENANT.document(tenant.id).set(tenant)
     }
 
-    suspend fun login(username: String, password: String, userType: String): String {
+    suspend fun login(username: String, password: String, userType: String):String {
 
         var admin = ADMIN
             .whereEqualTo("userName", username)

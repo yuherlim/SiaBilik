@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.OwnerCarditemBinding
 import com.example.siabilik.setImageBlob
@@ -29,8 +30,9 @@ class CardViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
         holder.binding.features.text = listing.features
         holder.binding.Listingstatus.text = listing.status
         holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
-        //holder.binding.dateCreated.text =  SimpleDateFormat("dd-mm-yyyy").format(listing.createdDateTime)
-        //holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
+        holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
+        var reSizedImage = holder.binding.propertyPhoto.cropToBlob(500,500)
+        holder.binding.propertyPhoto.setImageBlob(reSizedImage)
         fn(holder, listing)
     }
 
