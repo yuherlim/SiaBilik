@@ -63,9 +63,8 @@ data class Listing(
     var features : String = "",
     var ownerID: String = "",
     var rental: Double = 0.0,
-    //var createdDateTime: LocalDateTime = LocalDateTime.now()
-//    var ownershipProof: Blob = Blob.fromBytes(ByteArray(0)),
-//    var propertyPhoto: Blob = Blob.fromBytes(ByteArray(0))
+    var ownershipProof: Blob = Blob.fromBytes(ByteArray(0)),
+    var propertyPhoto: Blob = Blob.fromBytes(ByteArray(0))
 )
 
 val LISTING = Firebase.firestore.collection("Listing")
