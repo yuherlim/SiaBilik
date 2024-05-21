@@ -12,6 +12,7 @@ import com.example.siabilik.adminAcc.data.AdminViewModel
 import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Admin
 import com.example.siabilik.databinding.FragmentAdminAddAdminBinding
+import com.example.siabilik.errorDialog
 
 class AdminAddAdminFragment : Fragment() {
 
@@ -47,6 +48,8 @@ class AdminAddAdminFragment : Fragment() {
             adminId = adminId.plus(1)
         }
 
+        val confirmPassword = binding.editTextTextConfirmPassword.text.toString().trim()
+
         val a = Admin(
             //get id
             id = "Admin${adminId.toString().padStart(3, '0')}",
@@ -57,14 +60,12 @@ class AdminAddAdminFragment : Fragment() {
             adminPhoto = binding.adminProfile.cropToBlob(300,300)
         )
 
-        val e = adminVM.validate(a)
+        val e = adminVM.validate(a, confirmPassword)
         if(e != ""){
-            //display error message
+            errorDialog(e)
             return
         }
-
         adminVM.set(a)
         nav.navigateUp()
     }
-
 }
