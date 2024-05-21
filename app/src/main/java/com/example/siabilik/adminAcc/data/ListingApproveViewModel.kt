@@ -19,8 +19,6 @@ class ListingApproveViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
-    fun init() = Unit
-
     fun getListingLD() = listingLD
 
 
