@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.siabilik.R
 
 
-class ListingDetails : Fragment() {
+class OwnerListingDetails : Fragment() {
     // TODO: Rename and change types of parameters
 
 
