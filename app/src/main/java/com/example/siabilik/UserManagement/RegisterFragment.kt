@@ -16,7 +16,9 @@ import com.example.demo.data.AuthVM
 import com.example.siabilik.R
 import com.example.siabilik.data.Owner
 import com.example.siabilik.data.Tenant
+import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.databinding.FragmentRegisterBinding
+import com.example.siabilik.errorDialog
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -24,7 +26,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var firestore: FirebaseFirestore
-    private  val vm: AuthVM by activityViewModels()
+    private val vm: AuthVM by activityViewModels()
     private val nav by lazy { findNavController() }
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -38,89 +40,42 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var userType : String = ""
+        binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        var userType: String = ""
         //Default check tenant button at first run
         binding.tbUserType.check(binding.tenantButton.id)
+        userType = "Tenant"
         //Check on the checked button
         binding.tbUserType.addOnButtonCheckedListener { buttons, checkedId, isChecked ->
             // Perform actions based on the selected RadioButton
-            when (checkedId) {
-                binding.tenantButton.id -> {
-                    userType = "Tenant"
-                    Log.d("MyTag", "Tenant button clicked")
-                }
+            if (isChecked == true) {
+                when (checkedId) {
+                    binding.tenantButton.id -> {
+                        userType = "Tenant"
+                        Log.d("MyTag", "Tenant button clicked")
+                    }
 
-                binding.ownerButton.id -> {
-                    userType = "Owner"
-                    Log.d("MyTag", "Owner button clicked")
+                    binding.ownerButton.id -> {
+                        userType = "Owner"
+                        Log.d("MyTag", "Owner button clicked")
+                    }
                 }
             }
         }
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
 
         firestore = FirebaseFirestore.getInstance()
 
-        usernameEditText = view.findViewById(R.id.txtUsername)
-        emailEditText = view.findViewById(R.id.txtEmail)
-        phoneEditText = view.findViewById(R.id.txtPhone)
-        passwordEditText = view.findViewById(R.id.txtPassword)
-        confirmPasswordEditText = view.findViewById(R.id.txtForgotPassword)
-        registerButton = view.findViewById(R.id.register)
-        userTypeToggleGroup = view.findViewById(R.id.tbUserType)
-
-        registerButton.setOnClickListener {
-            /*registerUser()*/
-        }
-        binding.register.setOnClickListener { if (R.id.txtPassword != R.id.txtLayoutForgotPassword){
-            register(userType)
-        }
+        binding.register.setOnClickListener {
+            if (R.id.txtPassword != R.id.txtLayoutForgotPassword) {
+                register(userType)
+            }
         }
 
-        return view
+        return binding.root
     }
 
-/*    private fun registerUser() {
-        val username = usernameEditText.text.toString().trim()
-        val email = emailEditText.text.toString().trim()
-        val phone = phoneEditText.text.toString().trim()
-        val password = passwordEditText.text.toString().trim()
-        val confirmPassword = confirmPasswordEditText.text.toString().trim()
-        val userType = when (userTypeToggleGroup.checkedButtonId) {
-            R.id.tenantButton -> "Tenant"
-            R.id.ownerButton -> "Owner"
-            else -> ""
-        }
-
-
-        if (validateInput(username, email, phone, password, confirmPassword, userType)) {
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val user = hashMapOf(
-                            "username" to username,
-                            "email" to email,
-                            "phone" to phone,
-                            "userType" to userType
-                        )
-
-                        firestore.collection("users").document(auth.currentUser!!.uid)
-                            .set(user)
-                            .addOnSuccessListener {
-                                Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
-                                // Navigate to another activity or fragment
-                            }
-                            .addOnFailureListener {
-                                Toast.makeText(context, "Failed to save user data", Toast.LENGTH_SHORT).show()
-                            }
-                    } else {
-                        Toast.makeText(context, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-        }
-    }*/
 
     private fun register(userType: String) {
-
         // Insert user
         when (userType) {
             "Tenant" -> {
@@ -130,13 +85,13 @@ class RegisterFragment : Fragment() {
                     phoneNumber = binding.txtPhone.toString().trim(),
                     password = binding.txtPassword.text.toString().trim()
                 )
-                val e = vm.validateTenant(user)
-                if (e != null) {
-                    /*errorDialog(e)*/
-                    return
-                }
+//                val e = vm.validateTenant(user)
+//                if (e != "") {
+//                    errorDialog(e)
+//                    return
+//                }
 
-                vm.setTenant(user)
+                vm.addTenant(user)
                 nav.navigateUp()
             }
 
@@ -147,19 +102,25 @@ class RegisterFragment : Fragment() {
                     phoneNumber = binding.txtPhone.toString().trim(),
                     password = binding.txtPassword.text.toString().trim()
                 )
-                val e = vm.validateOwner(user)
-                if (e != null) {
-                    /*errorDialog(e)*/
-                    return
-                }
-
-                vm.setOwner(user)
+//                val e = vm.validateOwner(user)
+//                if (e != "") {
+//                    errorDialog(e)
+//                    return
+//                }
+                vm.addOwner(user)
                 nav.navigateUp()
             }
         }
     }
 
-    private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {
+    private fun validateInput(
+        username: String,
+        email: String,
+        phone: String,
+        password: String,
+        confirmPassword: String,
+        userType: String
+    ): Boolean {
         if (TextUtils.isEmpty(username)) {
             usernameEditText.error = "Username is required"
             return false
