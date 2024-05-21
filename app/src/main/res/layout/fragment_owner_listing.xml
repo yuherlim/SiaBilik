@@ -5,7 +5,7 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyListing">
+    tools:context="ownerAcc.ui.MyListing">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/home"
@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/home"
-        app:title="My Listings"
+        app:title="SiaBilik"
         app:titleTextColor="#FAFDFD">
 
 
@@ -44,21 +44,11 @@
         android:layout_height="0dp"
         android:padding="4dp"
         android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"
+        app:layoutManager="GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home"
-        tools:listitem="@layout/itemlist"/>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="Create New"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:spanCount="2"
+        tools:listitem="@layout/owner_gridviewitem" />
 </androidx.constraintlayout.widget.ConstraintLayout>
