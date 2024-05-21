@@ -1,16 +1,14 @@
 package com.example.siabilik
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.siabilik.databinding.ActivityMainBinding
-import ownerAcc.ui.Listing
-import ownerAcc.ui.MyListing
+import com.example.siabilik.ownerAcc.ui.Listing
+import com.example.siabilik.ownerAcc.ui.MyListing
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(UserManagement.Register())
+                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.Register())
                 else ->{
 
                 }
