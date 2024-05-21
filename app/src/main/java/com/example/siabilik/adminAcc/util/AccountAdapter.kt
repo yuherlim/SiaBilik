@@ -6,10 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.siabilik.data.Admin
 import com.example.siabilik.data.Tenant
-import com.example.siabilik.databinding.AdminListBinding
-import com.example.siabilik.databinding.AdminListingListBinding
+import com.example.siabilik.databinding.AdminAccountListBinding
 import com.example.siabilik.setImageBlob
 
 class AccountAdapter (
@@ -21,15 +19,16 @@ class AccountAdapter (
         override fun areContentsTheSame(a: Tenant, b: Tenant) = a == b
     }
 
-    class ViewHolder(val binding: AdminListingListBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: AdminAccountListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(AdminListingListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(AdminAccountListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val tenant = getItem(position)
 
-        // TODO : set profile image
+        holder.binding.listingImage.setImageBlob(tenant.profilePic)
+        holder.binding.lblAccountName.text = tenant.userName
 
         fn(holder, tenant)
     }

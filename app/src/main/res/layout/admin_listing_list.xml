@@ -15,7 +15,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/adminCoverPhoto"
+            android:id="@+id/listingPhoto"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -28,28 +28,28 @@
             app:srcCompat="@drawable/defaultlistingimg" />
 
         <TextView
-            android:id="@+id/adminName"
+            android:id="@+id/listingListTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/roboto_medium"
             android:padding="4dp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adminCoverPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/listingPhoto"
             tools:text="PV18 B4210" />
 
         <TextView
-            android:id="@+id/lblListingDate"
+            android:id="@+id/listingListPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto"
-            app:layout_constraintStart_toStartOf="@+id/adminName"
-            app:layout_constraintTop_toBottomOf="@+id/adminName"
+            app:layout_constraintStart_toStartOf="@+id/listingListTitle"
+            app:layout_constraintTop_toBottomOf="@+id/listingListTitle"
             tools:text="24/05/2024" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

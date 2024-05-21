@@ -40,6 +40,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         binding = FragmentRegisterBinding.inflate(inflater, container, false)
         var userType: String = ""
         //Default check tenant button at first run
@@ -64,10 +65,10 @@ class RegisterFragment : Fragment() {
         }
 
         firestore = FirebaseFirestore.getInstance()
-
         binding.register.setOnClickListener {
             if (R.id.txtPassword != R.id.txtLayoutForgotPassword) {
                 register(userType)
+
             }
         }
 

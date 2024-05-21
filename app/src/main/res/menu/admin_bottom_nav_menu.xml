@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    admin menu-->
+    <item
+        android:id="@+id/adminListingApproveFragment"
+        android:title="Listings"
+        android:icon="@drawable/listings" />
+
+    <item
+        android:id="@+id/adminAccountApproveFragment"
+        android:icon="@drawable/baseline_admin_panel_settings_24"
+        android:title="Accounts" />
+
+    <item
+        android:id="@+id/adminListFragment"
+        android:icon="@drawable/account"
+        android:title="Admins" />
+
+    <item
+        android:id="@+id/adminProfileFragment"
+        android:title="Account"
+        android:icon="@drawable/baseline_settings_24" />
+</menu>
