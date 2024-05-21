@@ -5,7 +5,7 @@
     android:id="@+id/taConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tenantAcc.account.TenantAccountFragment">
+    tools:context=".tenantAcc.ui.TenantAccountFragment">
 
 
 

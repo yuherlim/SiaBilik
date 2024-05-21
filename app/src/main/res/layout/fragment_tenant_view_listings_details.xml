@@ -5,7 +5,7 @@
     android:id="@+id/tvldConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tenantAcc.listings.TenantViewListingsDetailsFragment">
+    tools:context=".tenantAcc.ui.TenantViewListingsDetailsFragment">
 
 
     <ScrollView
@@ -121,6 +121,18 @@
                         tools:text="Subtitle" />
 
                     <TextView
+                        android:id="@+id/txtRental"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtFeatures"
+                        tools:text="RM 999" />
+
+                    <TextView
                         android:id="@+id/txtDescription"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -131,7 +143,7 @@
                         android:textSize="14sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/txtFeatures"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRental"
                         tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam auctor sit amet dolor mollis efficitur. Nullam bibendum nisl neque, eget pulvinar mi dapibus ac. Vivamus consectetur tortor a tellus porta lobortis. Morbi volutpat volutpat lobortis. Mauris semper diam ipsum, vel ullamcorper sem bibendum eu. Nulla tempus id sapien ac luctus. Quisque lorem leo, tempus id nulla a, hendrerit aliquam enim. Nulla ac magna eget sem feugiat tincidunt nec vel felis. Fusce rutrum vestibulum faucibus. Nam sodales nibh a nisl finibus, vel porta metus convallis. Quisque fringilla interdum tortor quis vehicula.  Nam vehicula, sapien eget tempor faucibus, tortor metus finibus massa, in molestie nulla metus in risus. Donec nec dui sed ipsum tincidunt vehicula. Nulla dignissim tellus eu facilisis aliquet. Sed convallis sed est fringilla efficitur. Donec turpis nisl, maximus sit amet egestas non, rutrum eget nibh. Pellentesque in consequat lorem, a blandit ipsum. Duis ac erat odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris euismod augue sed turpis feugiat, ut euismod nulla euismod. Donec ornare urna ante, eu iaculis nisi ornare quis. Pellentesque nec sagittis leo. Aenean porta ullamcorper arcu in euismod. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras euismod nunc orci, non rhoncus dolor viverra ut.  Morbi et ante sed sapien imperdiet faucibus vitae non eros. Aliquam vitae felis ut tellus bibendum ultricies sit amet nec lectus. Nullam nec aliquet tortor. Nullam egestas ac nisi nec gravida. Quisque ultrices, ante et molestie tristique, erat augue lacinia nulla, ut rhoncus turpis justo sed metus. Morbi quis pretium odio. Pellentesque enim velit, pretium a sagittis vel, dictum non eros. Vestibulum non suscipit libero, vitae finibus ipsum. Vivamus pellentesque, libero vel placerat sagittis, est tellus ullamcorper nulla, vitae luctus felis sapien nec ligula. Duis scelerisque elit nisi, vitae congue odio suscipit id. Quisque felis odio, tristique a lacinia at, elementum a risus. Quisque volutpat nunc sed imperdiet varius. Nulla aliquam dolor at facilisis venenatis.  Curabitur feugiat pretium massa, eu feugiat est. Quisque euismod, velit ut suscipit fringilla, ipsum orci iaculis tortor, sit amet efficitur ante mi quis libero. Fusce tempus consequat leo, quis congue libero consectetur in. Vivamus tincidunt erat in arcu posuere, ac tristique urna semper. Praesent consectetur ante dui, imperdiet dignissim libero elementum nec. Mauris quis ullamcorper nisi. Vivamus ac eros quis neque fringilla condimentum. Sed sit amet sem in lacus consequat tempus vel a lectus. Ut aliquet sem sed turpis ornare mollis. Praesent sapien urna, porta eget turpis id, gravida sagittis justo. Integer enim odio, commodo quis ipsum et, bibendum maximus ipsum." />
 
                     <Button
