@@ -7,13 +7,11 @@ import com.google.firebase.firestore.firestore
 
 data class Admin(
     @DocumentId
-    var adminID : String = "",
+    var id : String = "",
     var email : String = "",
     var password : String = "",
     var phoneNumber : String = "",
-    var profilePic : Blob = Blob.fromBytes(ByteArray(0)),
     var role : String = "",
-    var userID : String = "",
     var userName : String = ""
 )
 
