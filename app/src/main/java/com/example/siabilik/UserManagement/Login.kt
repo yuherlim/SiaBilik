@@ -1,10 +1,10 @@
 package com.example.siabilik.UserManagement
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -61,7 +61,7 @@ class Login : Fragment() {
         }
 
             private fun forgotPassword() {
-                nav.navigate(R.id.forgotPassword2, bundleOf(
+                nav.navigate(R.id.forgotPassword, bundleOf(
                 ))
             }
 
