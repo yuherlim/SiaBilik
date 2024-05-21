@@ -4,6 +4,7 @@ plugins {
 
     // for firebase
     id("com.google.gms.google-services") version "4.4.1"
+
 }
 
 
@@ -56,4 +57,6 @@ dependencies {
     //
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("io.coil-kt:coil:2.4.0")
+    implementation(libs.firebase.auth.ktx)
+
 }

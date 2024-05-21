@@ -1,5 +1,6 @@
 package com.example.siabilik
 
+import UserManagement.RegisterFragment
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(UserManagement.Register())
+                R.id.profile -> replaceFragment(RegisterFragment())
                 else ->{
 
                 }
