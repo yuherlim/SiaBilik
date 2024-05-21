@@ -76,7 +76,7 @@ class AuthVM (val app: Application) : AndroidViewModel(app) {
             listener = ADMIN.document(admin.userName).addSnapshotListener { snap, _ ->
                 TenantLD.value = snap?.toObject()
             }
-            return "admin"
+            return "Admin"
         }
 
 

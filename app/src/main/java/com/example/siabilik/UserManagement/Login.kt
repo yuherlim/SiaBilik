@@ -44,7 +44,7 @@ class Login : Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         // -----------------------------------------------------------------------------------------
-        var userType : String = ""
+        var userType : String = "Tenant"
     //Default check tenant button at first run
         binding.tbUserType.check(binding.tenantButton.id)
         //Check on the checked button
@@ -72,8 +72,8 @@ class Login : Fragment() {
         }
 
             private fun forgotPassword() {
-                nav.popBackStack(R.id.frameLayout3, false)
-                nav.navigateUp()
+                nav.navigate(R.id.forgotPassword, bundleOf(
+                ))
             }
 
         private fun login(userType: String) {
@@ -86,8 +86,8 @@ class Login : Fragment() {
                 // TODO(3): Login -> auth.login(...)
                 //          Clear navigation backstack
                 lifecycleScope.launch {
-                    val success = auth.login(username, password, userType)
-                    when(success){
+                    val loginResult = auth.login(username, password, userType)
+                    when(loginResult){
                         //REMEMBER FIX THIS
                         /*"NA" -> errorDialog("Invalid login credentials.")*/
                         "Tenant" -> {
@@ -112,7 +112,7 @@ class Login : Fragment() {
         }
 
         private fun Register() {
-            nav.popBackStack(R.id.frameLayout2, false)
-            nav.navigateUp()
+            nav.navigate(R.id.registerFragment, bundleOf(
+            ))
         }
     }
