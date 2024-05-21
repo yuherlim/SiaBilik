@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.siabilik.UserManagement.RegisterFragment
 import com.example.siabilik.databinding.ActivityMainBinding
 import com.example.siabilik.ownerAcc.ui.Listing
 import com.example.siabilik.ownerAcc.ui.MyListing
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.Register())
+                R.id.profile -> replaceFragment(RegisterFragment())
+                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.RegisterFragment())
                 else ->{
 
                 }

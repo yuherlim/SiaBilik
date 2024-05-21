@@ -4,6 +4,7 @@ plugins {
 
     // for firebase
     id("com.google.gms.google-services") version "4.4.1"
+
 }
 
 
@@ -37,7 +38,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -49,15 +50,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation ("com.google.android.material:material:1.13.0-alpha02")
+    implementation("com.google.android.material:material:1.13.0-alpha02")
 
     // for firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-firestore:24.11.0")
-    implementation(libs.firebase.auth.ktx)
 
     // for navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-
 }
+
+
