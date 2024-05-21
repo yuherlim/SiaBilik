@@ -1,9 +1,14 @@
 package com.example.siabilik
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.siabilik.UserManagement.RegisterFragment
 import com.example.siabilik.databinding.ActivityMainBinding
@@ -35,6 +40,16 @@ class MainActivity : AppCompatActivity() {
         // Action bar
         setupActionBarWithNavController(nav)
 
+        addMenuProvider(object : MenuProvider{
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.bottom_nav_menu, menu)
+            }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return menuItem.onNavDestinationSelected(nav)
+            }
+        }, this)
+
+
         binding.bv.setOnItemSelectedListener {
 
             when(it.itemId){
@@ -42,7 +57,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
                 R.id.profile -> replaceFragment(RegisterFragment())
-                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.RegisterFragment())
                 else ->{
 
                 }
