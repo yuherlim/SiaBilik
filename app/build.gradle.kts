@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     implementation ("com.google.android.material:material:1.13.0-alpha02")
     // for firebase
     implementation("com.google.firebase:firebase-firestore:24.11.0")
