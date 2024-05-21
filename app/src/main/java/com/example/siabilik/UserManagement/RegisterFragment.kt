@@ -80,46 +80,112 @@ class RegisterFragment : Fragment() {
         return view
     }
 
+/*    private fun registerUser() {
+        val username = usernameEditText.text.toString().trim()
+        val email = emailEditText.text.toString().trim()
+        val phone = phoneEditText.text.toString().trim()
+        val password = passwordEditText.text.toString().trim()
+        val confirmPassword = confirmPasswordEditText.text.toString().trim()
+        val userType = when (userTypeToggleGroup.checkedButtonId) {
+            R.id.tenantButton -> "Tenant"
+            R.id.ownerButton -> "Owner"
+            else -> ""
+        }
 
-//    private fun registerUser() {
-//        val username = usernameEditText.text.toString().trim()
-//        val email = emailEditText.text.toString().trim()
-//        val phone = phoneEditText.text.toString().trim()
-//        val password = passwordEditText.text.toString().trim()
-//        val confirmPassword = confirmPasswordEditText.text.toString().trim()
-//        val userType = when (userTypeToggleGroup.checkedButtonId) {
-//            R.id.tenantButton -> "Tenant"
-//            R.id.ownerButton -> "Owner"
-//            else -> ""
-//        }
-//
-//    }
-//
-//    private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {
-//        if (TextUtils.isEmpty(username)) {
-//            usernameEditText.error = "Username is required"
-//            return false
-//        }
-//        if (TextUtils.isEmpty(email)) {
-//            emailEditText.error = "Email is required"
-//            return false
-//        }
-//        if (TextUtils.isEmpty(phone)) {
-//            phoneEditText.error = "Phone number is required"
-//            return false
-//        }
-//        if (TextUtils.isEmpty(password)) {
-//            passwordEditText.error = "Password is required"
-//            return false
-//        }
-//        if (password != confirmPassword) {
-//            confirmPasswordEditText.error = "Passwords do not match"
-//            return false
-//        }
-//        if (TextUtils.isEmpty(userType)) {
-//            Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
-//            return false
-//        }
-//        return true
-//    }
+
+        if (validateInput(username, email, phone, password, confirmPassword, userType)) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = hashMapOf(
+                            "username" to username,
+                            "email" to email,
+                            "phone" to phone,
+                            "userType" to userType
+                        )
+
+                        firestore.collection("users").document(auth.currentUser!!.uid)
+                            .set(user)
+                            .addOnSuccessListener {
+                                Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
+                                // Navigate to another activity or fragment
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(context, "Failed to save user data", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(context, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }*/
+
+    private fun register(userType: String) {
+
+        // Insert user
+       when(userType){
+           "Tenant" -> {
+               val user = Tenant(
+                   userName     = binding.txtUsername.text.toString().trim(),
+                   email    = binding.txtEmail.text.toString().trim(),
+                   phoneNumber    = binding.txtPhone.toString().trim(),
+                   password = binding.txtPassword.text.toString().trim()
+               )
+               val e = vm.validateTenant(user)
+               if (e != null) {
+                   /*errorDialog(e)*/
+                   return
+               }
+
+               vm.setTenant(user)
+               nav.navigateUp()
+           }
+           "Owner" -> {
+               val user = Owner(
+               userName     = binding.txtUsername.text.toString().trim(),
+               email    = binding.txtEmail.text.toString().trim(),
+               phoneNumber    = binding.txtPhone.toString().trim(),
+               password = binding.txtPassword.text.toString().trim()
+               )
+               val e = vm.validateOwner(user)
+               if (e != null) {
+                   /*errorDialog(e)*/
+                   return
+               }
+
+               vm.setOwner(user)
+               nav.navigateUp()
+           }
+       }
+
+
+    }
+
+    private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {
+        if (TextUtils.isEmpty(username)) {
+            usernameEditText.error = "Username is required"
+            return false
+        }
+        if (TextUtils.isEmpty(email)) {
+            emailEditText.error = "Email is required"
+            return false
+        }
+        if (TextUtils.isEmpty(phone)) {
+            phoneEditText.error = "Phone number is required"
+            return false
+        }
+        if (TextUtils.isEmpty(password)) {
+            passwordEditText.error = "Password is required"
+            return false
+        }
+        if (password != confirmPassword) {
+            confirmPasswordEditText.error = "Passwords do not match"
+            return false
+        }
+        if (TextUtils.isEmpty(userType)) {
+            Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
+    }
 }
