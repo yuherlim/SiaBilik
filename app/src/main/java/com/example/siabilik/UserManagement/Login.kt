@@ -71,7 +71,7 @@ class Login : Fragment() {
         }
 
             private fun forgotPassword() {
-                nav.popBackStack(R.id.forgotPassword, false)
+                nav.popBackStack(R.id.frameLayout3, false)
                 nav.navigateUp()
             }
 
@@ -86,7 +86,7 @@ class Login : Fragment() {
                 //          Clear navigation backstack
                 lifecycleScope.launch {
                     val success = auth.login(username, password, userType)
-                    when(userType){
+                    when(success){
                         //REMEMBER FIX THIS
                         /*"NA" -> errorDialog("Invalid login credentials.")*/
                         "Tenant" -> {

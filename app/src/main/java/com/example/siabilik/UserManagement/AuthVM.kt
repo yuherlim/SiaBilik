@@ -1,6 +1,7 @@
 package com.example.demo.data
 
 import android.app.Application
+import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.siabilik.data.Admin
@@ -77,8 +78,6 @@ class AuthVM (val app: Application) : AndroidViewModel(app) {
             }
             return "admin"
         }
-
-
 
 
         if(userType == "Tenant") {
@@ -182,6 +181,40 @@ class AuthVM (val app: Application) : AndroidViewModel(app) {
         else if (owner.password.length < 5) "- Password too short (min 5 chars).\n"
         else if (owner.password.length > 100) "- Password too long (max 100 chars).\n"
         else ""
+    }
+
+    suspend fun reset(userType: String, email:String):String {
+        if (userType == "Tenant") {
+
+            val tenant = TENANT
+                .whereEqualTo("email", email)
+                .get()
+                .await()
+                .toObjects<Tenant>()
+                .firstOrNull() ?: return "NA"
+
+
+            listener?.remove()
+            listener = TENANT.document(tenant.email).addSnapshotListener { snap, _ ->
+                TenantLD.value = snap?.toObject()
+            }
+            return "Tenant"
+        }else{
+            val owner = OWNER
+                .whereEqualTo("email", email)
+                .get()
+                .await()
+                .toObjects<Owner>()
+                .firstOrNull() ?: return "NA"
+
+
+            listener?.remove()
+            listener = OWNER.document(owner.email).addSnapshotListener { snap, _ ->
+                OwnerLD.value = snap?.toObject()
+            }
+            return "Owner"
+        }
+        return "NA"
     }
 
 
