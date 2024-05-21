@@ -33,7 +33,7 @@ class AdminAccountApproveFragment : Fragment() {
         binding.accountApproveRV.adapter = adapter
         binding.accountApproveRV.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        accountVM.getAccountApproveLD().observe(viewLifecycleOwner) {
+        accountVM.getFilteredAccountLD().observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 

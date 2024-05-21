@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         // Insert code to get user type here. Pass in user type to configureNavigationBasedOnUserType
 
-        configureNavigationBasedOnUserType("Tenant")
+        configureNavigationBasedOnUserType("Admin")
 
         // Action bar and bottom nav
         setSupportActionBar(binding.topAppBar)

@@ -13,7 +13,7 @@ import com.example.siabilik.databinding.FragmentEditProfileBinding
 class EditProfile : Fragment() {
 
 
-    lateinit var binding:FragmentEditProfileBinding
+    private lateinit var binding:FragmentEditProfileBinding
     private val nav by lazy { findNavController() }
     private val userType by lazy { arguments?.getString("userType") ?: "" }
     private val userID by lazy { arguments?.getString("userID") ?: "" }

@@ -19,6 +19,7 @@ class AdminListingApproveFragment : Fragment() {
     private lateinit var binding: FragmentAdminListingApproveBinding
     private val nav by lazy { findNavController() }
 
+
     private val listingVM : ListingApproveViewModel by activityViewModels()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAdminListingApproveBinding.inflate(inflater, container, false)
@@ -29,7 +30,7 @@ class AdminListingApproveFragment : Fragment() {
         binding.listingApproveRV.adapter = adapter
         binding.listingApproveRV.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
-        listingVM.getListingLD().observe(viewLifecycleOwner) {
+        listingVM.getFilteredListingLD().observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 
