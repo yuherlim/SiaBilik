@@ -28,8 +28,8 @@ class ListingAdapter (
 
         //holder.binding.adminCoverPhoto.setImageBlob(listing.propertyPhoto)
         // TODO : get user name from id
-        // holder.binding.adminName.text = listing.
-        // holder.binding.lblListingDate.text = listing.
+        holder.binding.adminName.text = listing.ownerID
+        //holder.binding.lblListingDate.text = listing
 
         fn(holder, listing)
     }
