@@ -122,42 +122,43 @@ class RegisterFragment : Fragment() {
     private fun register(userType: String) {
 
         // Insert user
-       when(userType){
-           "Tenant" -> {
-               val user = Tenant(
-                   userName     = binding.txtUsername.text.toString().trim(),
-                   email    = binding.txtEmail.text.toString().trim(),
-                   phoneNumber    = binding.txtPhone.toString().trim(),
-                   password = binding.txtPassword.text.toString().trim()
-               )
-               val e = vm.validateTenant(user)
-               if (e != null) {
-                   /*errorDialog(e)*/
-                   return
-               }
+        when (userType) {
+            "Tenant" -> {
+                val user = Tenant(
+                    userName = binding.txtUsername.text.toString().trim(),
+                    email = binding.txtEmail.text.toString().trim(),
+                    phoneNumber = binding.txtPhone.toString().trim(),
+                    password = binding.txtPassword.text.toString().trim()
+                )
+                val e = vm.validateTenant(user)
+                if (e != null) {
+                    /*errorDialog(e)*/
+                    return
+                }
 
-               vm.setTenant(user)
-               nav.navigateUp()
-           }
-           "Owner" -> {
-               val user = Owner(
-               userName     = binding.txtUsername.text.toString().trim(),
-               email    = binding.txtEmail.text.toString().trim(),
-               phoneNumber    = binding.txtPhone.toString().trim(),
-               password = binding.txtPassword.text.toString().trim()
-               )
-               val e = vm.validateOwner(user)
-               if (e != null) {
-                   /*errorDialog(e)*/
-                   return
-               }
+                vm.setTenant(user)
+                nav.navigateUp()
+            }
 
-               vm.setOwner(user)
-               nav.navigateUp()
-           }
-       }
+            "Owner" -> {
+                val user = Owner(
+                    userName = binding.txtUsername.text.toString().trim(),
+                    email = binding.txtEmail.text.toString().trim(),
+                    phoneNumber = binding.txtPhone.toString().trim(),
+                    password = binding.txtPassword.text.toString().trim()
+                )
+                val e = vm.validateOwner(user)
+                if (e != null) {
+                    /*errorDialog(e)*/
+                    return
+                }
 
-=======
+                vm.setOwner(user)
+                nav.navigateUp()
+            }
+        }
+
+
 //        if (validateInput(username, email, phone, password, confirmPassword, userType)) {
 //            auth.createUserWithEmailAndPassword(email, password)
 //                .addOnCompleteListener { task ->
@@ -183,7 +184,6 @@ class RegisterFragment : Fragment() {
 //                    }
 //                }
 //        }
->>>>>>> da236ccd978466287943baec9940e52d8181a13d
     }
 
     private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {

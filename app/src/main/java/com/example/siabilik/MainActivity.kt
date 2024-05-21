@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         abc = AppBarConfiguration(
             setOf(
-                R.id.tenantViewListingsFragment,
-                R.id.tenantViewStarredListingsFragment,
-                R.id.tenantViewRequestsFragment,
-                R.id.tenantAccountFragment,
+                R.id.frameLayout2,
+                R.id.frameLayout3,
+                R.id.loginLayout,
+                R.id.relativeLayout,
             )
         )
 
