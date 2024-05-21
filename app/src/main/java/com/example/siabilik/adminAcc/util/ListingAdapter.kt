@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.AdminListingListBinding
-import com.example.siabilik.ownerAcc.ui.Listing
 
 class ListingAdapter (
-    val fn: (ViewHolder, Listing) -> Unit = { _, _ -> }
-) : ListAdapter<Listing, ListingAdapter.ViewHolder>(DiffCallback)){
+    val fn: (ViewHolder, Listing) ->Unit = { _, _ -> }
+) : ListAdapter<Listing, ListingAdapter.ViewHolder>(DiffCallback){
 
     companion object DiffCallback : DiffUtil.ItemCallback<Listing>() {
         override fun areItemsTheSame(a: Listing, b: Listing) = a.id == b.id
@@ -20,10 +20,18 @@ class ListingAdapter (
     class ViewHolder(val binding: AdminListingListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(AdminListingListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ListingAdapter.ViewHolder(
+            AdminListingListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ListingAdapter.ViewHolder, position: Int) {
         val listing = getItem(position)
+
+        // TODO : set profile image
 
 
         fn(holder, listing)
