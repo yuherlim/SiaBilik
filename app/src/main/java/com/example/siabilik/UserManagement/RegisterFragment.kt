@@ -24,7 +24,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var firestore: FirebaseFirestore
-    private  val vm: AuthVM by activityViewModels()
+    private val vm: AuthVM by activityViewModels()
     private val nav by lazy { findNavController() }
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -38,7 +38,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var userType : String = ""
+        var userType: String = ""
         //Default check tenant button at first run
         binding.tbUserType.check(binding.tenantButton.id)
         //Check on the checked button
@@ -71,53 +71,55 @@ class RegisterFragment : Fragment() {
         registerButton.setOnClickListener {
             /*registerUser()*/
         }
-        binding.register.setOnClickListener { if (R.id.txtPassword != R.id.txtLayoutForgotPassword){
-            register(userType)
-        }
+        binding.register.setOnClickListener {
+            if (R.id.txtPassword != R.id.txtLayoutForgotPassword) {
+                //register(userType)
+            }
         }
 
         return view
     }
 
-/*    private fun registerUser() {
-        val username = usernameEditText.text.toString().trim()
-        val email = emailEditText.text.toString().trim()
-        val phone = phoneEditText.text.toString().trim()
-        val password = passwordEditText.text.toString().trim()
-        val confirmPassword = confirmPasswordEditText.text.toString().trim()
-        val userType = when (userTypeToggleGroup.checkedButtonId) {
-            R.id.tenantButton -> "Tenant"
-            R.id.ownerButton -> "Owner"
-            else -> ""
-        }
 
-    }
-
-    private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {
-        if (TextUtils.isEmpty(username)) {
-            usernameEditText.error = "Username is required"
-            return false
-        }
-        if (TextUtils.isEmpty(email)) {
-            emailEditText.error = "Email is required"
-            return false
-        }
-        if (TextUtils.isEmpty(phone)) {
-            phoneEditText.error = "Phone number is required"
-            return false
-        }
-        if (TextUtils.isEmpty(password)) {
-            passwordEditText.error = "Password is required"
-            return false
-        }
-        if (password != confirmPassword) {
-            confirmPasswordEditText.error = "Passwords do not match"
-            return false
-        }
-        if (TextUtils.isEmpty(userType)) {
-            Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
-            return false
-        }
-        return true
-    }
+//    private fun registerUser() {
+//        val username = usernameEditText.text.toString().trim()
+//        val email = emailEditText.text.toString().trim()
+//        val phone = phoneEditText.text.toString().trim()
+//        val password = passwordEditText.text.toString().trim()
+//        val confirmPassword = confirmPasswordEditText.text.toString().trim()
+//        val userType = when (userTypeToggleGroup.checkedButtonId) {
+//            R.id.tenantButton -> "Tenant"
+//            R.id.ownerButton -> "Owner"
+//            else -> ""
+//        }
+//
+//    }
+//
+//    private fun validateInput(username: String, email: String, phone: String, password: String, confirmPassword: String, userType: String): Boolean {
+//        if (TextUtils.isEmpty(username)) {
+//            usernameEditText.error = "Username is required"
+//            return false
+//        }
+//        if (TextUtils.isEmpty(email)) {
+//            emailEditText.error = "Email is required"
+//            return false
+//        }
+//        if (TextUtils.isEmpty(phone)) {
+//            phoneEditText.error = "Phone number is required"
+//            return false
+//        }
+//        if (TextUtils.isEmpty(password)) {
+//            passwordEditText.error = "Password is required"
+//            return false
+//        }
+//        if (password != confirmPassword) {
+//            confirmPasswordEditText.error = "Passwords do not match"
+//            return false
+//        }
+//        if (TextUtils.isEmpty(userType)) {
+//            Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
+//            return false
+//        }
+//        return true
+//    }
 }

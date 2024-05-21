@@ -29,8 +29,8 @@ class CardViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
         holder.binding.features.text = listing.features
         holder.binding.Listingstatus.text = listing.status
         holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
-        holder.binding.dateCreated.text =  SimpleDateFormat("dd-mm-yyyy").format(listing.createdDateTime)
-        holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
+        //holder.binding.dateCreated.text =  SimpleDateFormat("dd-mm-yyyy").format(listing.createdDateTime)
+        //holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
         fn(holder, listing)
     }
 

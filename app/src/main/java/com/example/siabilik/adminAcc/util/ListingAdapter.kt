@@ -26,7 +26,7 @@ class ListingAdapter (
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listing = getItem(position)
 
-        holder.binding.adminCoverPhoto.setImageBlob(listing.image)
+        //holder.binding.adminCoverPhoto.setImageBlob(listing.propertyPhoto)
         // TODO : get user name from id
         // holder.binding.adminName.text = listing.
         // holder.binding.lblListingDate.text = listing.
