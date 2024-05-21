@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         abc = AppBarConfiguration(
             setOf(
                 R.id.tenantViewListingsFragment,
@@ -43,14 +44,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return nav.navigateUp() || super.onSupportNavigateUp()
     }
-
-//    private fun replaceFragment(fragment : Fragment){
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//        fragmentTransaction.replace(R.id.main,fragment)
-//        fragmentTransaction.commit()
-//    }
-
 
 
 
