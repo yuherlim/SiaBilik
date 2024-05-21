@@ -38,7 +38,7 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
 }
@@ -50,13 +50,14 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation ("com.google.android.material:material:1.13.0-alpha02")
+    implementation("com.google.android.material:material:1.13.0-alpha02")
+
     // for firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-firestore:24.11.0")
+    implementation(libs.firebase.auth.ktx)
 
     //
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("io.coil-kt:coil:2.4.0")
-    implementation(libs.firebase.auth.ktx)
-
 }
