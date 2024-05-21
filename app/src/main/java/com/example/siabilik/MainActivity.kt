@@ -14,8 +14,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
-    private lateinit var abc: AppBarConfiguration
 
+    private lateinit var abc: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,22 +38,12 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(nav, abc)
         binding.bv.setupWithNavController(nav)
 
-
-
     }
 
     //Action bar up button
     override fun onSupportNavigateUp(): Boolean {
         return nav.navigateUp() || super.onSupportNavigateUp()
     }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main,fragment)
-        fragmentTransaction.commit()
-    }
-
 
 
 
