@@ -24,7 +24,7 @@ class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
     private lateinit var firestore: FirebaseFirestore
-    private  val vm: AuthVM by activityViewModels()
+    private val vm: AuthVM by activityViewModels()
     private val nav by lazy { findNavController() }
     private lateinit var usernameEditText: EditText
     private lateinit var emailEditText: EditText
@@ -38,7 +38,7 @@ class RegisterFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var userType : String = ""
+        var userType: String = ""
         //Default check tenant button at first run
         binding.tbUserType.check(binding.tenantButton.id)
         //Check on the checked button
@@ -71,9 +71,10 @@ class RegisterFragment : Fragment() {
         registerButton.setOnClickListener {
             /*registerUser()*/
         }
-        binding.register.setOnClickListener { if (R.id.txtPassword != R.id.txtLayoutForgotPassword){
-            register(userType)
-        }
+        binding.register.setOnClickListener {
+            if (R.id.txtPassword != R.id.txtLayoutForgotPassword) {
+                //register(userType)
+            }
         }
 
         return view

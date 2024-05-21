@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.AdminListingListBinding
+import com.example.siabilik.setImageBlob
 
 class ListingAdapter (
     val fn: (ViewHolder, Listing) ->Unit = { _, _ -> }
@@ -20,19 +21,15 @@ class ListingAdapter (
     class ViewHolder(val binding: AdminListingListBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ListingAdapter.ViewHolder(
-            AdminListingListBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
-        )
+        ViewHolder(AdminListingListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: ListingAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listing = getItem(position)
 
-        // TODO : set profile image
-
+        //holder.binding.adminCoverPhoto.setImageBlob(listing.propertyPhoto)
+        // TODO : get user name from id
+        // holder.binding.adminName.text = listing.
+        // holder.binding.lblListingDate.text = listing.
 
         fn(holder, listing)
     }
