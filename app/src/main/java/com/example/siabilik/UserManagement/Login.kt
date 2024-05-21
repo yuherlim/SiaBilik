@@ -26,14 +26,6 @@ import com.example.demo.data.AuthVM
 import com.example.siabilik.MainActivity
 import com.example.siabilik.R
 import com.example.siabilik.databinding.FragmentLoginBinding
-
-import com.google.android.gms.common.api.ApiException
-
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
