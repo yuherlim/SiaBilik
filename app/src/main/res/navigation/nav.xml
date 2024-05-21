@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/adminListFragment">
+    <fragment
+        android:id="@+id/adminListFragment"
+        android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
+        android:label="Admin Management"
+        tools:layout="@layout/fragment_admin_list" />
+    <fragment
+        android:id="@+id/adminAccountApproveFragment3"
+        android:name="com.example.siabilik.adminAcc.ui.AdminAccountApproveFragment"
+        android:label="Account Management"
+        tools:layout="@layout/fragment_admin_account_approve" />
+    <fragment
+        android:id="@+id/adminListingApproveFragment3"
+        android:name="com.example.siabilik.adminAcc.ui.AdminListingApproveFragment"
+        android:label="Listing Management"
+        tools:layout="@layout/fragment_admin_listing_approve" />
+    <fragment
+        android:id="@+id/adminAccountApproveDetailsFragment2"
+        android:name="com.example.siabilik.adminAcc.ui.AdminAccountApproveDetailsFragment"
+        android:label="Account Verification"
+        tools:layout="@layout/fragment_admin_account_approve_details" />
+    <fragment
+        android:id="@+id/adminAddAdminFragment2"
+        android:name="com.example.siabilik.adminAcc.ui.AdminAddAdminFragment"
+        android:label="Add Admin"
+        tools:layout="@layout/fragment_admin_add_admin" />
+    <fragment
+        android:id="@+id/adminDetailsFragment"
+        android:name="com.example.siabilik.adminAcc.ui.AdminDetailsFragment"
+        android:label="Edit Admin"
+        tools:layout="@layout/fragment_admin_details" />
+    <fragment
+        android:id="@+id/adminListingApproveDetailsFragment2"
+        android:name="com.example.siabilik.adminAcc.ui.AdminListingApproveDetailsFragment"
+        android:label="Listing Approval"
+        tools:layout="@layout/fragment_admin_listing_approve_details" />
 </navigation>
