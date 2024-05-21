@@ -6,15 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".tenantAcc.requests.TenantRequestDetailsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rdRv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tFContactOwnerTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Title"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/request_item" />
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtContactOwnerTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tFContactOwnerMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Message"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tFContactOwnerTitle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtContactOwnerMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="10"
+            android:nestedScrollingEnabled="false"
+            android:scrollbars="vertical"
+            android:singleLine="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnContactOwnerResendEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Resend Email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btnContactOwnerCancelSendEmail"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btnContactOwnerResendEmail"
+        app:layout_constraintTop_toTopOf="@+id/btnContactOwnerResendEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
