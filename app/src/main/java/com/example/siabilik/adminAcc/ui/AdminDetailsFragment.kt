@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.siabilik.adminAcc.data.AdminViewModel
 import com.example.siabilik.data.Admin
 import com.example.siabilik.databinding.FragmentAdminDetailsBinding
+import com.example.siabilik.setImageBlob
 
 
 class AdminDetailsFragment : Fragment() {
@@ -32,12 +33,9 @@ class AdminDetailsFragment : Fragment() {
             return null
         }
 
-        // set the spinner adapter
-
-
         //set image
+        binding.accountProfileImg.setImageBlob(admin.adminPhoto)
         binding.textName.text = admin.userName
-
 
 
         binding.deleteButton.setOnClickListener {

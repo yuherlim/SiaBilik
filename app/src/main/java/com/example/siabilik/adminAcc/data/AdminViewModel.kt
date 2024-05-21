@@ -29,6 +29,10 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
         ADMIN.document(id).delete()
     }
 
+    fun getLatestAdmin(): Admin? {
+        return adminLD.value?.lastOrNull()
+    }
+
     fun set(a : Admin) {
         ADMIN.document(a.id).set(a)
     }

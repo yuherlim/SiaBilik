@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.siabilik.adminAcc.data.AdminViewModel
+import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Admin
 import com.example.siabilik.databinding.FragmentAdminAddAdminBinding
 
@@ -36,14 +37,24 @@ class AdminAddAdminFragment : Fragment() {
     }
 
     private fun submit(){
+
+        var adminId : Int = 0
+
+        // Get the latest value
+        val latestAdmin = adminVM.getLatestAdmin()
+        if (latestAdmin != null) {
+            adminId = latestAdmin.id.removePrefix("Admin").toIntOrNull()!!
+            adminId = adminId.plus(1)
+        }
+
         val a = Admin(
             //get id
-            id = "Admin001",
+            id = "Admin${adminId.toString().padStart(3, '0')}",
             userName = binding.edtAdminName.text.toString().trim(),
-            role = binding.spnAdminRole.selectedItem.toString(),
             email = binding.editTextTextEmailAddress.text.toString().trim(),
             password = binding.editTextTextPassword.text.toString().trim(),
-            phoneNumber = binding.editTextPhone.text.toString().trim()
+            phoneNumber = binding.editTextPhone.text.toString().trim(),
+            adminPhoto = binding.adminProfile.cropToBlob(300,300)
         )
 
         val e = adminVM.validate(a)

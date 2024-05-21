@@ -11,8 +11,8 @@ data class Admin(
     var email : String = "",
     var password : String = "",
     var phoneNumber : String = "",
-    var role : String = "",
-    var userName : String = ""
+    var userName : String = "",
+    var adminPhoto : Blob = Blob.fromBytes(ByteArray(0))
 )
 
 
