@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
     app:startDestination="@id/adminListingApproveFragment">
+
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
