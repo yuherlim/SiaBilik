@@ -1,15 +1,11 @@
 package com.example.siabilik
 
-<<<<<<< HEAD
-import UserManagement.RegisterFragment
-import android.content.Intent
-=======
->>>>>>> 2d9ede6072c0cd6ab97f5ccfd3ce96dc776f911a
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.siabilik.UserManagement.RegisterFragment
 import com.example.siabilik.databinding.ActivityMainBinding
 import com.example.siabilik.ownerAcc.ui.Listing
 import com.example.siabilik.ownerAcc.ui.MyListing
@@ -45,11 +41,8 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-<<<<<<< HEAD
                 R.id.profile -> replaceFragment(RegisterFragment())
-=======
-                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.Register())
->>>>>>> 2d9ede6072c0cd6ab97f5ccfd3ce96dc776f911a
+                R.id.profile -> replaceFragment(com.example.siabilik.UserManagement.RegisterFragment())
                 else ->{
 
                 }
