@@ -9,6 +9,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.siabilik.databinding.ActivityMainBinding
+import ownerAcc.ui.Listing
+import ownerAcc.ui.MyListing
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -33,8 +36,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.listing -> replaceFragment(Listing())
                 R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(Profile())
-
+                R.id.profile -> replaceFragment(UserManagement.Register())
                 else ->{
 
                 }
@@ -52,12 +54,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     }
 
-    private fun ButtonClick(fragment: Fragment){
-        val buttonClick = findViewById<Button>(R.id.btnEdit)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this,itemList::class.java)
-            startActivity(intent)
-        }
-    }
+
+
 
 }

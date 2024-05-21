@@ -6,6 +6,8 @@ plugins {
     id("com.google.gms.google-services") version "4.4.1"
 }
 
+
+
 android {
     namespace = "com.example.siabilik"
     compileSdk = 34
@@ -47,7 +49,11 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
+    implementation ("com.google.android.material:material:1.13.0-alpha02")
     // for firebase
     implementation("com.google.firebase:firebase-firestore:24.11.0")
+
+    //
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+    implementation("io.coil-kt:coil:2.4.0")
 }
