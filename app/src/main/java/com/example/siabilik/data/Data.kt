@@ -57,7 +57,8 @@ data class Listing(
     var approvalStatus : String = "",
     var features : String = "",
     var userID: String = "",
-    var rental: Double = 0.0
+    var rental: Double = 0.0,
+    var image: Blob = Blob.fromBytes(ByteArray(0))
 )
 
 val LISTING = Firebase.firestore.collection("Owner")

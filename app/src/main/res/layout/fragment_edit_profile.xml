@@ -8,7 +8,7 @@
     tools:context="com.example.siabilik.UserManagement.EditProfile">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/editProfile"
+        android:id="@+id/editProfileBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#495D92"
@@ -32,7 +32,7 @@
         android:src="@drawable/testing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfile" />
+        app:layout_constraintTop_toBottomOf="@+id/editProfileBar" />
 
 
     <ImageView

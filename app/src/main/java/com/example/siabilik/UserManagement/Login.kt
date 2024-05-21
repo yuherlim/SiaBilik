@@ -1,43 +1,17 @@
 package com.example.siabilik.UserManagement
 
-import android.content.ContentValues
-import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.SpannableString
-import android.text.TextWatcher
-import android.text.method.PasswordTransformationMethod
-import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
-import com.example.siabilik.MainActivity
 import com.example.siabilik.R
 import com.example.siabilik.databinding.FragmentLoginBinding
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -74,8 +48,8 @@ class Login : Fragment() {
             }
         }
 
-            binding.forgotPassword.setOnClickListener { forgotPassword() }
-            binding.login.setOnClickListener { login(userType) }
+            binding.forgotPasswordLabel.setOnClickListener { forgotPassword() }
+            binding.loginButton.setOnClickListener { login(userType) }
             binding.registerTextPart2.setOnClickListener { Register() }
 
             // -----------------------------------------------------------------------------------------

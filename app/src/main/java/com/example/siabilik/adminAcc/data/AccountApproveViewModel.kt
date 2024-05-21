@@ -18,6 +18,8 @@ class AccountApproveViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
+    fun getAccountApproveLD() = accountApproveLD
+
 
 
 

@@ -19,8 +19,6 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
-    fun init() = Unit
-
     fun getAdminLD() = adminLD
 
     fun get(id: String) = adminLD.value?.find { it.id == id }
@@ -41,7 +39,8 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
         //validation to do
         var e = ""
 
-        e += if (a.userName == "") "- Name is required.\n"
+        e += if (a.userName.contains(" ")) "- Name cannot contain spaces.\n"
+        else if (a.userName == "") "- Name is required.\n"
         else if (a.userName.length < 3) "- Name is too short (at least 3 letters).\n"
         else if (a.userName.length > 100) "- Name is too long (at most 100 letters).\n"
         else ""
