@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         // Insert code to get user type here. Pass in user type to configureNavigationBasedOnUserType
 
+
         configureNavigationBasedOnUserType("Admin")
 
         // Action bar and bottom nav

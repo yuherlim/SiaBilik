@@ -22,11 +22,12 @@ class EditPassword : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentEditPasswordBinding.inflate(layoutInflater,container, false)
+        binding = FragmentEditPasswordBinding.inflate(layoutInflater, container, false)
 
 
 
 
 
         return binding.root
+    }
 }
