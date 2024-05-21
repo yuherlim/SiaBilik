@@ -14,7 +14,7 @@ class AdminAdapter (
 ) : ListAdapter<Admin, AdminAdapter.ViewHolder>(DiffCallback) {
 
     companion object DiffCallback : DiffUtil.ItemCallback<Admin>() {
-        override fun areItemsTheSame(a: Admin, b: Admin) = a.adminID == b.adminID
+        override fun areItemsTheSame(a: Admin, b: Admin) = a.id == b.id
         override fun areContentsTheSame(a: Admin, b: Admin) = a == b
     }
 
