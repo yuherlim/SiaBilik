@@ -4,6 +4,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.firestore.Blob
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.firestore
+import com.google.type.DateTime
 import java.sql.ClientInfoStatus
 
 data class Admin (
@@ -52,14 +53,18 @@ data class Listing(
     var id : String = "",
     var title: String ="",
     var status: String ="",
-    var descrription: String ="",
+    var description: String ="",
     var address : String = "",
     var approvalStatus : String = "",
     var features : String = "",
-    var userID: String = "",
-    var rental: Double = 0.0
+    var ownerID: String = "",
+    var rental: Double = 0.0,
+    var createdDateTime: DateTime,
+    var ownershipProof: Blob = Blob.fromBytes(ByteArray(0)),
+    var propertyPhoto: Blob = Blob.fromBytes(ByteArray(0))
+
 )
 
-val LISTING = Firebase.firestore.collection("Owner")
+val LISTING = Firebase.firestore.collection("Listing")
 
 
