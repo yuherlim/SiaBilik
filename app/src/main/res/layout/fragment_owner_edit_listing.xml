@@ -188,8 +188,7 @@
                     android:src="@drawable/baseline_interests_24"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/propertyPhotoLabel"
-                    app:layout_constraint_toBottomOf="@+id/propertyPhotoLabel" />
+                    app:layout_constraintTop_toBottomOf="@+id/propertyPhotoLabel" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -221,8 +220,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ownershipPhotoLabel"
-                    app:layout_constraint_BottomtoBottomOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/ownershipPhotoLabel" />
 
                 <ImageView
                     android:layout_width="wrap_content"
