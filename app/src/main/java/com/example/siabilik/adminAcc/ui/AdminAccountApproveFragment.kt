@@ -11,9 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.siabilik.R
 import com.example.siabilik.adminAcc.data.AccountApproveViewModel
-import com.example.siabilik.adminAcc.data.AdminViewModel
 import com.example.siabilik.adminAcc.util.AccountAdapter
-import com.example.siabilik.adminAcc.util.AdminAdapter
 import com.example.siabilik.databinding.FragmentAdminAccountApproveBinding
 
 class AdminAccountApproveFragment : Fragment() {
