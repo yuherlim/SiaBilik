@@ -36,6 +36,8 @@ class AdminDetailsFragment : Fragment() {
         //set image
         binding.accountProfileImg.setImageBlob(admin.adminPhoto)
         binding.textName.text = admin.userName
+        binding.textEmail.text = admin.email
+        binding.textID.text = admin.id
 
 
         binding.deleteButton.setOnClickListener {

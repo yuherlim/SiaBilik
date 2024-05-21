@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
     private lateinit var appBarConfiguration: AppBarConfiguration
     private val topLevelDestinations = setOf(
-        R.id.tenantViewListingsFragment, R.id.tenantViewStarredListingsFragment, R.id.tenantViewRequestsFragment, R.id.tenantAccountFragment,
+        R.id.tenantViewListingsFragment, R.id.tenantViewStarredListingsFragment, R.id.tenantViewRequestsFragment, R.id.tenantAccountFragment, R.id.adminAccountApproveFragment, R.id.adminListFragment, R.id.adminListingApproveFragment
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,35 +37,35 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        binding.bv.setOnItemSelectedListener {
-
-            when(it.itemId){
-
-                R.id.listing -> replaceFragment(Listing())
-                R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(RegisterFragment())
-                R.id.profile -> replaceFragment(RegisterFragment())
-                else ->{
-
-                }
-
-            }
-            true
-        }
+//        binding.bv.setOnItemSelectedListener {
+//
+//            when(it.itemId){
+//
+//                R.id.listing -> replaceFragment(Listing())
+//                R.id.myListing -> replaceFragment(MyListing())
+//                R.id.profile -> replaceFragment(RegisterFragment())
+//                R.id.profile -> replaceFragment(RegisterFragment())
+//                else ->{
+//
+//                }
+//
+//            }
+//            true
+//        }
 
     }
 
-    // Action bar up button
-//    override fun onSupportNavigateUp(): Boolean {
-//        return nav.navigateUp() || super.onSupportNavigateUp()
+    //Action bar up button
+    override fun onSupportNavigateUp(): Boolean {
+        return nav.navigateUp() || super.onSupportNavigateUp()
+    }
+
+//    private fun replaceFragment(fragment : Fragment){
+//        val fragmentManager = supportFragmentManager
+//        val fragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(R.id.main,fragment)
+//        fragmentTransaction.commit()
 //    }
-
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main,fragment)
-        fragmentTransaction.commit()
-    }
 
 
 

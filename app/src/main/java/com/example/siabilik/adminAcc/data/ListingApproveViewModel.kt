@@ -1,4 +1,28 @@
 package com.example.siabilik.adminAcc.data
 
-class ListingApproveViewModel {
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import com.example.siabilik.data.ADMIN
+import com.example.siabilik.data.Admin
+import com.example.siabilik.ownerAcc.ui.Listing
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.toObjects
+
+class ListingApproveViewModel(app : Application) : AndroidViewModel(app) {
+
+    private val listingLD = MutableLiveData<List<Listing>>(emptyList())
+    private var listener : ListenerRegistration? = null
+
+    init {
+        listener = LISTING.addSnapshotListener { snap, _ ->
+            listingLD.value = snap?.toObjects()
+        }
+    }
+
+    fun init() = Unit
+
+    fun getListingLD() = listingLD
+
+
 }
