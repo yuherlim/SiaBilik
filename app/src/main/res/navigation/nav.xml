@@ -74,4 +74,8 @@
         android:name="com.example.siabilik.tenantAcc.starred.TenantViewStarredListingsFragment"
         android:label="Starred Listings"
         tools:layout="@layout/fragment_tenant_view_starred_listings" />
+    <fragment
+        android:id="@+id/myListingsFragment"
+        android:name="com.example.siabilik.ownerAcc.MyListingsFragment"
+        android:label="MyListingsFragment" />
 </navigation>
