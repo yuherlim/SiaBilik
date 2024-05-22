@@ -17,6 +17,8 @@ import com.example.siabilik.databinding.FragmentForgotPasswordBinding
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.snackbar.Snackbar
+import com.example.siabilik.UserManagement.SimpleEmail
+
 
 class ForgotPassword : Fragment() {
 
@@ -87,7 +89,7 @@ class ForgotPassword : Fragment() {
                     owner.password = newPassword
                     auth.setOwner(owner)
                     sendEmail(email, owner.userName, newPassword)
-                    Toast.makeText(context, "PPassword has been reset and emailed to the user.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Password has been reset and emailed to the user.", Toast.LENGTH_SHORT).show()
 
                     nav.navigateUp()
                 }
@@ -112,14 +114,14 @@ class ForgotPassword : Fragment() {
         <p>Thank you.</p>
     """.trimIndent()
 
-        /*SimpleEmail()
+        SimpleEmail()
             .to(email)
             .subject(subject)
             .content(content)
             .isHtml()
             .send {
                 Snackbar.make(binding.root, "Email sent.", Snackbar.LENGTH_LONG).show()
-            }*/
+            }
 
         Snackbar.make(binding.root, "Sending email...", Snackbar.LENGTH_LONG).show()
     }
