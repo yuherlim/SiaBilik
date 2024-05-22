@@ -46,6 +46,7 @@ class AdminListingApproveDetailsFragment : Fragment() {
 
         binding.btnApprove.setOnClickListener {
             listing.approvalStatus = "Approved"
+            listing.status = "Available"
             listingVM.set(listing)
             nav.navigateUp()
         }
