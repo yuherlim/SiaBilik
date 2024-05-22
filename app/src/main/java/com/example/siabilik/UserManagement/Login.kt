@@ -70,7 +70,7 @@ class Login : Fragment() {
             val username = binding.txtUsername.text.toString().trim()
             val password = binding.txtPassword.text.toString().trim()
             if (username == "" || password == "") {
-                errorDialog("UserName or Password shouldnt be empty")
+                errorDialog("UserName or Password shouldn't be empty")
             } else {
                 // TODO(3): Login -> auth.login(...)
                 //          Clear navigation backstack
