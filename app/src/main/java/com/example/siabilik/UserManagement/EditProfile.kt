@@ -40,23 +40,23 @@ class EditProfile : Fragment() {
 
         // Observe the LiveData
         userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
-            when (loggedInUser.userType) {
+            when (loggedInUser!!.userType) {
                 "Owner" -> {
-                    val user = allUserViewModel.getOwnerById(loggedInUser.userID)
+                    val user = allUserViewModel.getOwnerById(loggedInUser!!.userID)
                     binding.txtUsername.setText(user!!.userName)
                     binding.txtEmail.setText(user!!.email)
                     binding.txtPhone.setText(user!!.phoneNumber)
                     binding.profileImage.setImageBlob(user!!.profilePic)
                 }
                 "Tenant" -> {
-                    val user = allUserViewModel.getTenantById(loggedInUser.userID)
+                    val user = allUserViewModel.getTenantById(loggedInUser!!.userID)
                     binding.txtUsername.setText(user!!.userName)
                     binding.txtEmail.setText(user!!.email)
                     binding.txtPhone.setText(user!!.phoneNumber)
                     binding.profileImage.setImageBlob(user!!.profilePic)
                 }
                 "Admin" -> {
-                    val user = allUserViewModel.getAdminById(loggedInUser.userID)
+                    val user = allUserViewModel.getAdminById(loggedInUser!!.userID)
                     binding.txtUsername.setText(user!!.userName)
                     binding.txtEmail.setText(user!!.email)
                     binding.txtPhone.setText(user!!.phoneNumber)
@@ -77,9 +77,9 @@ class EditProfile : Fragment() {
 
                 // Observe the LiveData
                 userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
-                    when (loggedInUser.userType) {
+                    when (loggedInUser!!.userType) {
                         "Owner" -> {
-                            val user = allUserViewModel.getOwnerById(loggedInUser.userID)
+                            val user = allUserViewModel.getOwnerById(loggedInUser!!.userID)
                             user!!.email = email
                             user!!.phoneNumber = phone
                             user!!.profilePic = binding.profileImage.cropToBlob(300,300)
@@ -90,7 +90,7 @@ class EditProfile : Fragment() {
                             binding.profileImage.setImageBlob(user.profilePic)
                         }
                         "Tenant" -> {
-                            val user = allUserViewModel.getTenantById(loggedInUser.userID)
+                            val user = allUserViewModel.getTenantById(loggedInUser!!.userID)
                             user!!.email = email
                             user!!.phoneNumber = phone
                             user!!.profilePic = binding.profileImage.cropToBlob(300,300)
@@ -101,7 +101,7 @@ class EditProfile : Fragment() {
                             binding.profileImage.setImageBlob(user.profilePic)
                         }
                         "Admin" -> {
-                            val user = allUserViewModel.getAdminById(loggedInUser.userID)
+                            val user = allUserViewModel.getAdminById(loggedInUser!!.userID)
                             user!!.email = email
                             user!!.phoneNumber = phone
                             user!!.adminPhoto = binding.profileImage.cropToBlob(300,300)
