@@ -43,7 +43,7 @@
     <fragment
         android:id="@+id/ownerMyListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerMyListing"
-        android:label="fragment_owner_my_listing"
+        android:label="My Listings"
         tools:layout="@layout/fragment_owner_my_listing" />
     <fragment
         android:id="@+id/tenantViewListingsFragment"
@@ -83,18 +83,18 @@
     <fragment
         android:id="@+id/ownerAddListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerAddListing"
-        android:label="fragment_owner_add_listing"
+        android:label="Add Listings"
         tools:layout="@layout/fragment_owner_add_listing" />
     <fragment
         android:id="@+id/ownerEditListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerEditListing"
-        android:label="fragment_owner_edit_listing"
+        android:label="Edit Listings"
         tools:layout="@layout/fragment_owner_edit_listing" />
     <fragment
         android:id="@+id/ownerListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerListing"
-        android:label="fragment_owner_listing"
-        tools:layout="@layout/fragment_owner_listing" >
+        android:label="All Listings"
+        tools:layout="@layout/fragment_owner_listing">
         <action
             android:id="@+id/action_ownerListing_self"
             app:destination="@id/ownerListing" />
@@ -102,22 +102,22 @@
     <fragment
         android:id="@+id/ownerListingDetails"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerListingDetails"
-        android:label="fragment_owner_listing_details"
+        android:label="Listing Details"
         tools:layout="@layout/fragment_owner_listing_details" />
     <fragment
         android:id="@+id/ownerProfile"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerProfile"
-        android:label="fragment_owner_profile"
+        android:label="Account"
         tools:layout="@layout/fragment_owner_profile" />
     <fragment
         android:id="@+id/editProfile"
         android:name="com.example.siabilik.UserManagement.EditProfile"
-        android:label="fragment_edit_profile"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/adminProfileFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminProfileFragment"
-        android:label="fragment_admin_profile"
+        android:label="Account"
         tools:layout="@layout/fragment_admin_profile" />
     <fragment
         android:id="@+id/editPassword"
@@ -132,12 +132,12 @@
     <fragment
         android:id="@+id/login"
         android:name="com.example.siabilik.UserManagement.Login"
-        android:label="fragment_login"
+        android:label="Login"
         tools:layout="@layout/fragment_login" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.siabilik.UserManagement.RegisterFragment"
-        android:label="fragment_register"
+        android:label="Register"
         tools:layout="@layout/fragment_register" />
     <fragment
         android:id="@+id/verificationApplicationFragment"
@@ -147,7 +147,7 @@
     <fragment
         android:id="@+id/ownerMyListingDetails"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerMyListingDetails"
-        android:label="OwnerMyListingDetails"
-        tools:layout="@layout/fragment_owner_mylisting_details"/>
+        android:label="My Listing Details"
+        tools:layout="@layout/fragment_owner_mylisting_details" />
 
 </navigation>

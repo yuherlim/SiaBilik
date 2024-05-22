@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.siabilik.R
 import com.example.siabilik.adminAcc.LoggedInUserViewModel
-import com.example.siabilik.databinding.FragmentAdminProfileBinding
 import com.example.siabilik.databinding.FragmentTenantAccountBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class TenantAccountFragment : Fragment() {
@@ -33,8 +33,10 @@ class TenantAccountFragment : Fragment() {
 
         binding.clLogout.setOnClickListener {
             userViewModel.clearData()
+            //clear back stack every time enter top level destination
+            nav.popBackStack(R.id.login, true)
+            requireActivity().findViewById<BottomNavigationView>(R.id.bv).menu.clear()
             nav.navigate(R.id.login)
-
         }
 
         binding.clAccountVerification.setOnClickListener {
