@@ -44,9 +44,9 @@ class TenantViewRequestsFragment : Fragment() {
 
         // Observe the LiveData
         userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
-            when (loggedInUser.userType) {
+            when (loggedInUser!!.userType) {
                 "Tenant" -> {
-                    currentLoggedInTenant = allUserViewModel.getTenantById(loggedInUser.userID)
+                    currentLoggedInTenant = allUserViewModel.getTenantById(loggedInUser!!.userID)
                 }
             }
         })

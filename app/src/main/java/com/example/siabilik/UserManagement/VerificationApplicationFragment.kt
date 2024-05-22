@@ -18,6 +18,8 @@ import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentVerificationApplicationBinding
 import com.example.siabilik.toast
 import androidx.lifecycle.Observer
+import com.example.siabilik.setImageBlob
+import com.google.firebase.firestore.Blob
 
 
 class VerificationApplicationFragment : Fragment() {
@@ -40,6 +42,9 @@ class VerificationApplicationFragment : Fragment() {
         var photoType : String
 
 
+        var studentID : Blob
+        var selfie : Blob
+
 
         // Observe the LiveData
         userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
@@ -52,18 +57,24 @@ class VerificationApplicationFragment : Fragment() {
                         when (checkedId) {
                             binding.studentIDButton.id -> {
                                 photoType = "Student ID"
-                                binding.photo.setOnClickListener{selectStudentIDPhoto()}
-                                user!!.studentID = binding.photo.cropToBlob(500,500)
+                                binding.photo.setOnClickListener { selectStudentIDPhoto() }
+                                //studentID = binding.photo.cropToBlob(500,500)
+                                user!!.studentID = binding.photo.cropToBlob(500, 500)
+                                binding.photo.setImageBlob(user!!.studentID)
+
                                 Log.d("MyTag", "Student ID button clicked")
-                                binding.submit.setOnClickListener{
+                                binding.submit.setOnClickListener {
                                     vm.setTenant(user)
                                 }
                             }
+
 
                             binding.selfieButton.id -> {
                                 photoType = "Selfie"
                                 binding.photo.setOnClickListener{selectSelfiePhoto()}
                                 user!!.selfiePhoto = binding.photo.cropToBlob(500,500)
+                                binding.photo.setImageBlob(user!!.selfiePhoto)
+
                                 Log.d("MyTag", "Selfie button clicked")
                                 binding.submit.setOnClickListener {
                                     vm.setTenant(user)
