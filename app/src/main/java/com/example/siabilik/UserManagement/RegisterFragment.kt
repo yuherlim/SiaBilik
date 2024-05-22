@@ -12,13 +12,16 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import com.example.demo.data.AuthVM
+import com.example.siabilik.MainActivity
 import com.example.siabilik.R
 import com.example.siabilik.data.Owner
 import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.databinding.FragmentRegisterBinding
 import com.example.siabilik.errorDialog
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButtonToggleGroup
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -63,6 +66,8 @@ class RegisterFragment : Fragment() {
                 }
             }
         }
+
+        binding.backButton.setOnClickListener{nav.navigateUp()}
 
         firestore = FirebaseFirestore.getInstance()
         binding.register.setOnClickListener {
@@ -196,5 +201,19 @@ class RegisterFragment : Fragment() {
     private fun isValidPassword(password: String): Boolean {
         val passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$"
         return password.matches(passwordPattern.toRegex())
+    }
+
+    override fun onResume() {
+        // Hides bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.GONE
+        (requireActivity() as MainActivity).hideTopAppBar()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        // Unhidden bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.VISIBLE
+        (requireActivity() as MainActivity).showTopAppBar()
+        super.onPause()
     }
 }
