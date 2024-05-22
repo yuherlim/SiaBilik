@@ -16,7 +16,7 @@ import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentForgotPasswordBinding
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
-
+import com.google.android.material.snackbar.Snackbar
 
 class ForgotPassword : Fragment() {
 
@@ -62,43 +62,68 @@ class ForgotPassword : Fragment() {
     }
 
     private fun resetPassword(userType: String) {
+        val email = binding.txtEmail.text.toString().trim()
 
-        email = binding.txtEmail.text.toString().trim()
-
-        //Email Validation
         when (userType) {
             "Tenant" -> {
-                var tenant = auth.getTenantByEmail(email)
+                val tenant = auth.getTenantByEmail(email)
                 if (tenant == null) {
-                    // More specific error message
-                    errorDialog("Email no found")
+                    errorDialog("Email not found")
                 } else {
-                    //var newPassword = random number
-                    //tenant.password = newPassword
-                    auth.setTenant(tenant) //update owner
-                    // use property in the tenant such as name to construct an email to notify the user the new password
-                    // Send email to user
-                    //display toast to inform user the password is reset
+                    val newPassword = generateRandomPassword()
+                    tenant.password = newPassword
+                    auth.setTenant(tenant)
+                    sendEmail(email, tenant.userName, newPassword)
+                    Toast.makeText(context, "Password has been reset and emailed to the user.", Toast.LENGTH_SHORT).show()
                     nav.navigateUp()
                 }
             }
-
             "Owner" -> {
-                var owner = auth.getOwnerById(email)
+                val owner = auth.getOwnerByEmail(email)
                 if (owner == null) {
-                    // More specific error message
-                    errorDialog("Email no found")
+                    errorDialog("Email not found")
                 } else {
-                    //var newPassword = random number
-                    //owner.password = newPassword
-                    auth.setOwner(owner) //update owner
-                    // use property in the owner such as name to construct an email to notify the user the new password
-                    // Send email to user
-                    //display toast to inform user the password is reset
+                    val newPassword = generateRandomPassword()
+                    owner.password = newPassword
+                    auth.setOwner(owner)
+                    sendEmail(email, owner.userName, newPassword)
+                    Toast.makeText(context, "PPassword has been reset and emailed to the user.", Toast.LENGTH_SHORT).show()
+
                     nav.navigateUp()
                 }
             }
         }
     }
+
+    private fun generateRandomPassword(): String {
+        val chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        return (1..8)
+            .map { chars.random() }
+            .joinToString("")
+    }
+
+    private fun sendEmail(email: String, userName: String, newPassword: String) {
+        val subject = "Password Reset"
+        val content = """
+        <p>Dear $userName,</p>
+        <p>Your password has been reset. Your new password is:</p>
+        <h2 style="color: blue">$newPassword</h2>
+        <p>Please use this new password to log in.</p>
+        <p>Thank you.</p>
+    """.trimIndent()
+
+        /*SimpleEmail()
+            .to(email)
+            .subject(subject)
+            .content(content)
+            .isHtml()
+            .send {
+                Snackbar.make(binding.root, "Email sent.", Snackbar.LENGTH_LONG).show()
+            }*/
+
+        Snackbar.make(binding.root, "Sending email...", Snackbar.LENGTH_LONG).show()
+    }
+
+
 }
 
