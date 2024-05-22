@@ -67,4 +67,8 @@ data class Listing(
 
 val LISTING = Firebase.firestore.collection("Listing")
 
+data class LoggedInUser(
+    var userType: String = "",
+    var userID: String = ""
+)
 

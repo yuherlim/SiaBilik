@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
 import com.example.siabilik.MainActivity
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +25,7 @@ class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthVM by activityViewModels()
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -78,44 +81,43 @@ class Login : Fragment() {
                 //          Clear navigation backstack
                 lifecycleScope.launch {
                     val loginResult = auth.login(username, password, userType)
+                    val loginUserType = loginResult[0]
                     val passwordPattern = Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$")
+<<<<<<< HEAD
                     when(loginResult){
                         //REMEMBER FIX THIS
+=======
+                    when(loginUserType){
+>>>>>>> e45439bd91856adb0ce5e190c77cb0921a813cdd
 
                         "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             if(!password.matches(passwordPattern)) {
-                                nav.navigate(R.id.editPassword,bundleOf(
-                                "userID" to "userID",
-                                "userType" to "userType"
-                                ))
+                                nav.navigate(R.id.editPassword
+                                )
                             }else {
                                 nav.navigate(
-                                    R.id.tenantViewListingsFragment, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.tenantViewListingsFragment
                                 )
                             }
                         } // remember to change both of the layout
                         "Owner" -> {
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             if (!password.matches(passwordPattern)) {
                                 nav.navigate(
-                                    R.id.editPassword, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.editPassword
+
                                 )
                             } else {
                                 nav.navigate(
-                                    R.id.ownerMyListing, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.ownerMyListing
                                 )
                             }
+
                         }
                         "Admin" -> {
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             nav.navigate(R.id.adminListingApproveFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
