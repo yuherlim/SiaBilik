@@ -26,15 +26,18 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     private val OwnerLD = MutableLiveData<Owner?>()
     private val TenantRegLD = MutableLiveData<List<Tenant>>()
     private val OwnerRegLD = MutableLiveData<List<Owner>>()
+    private val AdminRegLD = MutableLiveData<List<Admin>>()
     private var listener: ListenerRegistration? = null
     private var ownerListener: ListenerRegistration? = null
     private var tenantlistener: ListenerRegistration? = null
+    private var adminlistener: ListenerRegistration? = null
 
     init {
         TenantLD.value = null
         OwnerLD.value = null
         ownerListener = TENANT.addSnapshotListener { snap, _ -> TenantRegLD.value = snap?.toObjects() }
         tenantlistener = OWNER.addSnapshotListener { snap, _ -> OwnerRegLD.value = snap?.toObjects() }
+        adminlistener = ADMIN.addSnapshotListener { snap, _ -> AdminRegLD.value = snap?.toObjects() }
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -51,6 +54,8 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     fun getOwnerById(id: String) = OwnerRegLD.value?.find { it.id == id }
 
     fun getTenantById(id: String) = TenantRegLD.value?.find { it.id == id }
+
+    fun getAdminById(id: String) = AdminRegLD.value?.find { it.id == id }
 
     fun getOwnerByEmail(email: String) = OwnerRegLD.value?.find { it.email == email }
 
