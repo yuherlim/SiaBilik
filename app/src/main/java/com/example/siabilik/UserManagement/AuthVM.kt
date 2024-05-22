@@ -70,11 +70,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     }
 
     fun setTenant(tenant: Tenant) {
-        TENANT.document(tenant.userName).set(tenant)
+        TENANT.document(tenant.id).set(tenant)
     }
 
     fun setOwner(owner: Owner) {
-        OWNER.document(owner.userName).set(owner)
+        OWNER.document(owner.id).set(owner)
+    }
+
+    fun setAdmin(admin: Admin) {
+        ADMIN.document(admin.id).set(admin)
     }
 
     fun addOwner(owner: Owner){

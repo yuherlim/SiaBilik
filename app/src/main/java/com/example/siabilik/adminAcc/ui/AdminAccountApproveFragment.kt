@@ -21,7 +21,6 @@ class AdminAccountApproveFragment : Fragment() {
 
     private val accountVM : AccountApproveViewModel by activityViewModels()
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAdminAccountApproveBinding.inflate(inflater, container, false)
 

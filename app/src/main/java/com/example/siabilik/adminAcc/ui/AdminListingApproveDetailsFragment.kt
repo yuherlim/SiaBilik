@@ -41,7 +41,7 @@ class AdminListingApproveDetailsFragment : Fragment() {
         binding.txtRentalPrice.text = listing.rental.toString()
         binding.txtAddress.text = listing.address
         binding.txtDescription.text = listing.description
-        //binding.proofImage.setImageBlob(listing)
+        binding.proofImage.setImageBlob(listing.ownershipProof)
 
 
         binding.btnApprove.setOnClickListener {
