@@ -133,7 +133,6 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
                 .await()
                 .toObjects<Owner>()
                 .firstOrNull() ?: return "NA"
-
             return "Owner"
         }
     }
