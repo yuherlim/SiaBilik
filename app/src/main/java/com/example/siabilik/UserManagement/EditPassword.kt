@@ -6,7 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+<<<<<<< HEAD
 import androidx.navigation.fragment.findNavController
+=======
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
+>>>>>>> e45439bd91856adb0ce5e190c77cb0921a813cdd
 import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentEditPasswordBinding
 import androidx.lifecycle.Observer
@@ -18,6 +24,7 @@ class EditPassword : Fragment() {
     private lateinit var binding: FragmentEditPasswordBinding
     private val nav by lazy { findNavController() }
 
+
     private val userViewModel: LoggedInUserViewModel by activityViewModels()
     private val allUserViewModel: AuthVM by activityViewModels()
 
@@ -28,6 +35,7 @@ class EditPassword : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditPasswordBinding.inflate(layoutInflater, container, false)
 
+<<<<<<< HEAD
         // Observe the LiveData
         userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
             when (loggedInUser.userType) {
@@ -54,7 +62,10 @@ class EditPassword : Fragment() {
         })
 
 
-
         return binding.root
+    }
+
+    private fun editPassword(){
+
     }
 }

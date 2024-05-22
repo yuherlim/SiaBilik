@@ -105,7 +105,8 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         TENANT.document(tenant.id).set(tenant)
     }
 
-    suspend fun login(username: String, password: String, userType: String):String {
+    suspend fun login(username: String, password: String, userType: String):List<String> {
+        var loginResultList = MutableList(2){""}
 
         var admin = ADMIN
             .whereEqualTo("userName", username)
@@ -116,7 +117,9 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
             .firstOrNull()
 
         if (admin != null) {
-            return "Admin"
+            loginResultList[0] = "Admin"
+            loginResultList[1] = admin.id
+            return loginResultList
         }
 
 
@@ -128,8 +131,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
                 .get()
                 .await()
                 .toObjects<Tenant>()
-                .firstOrNull() ?: return "NA"
-            return "Tenant"
+                .firstOrNull()
+
+            if (tenant != null) {
+                loginResultList[0] = "Tenant"
+                loginResultList[1] = tenant.id
+                return loginResultList
+            }
+            loginResultList[0] = "NA"
+            return loginResultList
         } else {
             val owner = OWNER
                 .whereEqualTo("userName", username)
@@ -137,9 +147,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
                 .get()
                 .await()
                 .toObjects<Owner>()
-                .firstOrNull() ?: return "NA"
+                .firstOrNull()
 
-            return "Owner"
+            if (owner != null) {
+                loginResultList[0] = "Owner"
+                loginResultList[1] = owner.id
+                return loginResultList
+            }
+            loginResultList[0] = "NA"
+            return loginResultList
         }
     }
 

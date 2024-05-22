@@ -23,6 +23,7 @@ import com.example.siabilik.databinding.FragmentRegisterBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
@@ -87,6 +88,9 @@ class RegisterFragment : Fragment() {
         val password = binding.txtPassword.text.toString().trim()
         val confirmPassword = binding.txtForgotPassword.text.toString().trim() // Assuming there's a confirm password field
 
+        binding.txtLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+        binding.txtLayoutForgotPassword.endIconMode = TextInputLayout.END_ICON_NONE
+
         // Validate input
         if (!validateInput(username, email, phone, password, confirmPassword, userType)) {
             return
@@ -143,47 +147,54 @@ class RegisterFragment : Fragment() {
         confirmPassword: String,
         userType: String
     ): Boolean {
+        var isPass = true
         if (TextUtils.isEmpty(username)) {
             binding.txtUsername.error = "Username is required"
-            return false
+            isPass = false
         }
         if (username.length < 5) {
             binding.txtUsername.error = "Username must be at least 5 characters"
-            return false
+            isPass = false
         }
         if (TextUtils.isEmpty(email)) {
             binding.txtEmail.error = "Email is required"
-            return false
+            isPass = false
         }
         if (!isValidEmail(email)) {
             binding.txtEmail.error = "Invalid email format"
-            return false
+            isPass = false
         }
         if (TextUtils.isEmpty(phone)) {
             binding.txtPhone.error = "Phone number is required"
-            return false
+            isPass = false
         }
         if (!isValidPhone(phone)) {
             binding.txtPhone.error = "Invalid phone number format. Must start from 0 and contain 8-10 digits."
-            return false
+            isPass = false
         }
         if (TextUtils.isEmpty(password)) {
             binding.txtPassword.error = "Password is required"
-            return false
+            isPass = false
         }
         if (!isValidPassword(password)) {
             binding.txtPassword.error = "Password must contain at least 8 characters, including at least 1 upper/lower case, number, and special character"
-            return false
+            binding.txtLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+            isPass = false
         }
         if (password != confirmPassword) {
             binding.txtForgotPassword.error = "Passwords do not match"
-            return false
+            binding.txtLayoutForgotPassword.endIconMode = TextInputLayout.END_ICON_NONE
+            isPass = false
         }
         if (TextUtils.isEmpty(userType)) {
             Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
+            isPass = false
+        }
+        if (isPass){
+            return true
+        }else{
             return false
         }
-        return true
 
     }
 
