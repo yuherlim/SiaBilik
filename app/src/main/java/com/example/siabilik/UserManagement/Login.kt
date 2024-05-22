@@ -10,9 +10,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
+import com.example.siabilik.MainActivity
 import com.example.siabilik.R
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
 
@@ -104,4 +106,22 @@ class Login : Fragment() {
             nav.navigate(R.id.registerFragment, bundleOf(
             ))
         }
+
+
+    override fun onResume() {
+        // Hides bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.GONE
+        (requireActivity() as MainActivity).hideTopAppBar()
+        super.onResume()
     }
+
+    override fun onPause() {
+        // Unhidden bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.VISIBLE
+        (requireActivity() as MainActivity).showTopAppBar()
+        super.onPause()
+    }
+
+
+
+}
