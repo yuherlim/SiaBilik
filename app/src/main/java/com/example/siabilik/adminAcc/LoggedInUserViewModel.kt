@@ -12,6 +12,7 @@ class LoggedInUserViewModel(app : Application) : AndroidViewModel(app) {
     private val _loggedInUserLD = MutableLiveData<LoggedInUser?>()
     val loggedInUserLD: LiveData<LoggedInUser?> get() = _loggedInUserLD
 
+    fun init() = Unit
     fun setLoggedInUser(userType: String, userID: String) {
         _loggedInUserLD.value = LoggedInUser(userType, userID)
     }

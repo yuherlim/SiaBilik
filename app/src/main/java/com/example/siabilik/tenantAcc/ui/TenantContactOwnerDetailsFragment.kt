@@ -80,7 +80,7 @@ class TenantContactOwnerDetailsFragment : Fragment() {
                 request.id = "Request${requestId.toString().padStart(6, '0')}"
             }
 
-
+            request.listingId = listingId
             request.tenantId = tenant.id
             request.title = binding.edtContactOwnerTitle.text.toString()
             request.message = binding.edtContactOwnerMessage.text.toString()

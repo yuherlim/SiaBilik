@@ -1,11 +1,8 @@
 package com.example.siabilik.adminAcc.data
-import android.accounts.Account
 import android.app.Application
-import android.media.CamcorderProfile.getAll
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.siabilik.data.Listing
 import com.example.siabilik.data.TENANT
 import com.example.siabilik.data.Tenant
 import com.google.firebase.firestore.ListenerRegistration
@@ -24,6 +21,8 @@ class AccountApproveViewModel(app : Application) : AndroidViewModel(app) {
             getFilteredAccountLD()
         }
     }
+
+    fun init() = Unit
 
     fun getFilteredAccountLD(): LiveData<List<Tenant>> {
         var list = getAll()
