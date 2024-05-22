@@ -30,4 +30,8 @@ class EditPassword : Fragment() {
 
         return binding.root
     }
+
+    private fun editPassword(){
+
+    }
 }
