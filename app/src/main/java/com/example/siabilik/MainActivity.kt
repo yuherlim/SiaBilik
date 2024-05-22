@@ -77,5 +77,12 @@ class MainActivity : AppCompatActivity() {
         return nav.navigateUp(abc) || super.onSupportNavigateUp()
     }
 
+    fun hideTopAppBar() {
+        supportActionBar?.hide()
+    }
+
+    fun showTopAppBar() {
+        supportActionBar?.show()
+    }
 
 }

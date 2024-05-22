@@ -3,12 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-<<<<<<< HEAD
-    app:startDestination="@id/tenantViewListingsFragment">
-=======
-
     app:startDestination="@id/login">
->>>>>>> 6051a695f283f1064a38320bf0e709f41f1a6284
 
     <fragment
         android:id="@+id/adminListFragment"

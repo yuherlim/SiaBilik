@@ -1,4 +1,24 @@
 package com.example.siabilik.UserManagement
+
+/*
+=============================
+Module-level gradle settings:
+=============================
+
+The [android] section:
+----------------------
+packagingOptions {
+    exclude 'META-INF/NOTICE.md'
+    exclude 'META-INF/LICENSE.md'
+}
+
+The [dependencies] section:
+---------------------------
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+implementation 'com.sun.mail:android-mail:1.6.7'
+implementation 'com.sun.mail:android-activation:1.6.7'
+*/
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,7 +31,6 @@ import javax.mail.Session
 import javax.mail.Transport
 import javax.mail.internet.MimeMessage
 
-
 class SimpleEmail(
     private var to     : String  = "",
     private var subject: String  = "",
@@ -21,7 +40,7 @@ class SimpleEmail(
     // --- UPDATE THE FOLLOWINGS -------------------------------------------------------------------
 
     private val username = "siabilik69@gmail.com"// EMAIL ACCOUNT
-    private val password = "Siabilikdick69!"   // APP PASSWORD
+    private val password = "syoedslvougbbcuu"   // APP PASSWORD
     private val personal = "SIABILIK"   // DISPLAY NAME
 
     private val host = "smtp.gmail.com"
