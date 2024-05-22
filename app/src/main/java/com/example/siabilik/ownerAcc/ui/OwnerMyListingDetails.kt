@@ -15,24 +15,43 @@ import com.example.siabilik.R
 import com.example.siabilik.cropToBlob
 import com.example.siabilik.databinding.FragmentOwnerListingDetailsBinding
 import com.example.siabilik.databinding.FragmentOwnerMyListingBinding
+import com.example.siabilik.databinding.FragmentOwnerMylistingDetailsBinding
 import com.example.siabilik.ownerAcc.data.ListingViewModel
 import com.example.siabilik.ownerAcc.util.CardViewListingAdapter
 import com.example.siabilik.setImageBlob
 
 
-class OwnerListingDetails : Fragment() {
-    private lateinit var binding: FragmentOwnerListingDetailsBinding
+class OwnerMyListingDetails : Fragment() {
+    private lateinit var binding: FragmentOwnerMylistingDetailsBinding
     private val nav by lazy { findNavController() }
     private val listingVM: ListingViewModel by activityViewModels()
     private val listingID by lazy { arguments?.getString("listingID",) ?: ""}
-    private val fromFragment by lazy { arguments?.getString("fromFragment",) ?: "" }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentOwnerListingDetailsBinding.inflate(inflater, container, false)
+        binding = FragmentOwnerMylistingDetailsBinding.inflate(inflater, container, false)
         bindData()
+        binding.editButton.setOnClickListener{
+            nav.navigate(R.id.ownerEditListing, bundleOf(
+                "listingID" to listingID
+            ))
+        }
+        binding.availableButton.setOnClickListener{
+            var selectedListing = listingVM.getListingById(listingID)
+            if (selectedListing!=null){
+                if(selectedListing.status=="Unavailable"){
+                    selectedListing.status="Available"
+                }else{
+                    selectedListing.status="Unavailable"
+                }
+
+                listingVM.setListing(selectedListing)
+                bindData()
+            }
+
+        }
         return binding.root
     }
 
@@ -47,17 +66,18 @@ class OwnerListingDetails : Fragment() {
             binding.rental.text = String.format("RM %.2f", selectedListing.rental.toDouble())
             binding.propertyPhoto.setImageBlob(selectedListing.propertyPhoto)
             binding.ownershipPhoto.setImageBlob(selectedListing.ownershipProof)
-        }
-        if(fromFragment!="ownerMYListing"){
-            binding.ownershipPhoto.visibility = View.INVISIBLE
-            binding.address.visibility = View.INVISIBLE
-        }
-        else{
-            binding.userBar.visibility =View.INVISIBLE
-            binding.imgUser.visibility =View.INVISIBLE
-            binding.txtOwner.visibility =View.INVISIBLE
+            binding.description.text = selectedListing.description
+            if(selectedListing.approvalStatus == "Pending" || selectedListing.approvalStatus == "Rejected"  ){
+                binding.availableButton.visibility= View.INVISIBLE
+                binding.editButton.visibility=View.INVISIBLE
+            }
 
+            if(selectedListing.approvalStatus == "Approved" && selectedListing.status == "Unavailable"){
+                binding.availableButton.visibility= View.INVISIBLE
+                binding.editButton.visibility=View.INVISIBLE
+            }
         }
+
 
 
 

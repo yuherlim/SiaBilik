@@ -84,7 +84,7 @@ class ForgotPassword : Fragment() {
             }
 
             "Owner" -> {
-                var owner = auth.getOwnerById(email)
+                var owner = auth.getOwnerByEmail(email)
                 if (owner == null) {
                     // More specific error message
                     errorDialog("Email no found")

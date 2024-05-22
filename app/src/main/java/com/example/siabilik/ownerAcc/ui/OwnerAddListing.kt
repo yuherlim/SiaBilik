@@ -23,6 +23,7 @@ class OwnerAddListing : Fragment() {
     private val nav by lazy { findNavController() }
     private val listingVM: ListingViewModel by activityViewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +52,7 @@ class OwnerAddListing : Fragment() {
             title = binding.txtTitle.text.toString(),
             features = binding.txtFeatures.text.toString(),
             description = binding.txtDescription.text.toString(),
-            //rental = String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble(),
+            rental = String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble(),
             status = "Unavailable",
             approvalStatus ="Pending",
             ownerID = "test",

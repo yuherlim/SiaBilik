@@ -5,9 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.OwnerCarditemBinding
 import com.example.siabilik.databinding.OwnerGridviewitemBinding
+import com.example.siabilik.setImageBlob
 
 class GridViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> }) : ListAdapter<Listing, GridViewListingAdapter.ViewHolder>(Diff) {
 
@@ -24,9 +26,12 @@ class GridViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listing = getItem(position)
         holder.binding.title.text = listing.title
+
         holder.binding.features.text = listing.features
-        holder.binding.rental.text = String.format("RM %.2f",listing.rental.toString())
-        //Photo
+        holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
+        holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
+        var reSizedImage = holder.binding.propertyPhoto.cropToBlob(300,300)
+        holder.binding.propertyPhoto.setImageBlob(reSizedImage)
         fn(holder, listing)
     }
 

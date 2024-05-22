@@ -36,6 +36,7 @@ class ListingViewModel(app: Application) : AndroidViewModel(app) {
     fun getLatestListing(): Listing? {
         return listingLD.value?.lastOrNull()
     }
+    fun getListingById(id: String) = listingLD.value?.find { it.id == id }
 
     fun setListing(listing: Listing) {
         LISTING.document(listing.id).set(listing)

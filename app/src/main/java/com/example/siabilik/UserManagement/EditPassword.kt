@@ -24,10 +24,6 @@ class EditPassword : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditPasswordBinding.inflate(layoutInflater, container, false)
 
-
-
-
-
         return binding.root
     }
 }
