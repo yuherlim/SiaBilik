@@ -5,22 +5,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.siabilik.adminAcc.data.AdminViewModel
 import com.example.siabilik.databinding.FragmentEditProfileBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [EditProfile.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EditProfile : Fragment() {
 
 
-    lateinit var binding:FragmentEditProfileBinding
+    private lateinit var binding:FragmentEditProfileBinding
+    private val nav by lazy { findNavController() }
+    private val userType by lazy { arguments?.getString("userType") ?: "" }
+    private val userID by lazy { arguments?.getString("userID") ?: "" }
+
+    //all three view mode declare here
+    private val adminVM : AdminViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +28,16 @@ class EditProfile : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentEditProfileBinding.inflate(layoutInflater,container, false)
 
-        binding.txtUsername.setText("Sia Yeong Sheng")
+        if(userType == "Admin"){
+            var admin = adminVM.get(userID)
+        }
+//        else if (userType == "Tenant")
 
+
+
+
+        //set binding text and soon
+        binding.txtUsername.setText("Sia Yeong Sheng")
         return binding.root
     }
 

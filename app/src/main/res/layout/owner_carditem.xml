@@ -99,7 +99,7 @@
                 android:layout_marginTop="4dp"
                 android:text="Available"
                 android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="@+id/Approvalstatus"
+                app:layout_constraintEnd_toEndOf="@+id/Approvalstatus"
                 app:layout_constraintTop_toBottomOf="@+id/Approvalstatus" />
 
             <TextView
@@ -109,7 +109,7 @@
                 android:layout_marginTop="4dp"
                 android:text="24/01/22"
                 android:textSize="12dp"
-                app:layout_constraintStart_toStartOf="@+id/Listingstatus"
+                app:layout_constraintEnd_toEndOf="@+id/Listingstatus"
                 app:layout_constraintTop_toBottomOf="@+id/Listingstatus" />
 
 

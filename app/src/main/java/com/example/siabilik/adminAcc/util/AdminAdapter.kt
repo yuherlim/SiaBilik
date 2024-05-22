@@ -28,7 +28,6 @@ class AdminAdapter (
         val admin = getItem(position)
 
         // TODO : set profile image
-
         holder.binding.adminName.text = admin.userName
         holder.binding.adminCoverPhoto.setImageBlob(admin.adminPhoto)
 

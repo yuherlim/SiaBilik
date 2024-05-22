@@ -7,48 +7,19 @@
     android:layout_height="match_parent"
     tools:context="com.example.siabilik.ownerAcc.ui.OwnerListing">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/home"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#495D92"
-        android:paddingTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/home"
-        app:title="SiaBilik"
-        app:titleTextColor="#FAFDFD">
-
-
-        <!-- Right most ImageView -->
-
-        <ImageView
-            android:id="@+id/profilepic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/home"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_gravity="end"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/account" />
-
-
-    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTenantViewListings"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="80dp"
         android:padding="4dp"
         android:scrollbars="vertical"
         app:layoutManager="GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home"
+        app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2"
         tools:listitem="@layout/owner_gridviewitem" />
 </androidx.constraintlayout.widget.ConstraintLayout>
