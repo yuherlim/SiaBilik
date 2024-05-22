@@ -112,7 +112,7 @@
     <fragment
         android:id="@+id/editProfile"
         android:name="com.example.siabilik.UserManagement.EditProfile"
-        android:label="fragment_edit_profile"
+        android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/adminProfileFragment"
