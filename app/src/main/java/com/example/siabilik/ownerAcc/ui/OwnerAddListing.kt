@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.FragmentOwnerAddListingBinding
@@ -22,6 +23,8 @@ class OwnerAddListing : Fragment() {
     private lateinit var binding: FragmentOwnerAddListingBinding
     private val nav by lazy { findNavController() }
     private val listingVM: ListingViewModel by activityViewModels()
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,25 +45,31 @@ class OwnerAddListing : Fragment() {
     }
 
 
-    fun validation() {}
+    fun validation() {
+    }
 
     fun addListing() {
         val newListingID = newListingID()
-        var newListing = Listing(
-            id = newListingID,
-            title = binding.txtTitle.text.toString(),
-            features = binding.txtFeatures.text.toString(),
-            description = binding.txtDescription.text.toString(),
-            //rental = String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble(),
-            status = "Unavailable",
-            approvalStatus ="Pending",
-            ownerID = "test",
-            address = binding.txtAdress.text.toString(),
-            ownershipProof = binding.ownershipPhoto.cropToBlob(1000,1000),
-            propertyPhoto = binding.propertyPhoto.cropToBlob(1000,1000)
-        )
+        var usrID = userViewModel.loggedInUserLD!!.value?.userID
+        var newListing = usrID?.let {
+            Listing(
+                id = newListingID,
+                title = binding.txtTitle.text.toString(),
+                features = binding.txtFeatures.text.toString(),
+                description = binding.txtDescription.text.toString(),
+                rental = String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble(),
+                status = "Unavailable",
+                approvalStatus ="Pending",
+                ownerID = it,
+                address = binding.txtAdress.text.toString(),
+                ownershipProof = binding.ownershipPhoto.cropToBlob(1000,1000),
+                propertyPhoto = binding.propertyPhoto.cropToBlob(1000,1000)
+            )
+        }
 
-        listingVM.setListing(newListing)
+        if (newListing != null) {
+            listingVM.setListing(newListing)
+        }
         toast( "New Listing added")
         nav.navigateUp()
 

@@ -45,7 +45,6 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     // ---------------------------------------------------------------------------------------------
 
     fun init() = Unit
-
     fun getUserRegLD() = TenantRegLD
     fun getOwnerRegLD() = OwnerRegLD
     fun getAllTenant() = TenantRegLD.value

@@ -144,5 +144,10 @@
         android:name="com.example.siabilik.UserManagement.VerificationApplicationFragment"
         android:label="Verification Application"
         tools:layout="@layout/fragment_verification_application" />
+    <fragment
+        android:id="@+id/ownerMyListingDetails"
+        android:name="com.example.siabilik.ownerAcc.ui.OwnerMyListingDetails"
+        android:label="OwnerMyListingDetails"
+        tools:layout="@layout/fragment_owner_mylisting_details"/>
 
 </navigation>

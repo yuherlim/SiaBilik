@@ -28,7 +28,10 @@ class OwnerMyListing : Fragment() {
 
         val adapter = CardViewListingAdapter { h, listing ->
             h.binding.listingCardView.setOnClickListener{
-                nav.navigate(R.id.ownerListingDetails)
+                nav.navigate(R.id.ownerMyListingDetails, bundleOf(
+                    "listingID" to listing.id,
+                    "fromFragment" to "ownerMYListing"
+                ))
             }
         }
         binding.rvTenantViewListings.adapter = adapter
@@ -37,7 +40,7 @@ class OwnerMyListing : Fragment() {
             adapter.submitList(it)
         }
 
-        binding.button.setOnClickListener { nav.navigate(R.id.ownerAddListing) }
+        binding.addButton.setOnClickListener { nav.navigate(R.id.ownerAddListing) }
 
         return binding.root
     }
