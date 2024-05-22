@@ -27,7 +27,12 @@ class CardViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
         val listing = getItem(position)
         holder.binding.title.text = listing.title
         holder.binding.Approvalstatus.text = listing.approvalStatus
-        holder.binding.features.text = listing.features
+        val featureList = listing.features.split(',')
+        var featureString = "Features:\n"
+        featureList.forEach {
+            featureString += "- ${it.trim()}\n"
+        }
+        holder.binding.features.text = featureString
         holder.binding.Listingstatus.text = listing.status
         holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
         holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)

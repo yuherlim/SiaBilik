@@ -89,6 +89,7 @@
         android:id="@+id/ownerEditListing"
         android:name="com.example.siabilik.ownerAcc.ui.OwnerEditListing"
         android:label="Edit Listings"
+
         tools:layout="@layout/fragment_owner_edit_listing" />
     <fragment
         android:id="@+id/ownerListing"

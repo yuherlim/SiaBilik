@@ -40,7 +40,12 @@ class OwnerListingDetails : Fragment() {
         var selectedListing = listingVM.getListingById(listingID)
         if (selectedListing != null) {
             binding.title.text = selectedListing.title
-            binding.features.text = selectedListing.features
+            val featureList = selectedListing.features.split(',')
+            var featureString = "Features:\n"
+            featureList.forEach {
+                featureString += "- ${it.trim()}\n"
+            }
+            binding.features.text = featureString
             binding.rental.text = String.format("RM %.2f", selectedListing.rental.toDouble())
             binding.propertyPhoto.setImageBlob(selectedListing.propertyPhoto)
 
