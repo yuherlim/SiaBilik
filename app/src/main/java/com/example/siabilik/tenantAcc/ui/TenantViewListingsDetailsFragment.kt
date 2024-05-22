@@ -7,8 +7,12 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.demo.data.AuthVM
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
+import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentTenantViewListingsDetailsBinding
 import com.example.siabilik.setImageBlob
 import com.example.siabilik.tenantAcc.data.ListingViewModel
@@ -20,7 +24,11 @@ class TenantViewListingsDetailsFragment : Fragment() {
     private val listingId by lazy { arguments?.getString("listingId") ?: "" }
 
     private val listingVM: ListingViewModel by activityViewModels()
-//    private val ownerVM: OwnerView by activityViewModels()
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
+    private val allUserViewModel: AuthVM by activityViewModels()
+
+    var currentLoggedInTenant: Tenant? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,12 +58,19 @@ class TenantViewListingsDetailsFragment : Fragment() {
         binding.txtRental.text = "RM %.2f".format(listing.rental.toString().toFloat())
         binding.txtDescription.text = listing.description
 
-        // TODO: FETCH LOGGED IN TENANT ID
+        // Observe the LiveData
+        userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
+            when (loggedInUser.userType) {
+                "Tenant" -> {
+                    currentLoggedInTenant = allUserViewModel.getTenantById(loggedInUser.userID)
+                }
+            }
+        })
 
         binding.btnContactOwner.setOnClickListener {
             nav.navigate(
                 R.id.tenantContactOwnerDetailsFragment, bundleOf(
-                    "tenantId" to "tenant1",
+                    "tenantId" to (currentLoggedInTenant?.id ?: ""),
                     "listingId" to listing.id
                 )
             )

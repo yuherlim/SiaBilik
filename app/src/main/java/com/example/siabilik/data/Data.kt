@@ -73,6 +73,7 @@ data class Request(
     var message: String ="",
     var title: String ="",
     var tenantId: String ="",
+    var listingId: String ="",
 )
 
 val REQUEST = Firebase.firestore.collection("Request")
