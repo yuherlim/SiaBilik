@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.siabilik.cropToBlob
 import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.TenantListingItemBinding
 import com.example.siabilik.setImageBlob
@@ -27,6 +28,8 @@ class GridViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
         holder.binding.txtTenantListingRental.text = String.format("RM %.2f",listing.rental.toString().toFloat())
         //Photo
         holder.binding.imgTenantListing.setImageBlob(listing.propertyPhoto)
+        var reSizedImage = holder.binding.imgTenantListing.cropToBlob(500,500)
+        holder.binding.imgTenantListing.setImageBlob(reSizedImage)
         fn(holder, listing)
     }
 
