@@ -76,4 +76,8 @@ data class Request(
 
 val REQUEST = Firebase.firestore.collection("Request")
 
+data class LoggedInUser(
+    var userType: String = "",
+    var userID: String = ""
+)
 
