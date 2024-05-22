@@ -23,6 +23,7 @@ class ListingApproveViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
+    fun init() = Unit
     fun getFilteredListingLD(): LiveData<List<Listing>> {
         var list = getAll()
         list = list.filter {

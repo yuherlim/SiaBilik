@@ -1,24 +1,22 @@
 package com.example.siabilik.UserManagement
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
-import com.example.siabilik.adminAcc.LoggedInUserViewModel
-import com.example.siabilik.adminAcc.data.AdminViewModel
-import com.example.siabilik.databinding.FragmentEditProfileBinding
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.cropToBlob
+import com.example.siabilik.databinding.FragmentEditProfileBinding
 import com.example.siabilik.setImageBlob
 import com.example.siabilik.toast
 import com.google.android.material.textfield.TextInputLayout
-import java.sql.Blob
 
 class EditProfile : Fragment() {
 
@@ -69,6 +67,8 @@ class EditProfile : Fragment() {
         binding.profileImage.setOnClickListener {
             select()
         }
+
+        binding.button2.setOnClickListener { nav.navigateUp() }
 
         binding.button.setOnClickListener {
             email = binding.txtEmail.text.toString()
@@ -139,7 +139,7 @@ class EditProfile : Fragment() {
         }
 
         if(!isValidPhone(phone)){
-            binding.txtEmail.error = "Invalid phone format."
+            binding.txtPhone.error = "Invalid phone format."
             binding.txtLayoutEmail.endIconMode = TextInputLayout.END_ICON_NONE
             isPass = false
         }

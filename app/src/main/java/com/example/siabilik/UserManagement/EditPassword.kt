@@ -1,18 +1,17 @@
 package com.example.siabilik.UserManagement
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.lifecycle.Observer
-import com.example.siabilik.adminAcc.LoggedInUserViewModel
-import com.example.siabilik.databinding.FragmentEditPasswordBinding
+import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
 import com.example.siabilik.R
-import com.example.siabilik.snackbar
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
+import com.example.siabilik.databinding.FragmentEditPasswordBinding
 import com.example.siabilik.toast
 import com.google.android.material.textfield.TextInputLayout
 
@@ -59,7 +58,7 @@ class EditPassword : Fragment() {
             }
         })
 
-
+        binding.button2.setOnClickListener { nav.navigateUp() }
 
         binding.button.setOnClickListener {
 
