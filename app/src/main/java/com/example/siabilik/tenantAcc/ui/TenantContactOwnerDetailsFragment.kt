@@ -26,7 +26,7 @@ class TenantContactOwnerDetailsFragment : Fragment() {
     private val nav by lazy { findNavController() }
     private val tenantId by lazy { arguments?.getString("tenantId") ?: "" }
     private val listingId by lazy { arguments?.getString("listingId") ?: "" }
-    private val requestId by lazy { arguments?.getString("listingId") ?: "" }
+
 
     private val listingVM: ListingViewModel by activityViewModels()
     private val authVM: AuthVM by activityViewModels()
@@ -39,10 +39,6 @@ class TenantContactOwnerDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentTenantContactOwnerDetailsBinding.inflate(inflater, container, false)
-
-        if (requestId != "") {
-            binding.btnContactOwnerSendEmail.text = "Resend Email"
-        }
 
 
         binding.btnContactOwnerCancelSendEmail.setOnClickListener {
@@ -70,37 +66,24 @@ class TenantContactOwnerDetailsFragment : Fragment() {
         }
 
         var request = Request()
-        if (requestId != "") {
-            request = requestVM.get(requestId)!!
-            if (request == null) {
-                nav.navigateUp()
-                return null
-            }
-        }
-
-
 
         //get current tenant email.
         binding.btnContactOwnerSendEmail.setOnClickListener {
 
-            if (requestId != "") {
+            var requestId : Int = 0
 
-            } else {
-                var requestId : Int = 0
-
-                // Get the latest value
-                val latestRequest = requestVM.getLatestRequest()
-                if (latestRequest != null) {
-                    requestId = latestRequest.id.removePrefix("Request").toIntOrNull()!!
-                    requestId = requestId.plus(1)
-                    request.id = "Request${requestId.toString().padStart(6, '0')}"
-                }
-
-
-                request.tenantId = tenant.id
-                request.title = binding.edtContactOwnerTitle.text.toString()
-                request.message = binding.edtContactOwnerMessage.text.toString()
+            // Get the latest value
+            val latestRequest = requestVM.getLatestRequest()
+            if (latestRequest != null) {
+                requestId = latestRequest.id.removePrefix("Request").toIntOrNull()!!
+                requestId = requestId.plus(1)
+                request.id = "Request${requestId.toString().padStart(6, '0')}"
             }
+
+
+            request.tenantId = tenant.id
+            request.title = binding.edtContactOwnerTitle.text.toString()
+            request.message = binding.edtContactOwnerMessage.text.toString()
 
             send(listing, tenant, owner, request)
         }
