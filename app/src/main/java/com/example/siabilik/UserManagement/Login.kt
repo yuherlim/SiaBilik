@@ -85,21 +85,21 @@ class Login : Fragment() {
                         //REMEMBER FIX THIS
                         /*"NA" -> errorDialog("Invalid login credentials.")*/
                         "Tenant" -> {
-                            userViewModel.setLoggedInUser(loginResult)
+                            userViewModel.setLoggedInUser(loginResult, "userID")
                             nav.navigate(R.id.tenantViewListingsFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
                             ))
                         } // remember to change both of the layout
                         "Owner" -> {
-                            userViewModel.setLoggedInUser(loginResult)
+                            userViewModel.setLoggedInUser(loginResult,"userID")
                             nav.navigate(R.id.ownerMyListing, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
                             ))
                         }
                         "Admin" -> {
-                            userViewModel.setLoggedInUser(loginResult)
+                            userViewModel.setLoggedInUser(loginResult,"userID")
                             nav.navigate(R.id.adminListingApproveFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
