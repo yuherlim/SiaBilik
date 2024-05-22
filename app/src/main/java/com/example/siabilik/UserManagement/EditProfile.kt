@@ -13,6 +13,7 @@ import com.example.siabilik.adminAcc.data.AdminViewModel
 import com.example.siabilik.databinding.FragmentEditProfileBinding
 import androidx.lifecycle.Observer
 import com.example.demo.data.AuthVM
+import com.example.siabilik.R
 import com.example.siabilik.cropToBlob
 import com.example.siabilik.setImageBlob
 import com.example.siabilik.toast
@@ -114,6 +115,7 @@ class EditProfile : Fragment() {
                     }
                 })
                 toast("Updated")
+                binding.button.setOnClickListener {nav.navigate(R.id.tenantAccountFragment)  }
             }
         }
 
