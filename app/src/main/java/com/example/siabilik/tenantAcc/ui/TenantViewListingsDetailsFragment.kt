@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.siabilik.R
 import com.example.siabilik.databinding.FragmentTenantViewListingsDetailsBinding
 import com.example.siabilik.setImageBlob
 import com.example.siabilik.tenantAcc.data.ListingViewModel
@@ -26,7 +28,7 @@ class TenantViewListingsDetailsFragment : Fragment() {
     ): View? {
         binding = FragmentTenantViewListingsDetailsBinding.inflate(inflater, container, false)
 
-        val listing =listingVM.get(listingId)
+        val listing = listingVM.get(listingId)
         if (listing == null) {
             nav.navigateUp()
             return null
@@ -38,7 +40,6 @@ class TenantViewListingsDetailsFragment : Fragment() {
         binding.txtOwner.text = listing.ownerID
         //set owner image
 //        binding.imgUser.setImageBlob(owner.photo)
-        var str = "This is an example text"
         val featureList = listing.features.split(',')
         var featureString = "Features:\n"
         featureList.forEach {
@@ -49,7 +50,19 @@ class TenantViewListingsDetailsFragment : Fragment() {
         binding.txtRental.text = "RM %.2f".format(listing.rental.toString().toFloat())
         binding.txtDescription.text = listing.description
 
+        // TODO: FETCH LOGGED IN TENANT ID
+
+        binding.btnContactOwner.setOnClickListener {
+            nav.navigate(
+                R.id.tenantContactOwnerDetailsFragment, bundleOf(
+                    "tenantId" to "tenant1",
+                    "listingId" to listing.id
+                )
+            )
+        }
+
         return binding.root
     }
+
 
 }
