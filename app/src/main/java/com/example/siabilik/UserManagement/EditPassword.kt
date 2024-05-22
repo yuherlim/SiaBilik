@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentEditPasswordBinding
 import com.example.demo.data.AuthVM
+import com.example.siabilik.R
 import com.example.siabilik.snackbar
 import com.example.siabilik.toast
 import com.google.android.material.textfield.TextInputLayout
@@ -75,12 +76,14 @@ class EditPassword : Fragment() {
                             userOriPassword = user!!.password
                             user!!.password = password
                             allUserViewModel.setOwner(user)
+
                         }
                         "Tenant" -> {
                             val user = allUserViewModel.getTenantById(loggedInUser.userID)
                             userOriPassword = user!!.password
                             user!!.password = password
                             allUserViewModel.setTenant(user)
+                            nav.navigate(R.id.tenantViewListingsFragment)
                         }
                         "Admin" -> {
                             val user = allUserViewModel.getAdminById(loggedInUser.userID)
