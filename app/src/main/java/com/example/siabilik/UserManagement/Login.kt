@@ -78,7 +78,7 @@ class Login : Fragment() {
                     val loginResult = auth.login(username, password, userType)
                     when(loginResult){
                         //REMEMBER FIX THIS
-                        /*"NA" -> errorDialog("Invalid login credentials.")*/
+                        "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
                             nav.navigate(R.id.tenantViewListingsFragment, bundleOf(
                                 "userID" to "userID",
