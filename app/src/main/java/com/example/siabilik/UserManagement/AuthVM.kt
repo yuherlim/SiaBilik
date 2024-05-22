@@ -144,7 +144,7 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
 
     }
 
-    suspend fun register(userType: String) {
+    /*suspend fun register(userType: String) {
         when (userType) {
             "Tenant" -> validateTenant(Tenant())
             "Owner" -> validateOwner(Owner())
@@ -196,7 +196,7 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         else if (owner.password.length > 100) "- Password too long (max 100 chars).\n"
         else ""
         return e
-    }
+    }*/
 
     suspend fun reset(userType: String, email: String): String {
         if (userType == "Tenant") {

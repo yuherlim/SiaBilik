@@ -58,6 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         //configureNavigationBasedOnUserType("Owner")
 
+
         // Action bar and bottom nav
         setSupportActionBar(binding.topAppBar)
         setupActionBarWithNavController(nav, abc)
@@ -93,5 +94,12 @@ class MainActivity : AppCompatActivity() {
         return nav.navigateUp(abc) || super.onSupportNavigateUp()
     }
 
+    fun hideTopAppBar() {
+        supportActionBar?.hide()
+    }
+
+    fun showTopAppBar() {
+        supportActionBar?.show()
+    }
 
 }
