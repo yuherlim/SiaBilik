@@ -1,86 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="top|center_horizontal"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/accountProfileImg"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="23dp"
+        android:src="@drawable/account" />
 
-    <TextView
-        android:id="@+id/lblAdminId"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Admin ID          :"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountProfileImg" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/lblAdminId"
-        app:layout_constraintTop_toTopOf="@+id/lblAdminId"
-        tools:text="linggun" />
+        <TextView
+            android:id="@+id/lblAdminId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Admin ID :"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/lblName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Admin Name   :"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/lblAdminId"
-        app:layout_constraintTop_toBottomOf="@+id/lblAdminId" />
+        <TextView
+            android:id="@+id/textID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            tools:text="linggun" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/lblName"
-        app:layout_constraintTop_toTopOf="@+id/lblName"
-        tools:text="linggun" />
-
-    <TextView
-        android:id="@+id/lblEmail"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="Email                :"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/lblName"
-        app:layout_constraintTop_toBottomOf="@+id/lblName" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/textEmail"
+        <TextView
+            android:id="@+id/lblName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Admin Name :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            tools:text="linggun" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:textSize="16sp"
-        app:layout_constraintStart_toEndOf="@+id/lblEmail"
-        app:layout_constraintTop_toTopOf="@+id/lblEmail"
-        tools:text="2mdsfsd.com" />
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lblEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Email :"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            tools:text="2mdsfsd.com" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/deleteButton"
@@ -88,9 +91,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/delete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblEmail" />
+        android:text="@string/delete" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
