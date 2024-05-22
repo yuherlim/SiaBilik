@@ -1,16 +1,35 @@
 package com.example.siabilik.UserManagement
+
+/*
+=============================
+Module-level gradle settings:
+=============================
+
+The [android] section:
+----------------------
+packagingOptions {
+    exclude 'META-INF/NOTICE.md'
+    exclude 'META-INF/LICENSE.md'
+}
+
+The [dependencies] section:
+---------------------------
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+implementation 'com.sun.mail:android-mail:1.6.7'
+implementation 'com.sun.mail:android-activation:1.6.7'
+*/
+
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.net.PasswordAuthentication
 import java.util.Properties
 import javax.mail.Authenticator
 import javax.mail.Message
+import javax.mail.PasswordAuthentication
 import javax.mail.Session
 import javax.mail.Transport
 import javax.mail.internet.MimeMessage
-
 
 class SimpleEmail(
     private var to     : String  = "",
