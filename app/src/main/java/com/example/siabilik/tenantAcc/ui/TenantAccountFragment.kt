@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.siabilik.R
 
 
 class TenantAccountFragment : Fragment() {
+    private val nav by lazy { findNavController() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -17,7 +19,13 @@ class TenantAccountFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        //clear back stack every time enter top level destination
+        nav.popBackStack(R.id.tenantAccountFragment, false)
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tenant_account, container, false)
+
+
     }
 }
