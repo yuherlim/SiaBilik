@@ -76,6 +76,7 @@ class EditPassword : Fragment() {
                             userOriPassword = user!!.password
                             user!!.password = password
                             allUserViewModel.setOwner(user)
+                            nav.navigate(R.id.ownerMyListing)
 
                         }
                         "Tenant" -> {

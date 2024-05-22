@@ -45,6 +45,7 @@ class VerificationApplicationFragment : Fragment() {
                         photoType = "Student ID"
                         binding.photo.setOnClickListener{selectStudentIDPhoto()}
                         Log.d("MyTag", "Student ID button clicked")
+                        binding.submit.setOnClickListener{addStudentID()}
                     }
 
                     binding.selfieButton.id -> {
@@ -69,7 +70,7 @@ class VerificationApplicationFragment : Fragment() {
 
         vm.setPhoto(studentID)
         toast( "Student ID added")
-        binding.submit.setOnClickListener{addStudentID()}
+
         nav.navigate(R.id.selfieButton)
     }
 
