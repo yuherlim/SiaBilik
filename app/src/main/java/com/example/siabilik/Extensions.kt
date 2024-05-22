@@ -1,8 +1,10 @@
 package com.example.siabilik
 
 import android.app.AlertDialog
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.graphics.drawable.toBitmapOrNull
@@ -115,4 +117,10 @@ fun ImageView.cropToBlob(width: Int, height: Int): Blob {
 // Usage: Load Firebase Blob
 fun ImageView.setImageBlob(blob: Blob) {
     setImageBitmap(blob.toBitmap())
+}
+
+// Usage: Hide keyboard from fragment *** NEW ***
+fun Fragment.hideKeyboard() {
+    val imm = context!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(requireView().windowToken, 0)
 }

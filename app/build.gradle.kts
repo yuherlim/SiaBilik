@@ -41,6 +41,14 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/NOTICE.md")
+            excludes.add("/META-INF/LICENSE.md")
+        }
+    }
+
 }
 
 dependencies {
@@ -58,6 +66,10 @@ dependencies {
     // for navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    // for email
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
 
 }
 

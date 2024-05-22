@@ -122,12 +122,12 @@
     <fragment
         android:id="@+id/editPassword"
         android:name="com.example.siabilik.UserManagement.EditPassword"
-        android:label="fragment_edit_password"
+        android:label="Edit Password"
         tools:layout="@layout/fragment_edit_password" />
     <fragment
         android:id="@+id/forgotPassword"
         android:name="com.example.siabilik.UserManagement.ForgotPassword"
-        android:label="fragment_forgot_password"
+        android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/login"

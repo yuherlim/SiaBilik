@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
 import com.example.siabilik.MainActivity
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +25,7 @@ class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthVM by activityViewModels()
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -72,33 +75,57 @@ class Login : Fragment() {
             val username = binding.txtUsername.text.toString().trim()
             val password = binding.txtPassword.text.toString().trim()
             if (username == "" || password == "") {
-                errorDialog("UserName or Password shouldnt be empty")
+                errorDialog("UserName or Password shouldn't be empty")
             } else {
                 // TODO(3): Login -> auth.login(...)
                 //          Clear navigation backstack
                 lifecycleScope.launch {
                     val loginResult = auth.login(username, password, userType)
-                    when(loginResult){
+                    val loginUserType = loginResult[0]
+                    val passwordPattern =
+                        Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$")
+                    when (loginUserType) {
                         //REMEMBER FIX THIS
-                        /*"NA" -> errorDialog("Invalid login credentials.")*/
+
+                        "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
-                            nav.navigate(R.id.tenantViewListingsFragment, bundleOf(
-                                "userID" to "userID",
-                                "userType" to "userType"
-                            ))
+                            userViewModel.setLoggedInUser(loginResult[0], loginResult[1])
+                            if (!password.matches(passwordPattern)) {
+                                nav.navigate(
+                                    R.id.editPassword
+                                )
+                            } else {
+                                nav.navigate(
+                                    R.id.tenantViewListingsFragment
+                                )
+                            }
                         } // remember to change both of the layout
                         "Owner" -> {
-                            nav.navigate(R.id.ownerMyListing, bundleOf(
-                                "userID" to "userID",
-                                "userType" to "userType"
-                            ))
+                            userViewModel.setLoggedInUser(loginResult[0], loginResult[1])
+                            if (!password.matches(passwordPattern)) {
+                                nav.navigate(
+                                    R.id.editPassword
+
+                                )
+                            } else {
+                                nav.navigate(
+                                    R.id.ownerMyListing
+                                )
+                            }
+
                         }
+
                         "Admin" -> {
-                            nav.navigate(R.id.adminListingApproveFragment, bundleOf(
-                                "userID" to "userID",
-                                "userType" to "userType"
-                            ))
-                }}}
+                            userViewModel.setLoggedInUser(loginResult[0], loginResult[1])
+                            nav.navigate(
+                                R.id.adminListingApproveFragment, bundleOf(
+                                    "userID" to "userID",
+                                    "userType" to "userType"
+                                )
+                            )
+                        }
+                    }
+                }
             }
         }
 

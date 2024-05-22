@@ -32,7 +32,7 @@ data class Tenant (
     var verificationStatus: String = "",
     var aboutDescription: String = "",
     var selfiePhoto : Blob = Blob.fromBytes(ByteArray(0)),
-    var studentID : Blob = Blob.fromBytes(ByteArray(0))
+    var studentID : Blob = Blob.fromBytes(ByteArray(0)),
 )
 
 val TENANT = Firebase.firestore.collection("Tenant")
@@ -67,4 +67,19 @@ data class Listing(
 
 val LISTING = Firebase.firestore.collection("Listing")
 
+data class Request(
+    @DocumentId
+    var id : String = "",
+    var message: String ="",
+    var title: String ="",
+    var tenantId: String ="",
+    var listingId: String ="",
+)
+
+val REQUEST = Firebase.firestore.collection("Request")
+
+data class LoggedInUser(
+    var userType: String = "",
+    var userID: String = ""
+)
 

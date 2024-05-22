@@ -5,6 +5,8 @@ import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.siabilik.data.Admin
+import com.example.siabilik.data.LISTING
+import com.example.siabilik.data.Listing
 import com.example.siabilik.data.Owner
 import com.example.siabilik.data.Tenant
 import com.google.firebase.firestore.FieldPath
@@ -26,15 +28,18 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     private val OwnerLD = MutableLiveData<Owner?>()
     private val TenantRegLD = MutableLiveData<List<Tenant>>()
     private val OwnerRegLD = MutableLiveData<List<Owner>>()
+    private val AdminRegLD = MutableLiveData<List<Admin>>()
     private var listener: ListenerRegistration? = null
     private var ownerListener: ListenerRegistration? = null
     private var tenantlistener: ListenerRegistration? = null
+    private var adminlistener: ListenerRegistration? = null
 
     init {
         TenantLD.value = null
         OwnerLD.value = null
         ownerListener = TENANT.addSnapshotListener { snap, _ -> TenantRegLD.value = snap?.toObjects() }
         tenantlistener = OWNER.addSnapshotListener { snap, _ -> OwnerRegLD.value = snap?.toObjects() }
+        adminlistener = ADMIN.addSnapshotListener { snap, _ -> AdminRegLD.value = snap?.toObjects() }
     }
 
     // ---------------------------------------------------------------------------------------------
@@ -51,6 +56,8 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
 
     fun getTenantById(id: String) = TenantRegLD.value?.find { it.id == id }
 
+    fun getAdminById(id: String) = AdminRegLD.value?.find { it.id == id }
+
     fun getOwnerByEmail(email: String) = OwnerRegLD.value?.find { it.email == email }
 
     fun getTenantByEmail(email: String) = TenantRegLD.value?.find { it.email == email }
@@ -64,11 +71,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
     }
 
     fun setTenant(tenant: Tenant) {
-        TENANT.document(tenant.userName).set(tenant)
+        TENANT.document(tenant.id).set(tenant)
     }
 
     fun setOwner(owner: Owner) {
-        OWNER.document(owner.userName).set(owner)
+        OWNER.document(owner.id).set(owner)
+    }
+
+    fun setAdmin(admin: Admin) {
+        ADMIN.document(admin.id).set(admin)
     }
 
     fun addOwner(owner: Owner){
@@ -99,7 +110,8 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         TENANT.document(tenant.id).set(tenant)
     }
 
-    suspend fun login(username: String, password: String, userType: String):String {
+    suspend fun login(username: String, password: String, userType: String):List<String> {
+        var loginResultList = MutableList(2){""}
 
         var admin = ADMIN
             .whereEqualTo("userName", username)
@@ -110,7 +122,9 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
             .firstOrNull()
 
         if (admin != null) {
-            return "Admin"
+            loginResultList[0] = "Admin"
+            loginResultList[1] = admin.id
+            return loginResultList
         }
 
 
@@ -122,8 +136,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
                 .get()
                 .await()
                 .toObjects<Tenant>()
-                .firstOrNull() ?: return "NA"
-            return "Tenant"
+                .firstOrNull()
+
+            if (tenant != null) {
+                loginResultList[0] = "Tenant"
+                loginResultList[1] = tenant.id
+                return loginResultList
+            }
+            loginResultList[0] = "NA"
+            return loginResultList
         } else {
             val owner = OWNER
                 .whereEqualTo("userName", username)
@@ -131,9 +152,15 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
                 .get()
                 .await()
                 .toObjects<Owner>()
-                .firstOrNull() ?: return "NA"
+                .firstOrNull()
 
-            return "Owner"
+            if (owner != null) {
+                loginResultList[0] = "Owner"
+                loginResultList[1] = owner.id
+                return loginResultList
+            }
+            loginResultList[0] = "NA"
+            return loginResultList
         }
     }
 
@@ -143,7 +170,7 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
 
     }
 
-    suspend fun register(userType: String) {
+    /*suspend fun register(userType: String) {
         when (userType) {
             "Tenant" -> validateTenant(Tenant())
             "Owner" -> validateOwner(Owner())
@@ -195,7 +222,7 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         else if (owner.password.length > 100) "- Password too long (max 100 chars).\n"
         else ""
         return e
-    }
+    }*/
 
     suspend fun reset(userType: String, email: String): String {
         if (userType == "Tenant") {
@@ -230,6 +257,11 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         }
         return "NA"
     }
+
+    fun setPhoto(tenant: Tenant) {
+        TENANT.document(tenant.id).set(tenant)
+    }
+
 
 
 }

@@ -23,6 +23,7 @@ import com.example.siabilik.databinding.FragmentRegisterBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterFragment : Fragment() {
@@ -73,7 +74,6 @@ class RegisterFragment : Fragment() {
         binding.register.setOnClickListener {
             if (R.id.txtPassword != R.id.txtLayoutForgotPassword) {
                 register(userType)
-
             }
         }
 
@@ -82,41 +82,61 @@ class RegisterFragment : Fragment() {
 
 
     private fun register(userType: String) {
+        val username = binding.txtUsername.text.toString().trim()
+        val email = binding.txtEmail.text.toString().trim()
+        val phone = binding.txtPhone.text.toString().trim()
+        val password = binding.txtPassword.text.toString().trim()
+        val confirmPassword = binding.txtForgotPassword.text.toString().trim() // Assuming there's a confirm password field
+
+        binding.txtLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+        binding.txtLayoutForgotPassword.endIconMode = TextInputLayout.END_ICON_NONE
+
+        // Validate input
+        if (!validateInput(username, email, phone, password, confirmPassword, userType)) {
+            return
+        }
         // Insert user
-        when (userType) {
-            "Tenant" -> {
-                val user = Tenant(
-                    userName = binding.txtUsername.text.toString().trim(),
-                    email = binding.txtEmail.text.toString().trim(),
-                    phoneNumber = binding.txtPhone.toString().trim(),
-                    password = binding.txtPassword.text.toString().trim()
-                )
+        if(true) {
+            when (userType) {
+                "Tenant" -> {
+                    val user = Tenant(
+                        userName = binding.txtUsername.text.toString().trim(),
+                        email = binding.txtEmail.text.toString().trim(),
+                        phoneNumber = binding.txtPhone.toString().trim(),
+                        password = binding.txtPassword.text.toString().trim()
+                    )
+
 //                val e = vm.validateTenant(user)
 //                if (e != "") {
 //                    errorDialog(e)
 //                    return
 //                }
 
-                vm.addTenant(user)
-                nav.navigateUp()
-            }
+                    vm.addTenant(user)
+                    nav.navigate(R.id.login)
+                }
 
-            "Owner" -> {
-                val user = Owner(
-                    userName = binding.txtUsername.text.toString().trim(),
-                    email = binding.txtEmail.text.toString().trim(),
-                    phoneNumber = binding.txtPhone.toString().trim(),
-                    password = binding.txtPassword.text.toString().trim()
-                )
+                "Owner" -> {
+                    val user = Owner(
+                        userName = binding.txtUsername.text.toString().trim(),
+                        email = binding.txtEmail.text.toString().trim(),
+                        phoneNumber = binding.txtPhone.toString().trim(),
+                        password = binding.txtPassword.text.toString().trim()
+                    )
+
 //                val e = vm.validateOwner(user)
 //                if (e != "") {
 //                    errorDialog(e)
 //                    return
 //                }
-                vm.addOwner(user)
-                nav.navigateUp()
+                    vm.addOwner(user)
+                    nav.navigate(R.id.login)
+                }
             }
+            Toast.makeText(context, "Successfully registered", Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
     private fun validateInput(
@@ -127,31 +147,71 @@ class RegisterFragment : Fragment() {
         confirmPassword: String,
         userType: String
     ): Boolean {
+        var isPass = true
         if (TextUtils.isEmpty(username)) {
-            usernameEditText.error = "Username is required"
-            return false
+            binding.txtUsername.error = "Username is required"
+            isPass = false
+        }
+        if (username.length < 5) {
+            binding.txtUsername.error = "Username must be at least 5 characters"
+            isPass = false
         }
         if (TextUtils.isEmpty(email)) {
-            emailEditText.error = "Email is required"
-            return false
+            binding.txtEmail.error = "Email is required"
+            isPass = false
+        }
+        if (!isValidEmail(email)) {
+            binding.txtEmail.error = "Invalid email format"
+            isPass = false
         }
         if (TextUtils.isEmpty(phone)) {
-            phoneEditText.error = "Phone number is required"
-            return false
+            binding.txtPhone.error = "Phone number is required"
+            isPass = false
+        }
+        if (!isValidPhone(phone)) {
+            binding.txtPhone.error = "Invalid phone number format. Must start from 0 and contain 8-10 digits."
+            isPass = false
         }
         if (TextUtils.isEmpty(password)) {
-            passwordEditText.error = "Password is required"
-            return false
+            binding.txtPassword.error = "Password is required"
+            isPass = false
+        }
+        if (!isValidPassword(password)) {
+            binding.txtPassword.error = "Password must contain at least 8 characters, including at least 1 upper/lower case, number, and special character"
+            binding.txtLayoutPassword.endIconMode = TextInputLayout.END_ICON_NONE
+            isPass = false
         }
         if (password != confirmPassword) {
-            confirmPasswordEditText.error = "Passwords do not match"
-            return false
+            binding.txtForgotPassword.error = "Passwords do not match"
+            binding.txtLayoutForgotPassword.endIconMode = TextInputLayout.END_ICON_NONE
+            isPass = false
         }
         if (TextUtils.isEmpty(userType)) {
             Toast.makeText(context, "Please select a user type", Toast.LENGTH_SHORT).show()
+            isPass = false
+        }
+        if (isPass){
+            return true
+        }else{
             return false
         }
-        return true
+
+    }
+
+
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+        return email.matches(emailPattern.toRegex())
+    }
+
+    private fun isValidPhone(phone: String): Boolean {
+        val phonePattern = "^0\\d{1,2}-?\\d{7,8}|01[0-46-9]-?\\d{7,8}\$"
+        return phone.matches(phonePattern.toRegex())
+    }
+
+    private fun isValidPassword(password: String): Boolean {
+        val passwordPattern = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$"
+        return password.matches(passwordPattern.toRegex())
     }
 
     override fun onResume() {
