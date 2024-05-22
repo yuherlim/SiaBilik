@@ -139,7 +139,7 @@ class EditProfile : Fragment() {
         }
 
         if(!isValidPhone(phone)){
-            binding.txtEmail.error = "Invalid phone format."
+            binding.txtPhone.error = "Invalid phone format."
             binding.txtLayoutEmail.endIconMode = TextInputLayout.END_ICON_NONE
             isPass = false
         }
