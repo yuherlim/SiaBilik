@@ -58,9 +58,9 @@ class VerificationApplicationFragment : Fragment() {
                             binding.studentIDButton.id -> {
                                 photoType = "Student ID"
                                 binding.photo.setOnClickListener { selectStudentIDPhoto() }
-                                //studentID = binding.photo.cropToBlob(500,500)
+                                studentID = binding.photo.cropToBlob(500,500)
                                 user!!.studentID = binding.photo.cropToBlob(500, 500)
-                                binding.photo.setImageBlob(user!!.studentID)
+                                binding.photo.setImageBlob(studentID)
 
                                 Log.d("MyTag", "Student ID button clicked")
                                 binding.submit.setOnClickListener {
@@ -73,7 +73,8 @@ class VerificationApplicationFragment : Fragment() {
                                 photoType = "Selfie"
                                 binding.photo.setOnClickListener{selectSelfiePhoto()}
                                 user!!.selfiePhoto = binding.photo.cropToBlob(500,500)
-                                binding.photo.setImageBlob(user!!.selfiePhoto)
+                                selfie = binding.photo.cropToBlob(500,500)
+                                binding.photo.setImageBlob(selfie)
 
                                 Log.d("MyTag", "Selfie button clicked")
                                 binding.submit.setOnClickListener {

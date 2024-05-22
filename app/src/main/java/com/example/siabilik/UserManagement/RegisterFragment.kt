@@ -120,7 +120,7 @@ class RegisterFragment : Fragment() {
                     val user = Owner(
                         userName = binding.txtUsername.text.toString().trim(),
                         email = binding.txtEmail.text.toString().trim(),
-                        phoneNumber = binding.txtPhone.toString().trim(),
+                        phoneNumber = binding.txtPhone.text.toString().trim(),
                         password = binding.txtPassword.text.toString().trim()
                     )
 
