@@ -24,8 +24,8 @@ class OwnerListingDetails : Fragment() {
     private lateinit var binding: FragmentOwnerListingDetailsBinding
     private val nav by lazy { findNavController() }
     private val listingVM: ListingViewModel by activityViewModels()
-    private val listingID by lazy { arguments?.getString("listingID",) ?: ""}
-    private val fromFragment by lazy { arguments?.getString("fromFragment",) ?: "" }
+    private val listingID by lazy { arguments?.getString("listingID") ?: "" }
+    private val fromFragment by lazy { arguments?.getString("fromFragment") ?: "" }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,28 +40,10 @@ class OwnerListingDetails : Fragment() {
         var selectedListing = listingVM.getListingById(listingID)
         if (selectedListing != null) {
             binding.title.text = selectedListing.title
-            binding.Listingstatus.text = selectedListing.status
-            binding.Approvalstatus.text = selectedListing.approvalStatus
             binding.features.text = selectedListing.features
-            binding.address.text = selectedListing.address
             binding.rental.text = String.format("RM %.2f", selectedListing.rental.toDouble())
             binding.propertyPhoto.setImageBlob(selectedListing.propertyPhoto)
-            binding.ownershipPhoto.setImageBlob(selectedListing.ownershipProof)
-        }
-        if(fromFragment!="ownerMYListing"){
-            binding.ownershipPhoto.visibility = View.INVISIBLE
-            binding.address.visibility = View.INVISIBLE
-        }
-        else{
-            binding.userBar.visibility =View.INVISIBLE
-            binding.imgUser.visibility =View.INVISIBLE
-            binding.txtOwner.visibility =View.INVISIBLE
 
         }
-
-
-
     }
-
-
 }

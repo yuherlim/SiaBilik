@@ -15,6 +15,7 @@ import com.example.siabilik.databinding.FragmentOwnerListingDetailsBinding
 import com.example.siabilik.databinding.FragmentOwnerMyListingBinding
 import com.example.siabilik.ownerAcc.data.ListingViewModel
 import com.example.siabilik.ownerAcc.util.CardViewListingAdapter
+import com.example.siabilik.ownerAcc.util.GridViewListingAdapter
 
 class OwnerListing : Fragment() {
 
@@ -26,7 +27,7 @@ class OwnerListing : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOwnerListingBinding.inflate(inflater, container, false)
-        val adapter = CardViewListingAdapter { h, listing ->
+        val adapter = GridViewListingAdapter { h, listing ->
             h.binding.listingCardView.setOnClickListener{
                 nav.navigate(R.id.ownerListingDetails, bundleOf(
                     "listingID" to listing.id,
@@ -38,7 +39,7 @@ class OwnerListing : Fragment() {
         binding.rvTenantViewListings.adapter = adapter
         binding.rvTenantViewListings.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         listingVM.listingLD().observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+                adapter.submitList(it.filter { it.status == "Available" && it.approvalStatus == "Approved" })
         }
 
         return binding.root

@@ -26,7 +26,6 @@ class GridViewListingAdapter (val fn: (ViewHolder, Listing) -> Unit = { _, _ -> 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val listing = getItem(position)
         holder.binding.title.text = listing.title
-
         holder.binding.features.text = listing.features
         holder.binding.rental.text = String.format("RM %.2f",listing.rental.toDouble())
         holder.binding.propertyPhoto.setImageBlob(listing.propertyPhoto)
