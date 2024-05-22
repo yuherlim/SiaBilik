@@ -142,7 +142,7 @@
     <fragment
         android:id="@+id/verificationApplicationFragment"
         android:name="com.example.siabilik.UserManagement.VerificationApplicationFragment"
-        android:label="fragment_verification_application"
+        android:label="Verification Application"
         tools:layout="@layout/fragment_verification_application" />
 
 </navigation>
