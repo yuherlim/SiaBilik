@@ -8,7 +8,7 @@ import com.example.siabilik.data.Admin
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.toObjects
 
-class AdminViewModel(app : Application) : AndroidViewModel(app) {
+class  AdminViewModel(app : Application) : AndroidViewModel(app) {
 
     private val adminLD = MutableLiveData<List<Admin>>(emptyList())
     private var listener : ListenerRegistration? = null
@@ -18,8 +18,6 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
             adminLD.value = snap?.toObjects()
         }
     }
-
-    fun init() = Unit
 
     fun getAdminLD() = adminLD
 
@@ -41,7 +39,8 @@ class AdminViewModel(app : Application) : AndroidViewModel(app) {
         //validation to do
         var e = ""
 
-        e += if (a.userName == "") "- Name is required.\n"
+        e += if (a.userName.contains(" ")) "- Name cannot contain spaces.\n"
+        else if (a.userName == "") "- Name is required.\n"
         else if (a.userName.length < 3) "- Name is too short (at least 3 letters).\n"
         else if (a.userName.length > 100) "- Name is too long (at most 100 letters).\n"
         else ""

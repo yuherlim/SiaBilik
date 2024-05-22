@@ -7,20 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.siabilik.ownerAcc.ui.OwnerEditListing">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/backListing"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#495D92"
-        android:paddingTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/back"
-        app:title="Edit Listing"
-        app:titleTextColor="#FAFDFD">
-
-    </androidx.appcompat.widget.Toolbar>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtLayoutListingID"
@@ -32,7 +18,7 @@
         android:hint="Listing ID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backListing"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -239,14 +225,12 @@
     </ScrollView>
 
 
-
-
     <Button
         android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -257,7 +241,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"

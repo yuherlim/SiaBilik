@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    Owner menu-->
+    <item android:id="@+id/ownerMyListing"
+        android:title="My Listings"
+        android:icon="@drawable/my_listings"
+        />
+
+    <item android:id="@+id/ownerListing"
+        android:title="Listing"
+        android:icon="@drawable/listings"
+        />
+
+    <item android:id="@+id/ownerProfile"
+        android:title="Profile"
+        android:icon="@drawable/account"
+        />
+</menu>

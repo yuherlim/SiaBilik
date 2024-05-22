@@ -4,6 +4,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.siabilik.data.LISTING
 import com.example.siabilik.data.Listing
+import com.example.siabilik.data.Owner
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.toObjects
 
@@ -31,6 +32,14 @@ class ListingViewModel(app: Application) : AndroidViewModel(app) {
     fun getAll() = listingLD.value ?: emptyList()
 
     fun get(id: String) = getAll().find { it.id == id }
+
+    fun getLatestListing(): Listing? {
+        return listingLD.value?.lastOrNull()
+    }
+
+    fun setListing(listing: Listing) {
+        LISTING.document(listing.id).set(listing)
+    }
 
     // Get all list by status
     fun getAllByStatus(status: String) = getAll().filter { it.status == "status" }

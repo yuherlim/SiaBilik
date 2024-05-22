@@ -7,32 +7,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.siabilik.UserManagement.EditProfile">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/editProfile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#495D92"
-        android:paddingTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/back"
-        app:title="Edit Profile"
-        app:titleTextColor="#FAFDFD"
-        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium">
-    </androidx.appcompat.widget.Toolbar>
-
 
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="64dp"
         android:scaleType="centerCrop"
         android:src="@drawable/testing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView

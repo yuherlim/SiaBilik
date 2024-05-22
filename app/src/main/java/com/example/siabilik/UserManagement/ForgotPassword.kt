@@ -15,11 +15,12 @@ import com.example.siabilik.data.TENANT
 import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentForgotPasswordBinding
 import com.example.siabilik.databinding.FragmentLoginBinding
+import com.example.siabilik.errorDialog
 
 
 class ForgotPassword : Fragment() {
 
-    private lateinit var email : String
+    private lateinit var email: String
     private lateinit var binding: FragmentForgotPasswordBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthVM by activityViewModels()
@@ -34,50 +35,70 @@ class ForgotPassword : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false)
-    }
-
-    private suspend fun resetPassword() {
-        var userType : String = ""
+        var userType: String = ""
         //Default check tenant button at first run
         binding.tbUserType.check(binding.tenantButton.id)
+        userType = "Tenant"
         //Check on the checked button
         binding.tbUserType.addOnButtonCheckedListener { buttons, checkedId, isChecked ->
             // Perform actions based on the selected RadioButton
-            when (checkedId) {
-                binding.tenantButton.id -> {
-                    userType = "Tenant"
-                    Log.d("MyTag", "Tenant button clicked")
-                }
+            if (isChecked == true) {
+                when (checkedId) {
+                    binding.tenantButton.id -> {
+                        userType = "Tenant"
+                        Log.d("MyTag", "Tenant button clicked")
+                    }
 
-                binding.ownerButton.id -> {
-                    userType = "Owner"
-                    Log.d("MyTag", "Owner button clicked")
+                    binding.ownerButton.id -> {
+                        userType = "Owner"
+                        Log.d("MyTag", "Owner button clicked")
+                    }
                 }
             }
         }
+        binding.next.setOnClickListener { resetPassword(userType) }
+
+        return binding.root
+    }
+
+    private fun resetPassword(userType: String) {
+
         email = binding.txtEmail.text.toString().trim()
-        val success = auth.reset(userType,email)
-        when(success){
+
+        //Email Validation
+        when (userType) {
             "Tenant" -> {
-
-                nav.popBackStack(R.id.loginLayout, false)
-                nav.navigateUp()
+                var tenant = auth.getTenantByEmail(email)
+                if (tenant == null) {
+                    // More specific error message
+                    errorDialog("Email no found")
+                } else {
+                    //var newPassword = random number
+                    //tenant.password = newPassword
+                    auth.setTenant(tenant) //update owner
+                    // use property in the tenant such as name to construct an email to notify the user the new password
+                    // Send email to user
+                    //display toast to inform user the password is reset
+                    nav.navigateUp()
+                }
             }
+
             "Owner" -> {
-                nav.popBackStack(R.id.loginLayout, false)
-                nav.navigateUp()
+                var owner = auth.getOwnerById(email)
+                if (owner == null) {
+                    // More specific error message
+                    errorDialog("Email no found")
+                } else {
+                    //var newPassword = random number
+                    //owner.password = newPassword
+                    auth.setOwner(owner) //update owner
+                    // use property in the owner such as name to construct an email to notify the user the new password
+                    // Send email to user
+                    //display toast to inform user the password is reset
+                    nav.navigateUp()
+                }
             }
-            /*"NA"-> */
         }
-/*        if (email.isEmpty()) {
-            binding.txtEmail.error = "Insert Your Email"
-            binding.txtEmail.requestFocus()
-        } else {
-            // Check if cooldown is active
-
-
-        }*/
-
     }
 }
+
