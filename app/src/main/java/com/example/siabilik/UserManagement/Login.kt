@@ -81,45 +81,38 @@ class Login : Fragment() {
                 //          Clear navigation backstack
                 lifecycleScope.launch {
                     val loginResult = auth.login(username, password, userType)
+                    val loginUserType = loginResult[0]
                     val passwordPattern = Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$")
-                    when(loginResult){
+                    when(loginUserType){
 
                         "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             if(!password.matches(passwordPattern)) {
-                                nav.navigate(R.id.editPassword,bundleOf(
-                                "userID" to "userID",
-                                "userType" to "userType"
-                                ))
+                                nav.navigate(R.id.editPassword
+                                )
                             }else {
                                 nav.navigate(
-                                    R.id.tenantViewListingsFragment, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.tenantViewListingsFragment
                                 )
                             }
                         } // remember to change both of the layout
                         "Owner" -> {
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             if (!password.matches(passwordPattern)) {
                                 nav.navigate(
-                                    R.id.editPassword, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.editPassword
+
                                 )
                             } else {
                                 nav.navigate(
-                                    R.id.ownerMyListing, bundleOf(
-                                        "userID" to "userID",
-                                        "userType" to "userType"
-                                    )
+                                    R.id.ownerMyListing
                                 )
                             }
 
                         }
                         "Admin" -> {
-                            userViewModel.setLoggedInUser(loginResult,"userID")
+                            userViewModel.setLoggedInUser(loginResult[0],loginResult[1])
                             nav.navigate(R.id.adminListingApproveFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
