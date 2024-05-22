@@ -50,8 +50,10 @@ class TenantViewRequestsFragment : Fragment() {
 
     private fun detail(requestId: String) {
         nav.navigate(
-            R.id.tenantContactOwnerDetailsFragment, bundleOf(
-                "requestId" to requestId
+            R.id.tenantRequestDetailsFragment, bundleOf(
+                "requestId" to requestId,
+                //replace hardcoded id with dynamic data
+                "tenantId" to "Tenant001"
             )
         )
     }

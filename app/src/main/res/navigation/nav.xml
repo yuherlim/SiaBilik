@@ -5,6 +5,7 @@
     android:id="@+id/nav"
     app:startDestination="@id/login">
 
+
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
@@ -127,7 +128,7 @@
     <fragment
         android:id="@+id/forgotPassword"
         android:name="com.example.siabilik.UserManagement.ForgotPassword"
-        android:label="fragment_forgot_password"
+        android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password" />
     <fragment
         android:id="@+id/login"

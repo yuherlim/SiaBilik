@@ -2,22 +2,20 @@ package com.example.siabilik.UserManagement
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
+import com.example.siabilik.MainActivity
 import com.example.siabilik.R
-import com.example.siabilik.data.TENANT
-import com.example.siabilik.data.Tenant
 import com.example.siabilik.databinding.FragmentForgotPasswordBinding
-import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.example.siabilik.UserManagement.SimpleEmail
 
 
 class ForgotPassword : Fragment() {
@@ -124,6 +122,18 @@ class ForgotPassword : Fragment() {
             }
 
         Snackbar.make(binding.root, "Sending email...", Snackbar.LENGTH_LONG).show()
+    }
+
+    override fun onResume() {
+        // Hides bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.GONE
+        super.onResume()
+    }
+
+    override fun onPause() {
+        // Unhidden bottom navigation
+        requireActivity().findViewById<BottomNavigationView>(R.id.bv).visibility = View.VISIBLE
+        super.onPause()
     }
 
 

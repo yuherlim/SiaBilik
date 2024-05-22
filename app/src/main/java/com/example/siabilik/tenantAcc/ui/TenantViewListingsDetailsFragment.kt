@@ -55,7 +55,7 @@ class TenantViewListingsDetailsFragment : Fragment() {
         binding.btnContactOwner.setOnClickListener {
             nav.navigate(
                 R.id.tenantContactOwnerDetailsFragment, bundleOf(
-                    "tenantId" to "tenant1",
+                    "tenantId" to "Tenant001",
                     "listingId" to listing.id
                 )
             )
