@@ -80,7 +80,10 @@ class Login : Fragment() {
                     val loginResult = auth.login(username, password, userType)
                     val passwordPattern = Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*(),.?\":{}|<>])[A-Za-z\\d!@#\$%^&*(),.?\":{}|<>]{8,}$")
                     when(loginResult){
+<<<<<<< HEAD
                         //REMEMBER FIX THIS
+=======
+>>>>>>> 6db66e8d4d2158298faf576ce33cee75c816c68f
                         "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
                             if(!password.matches(passwordPattern)) {
