@@ -8,8 +8,9 @@
 
     <item
         android:id="@+id/tenantViewStarredListingsFragment"
+        android:icon="@drawable/filled_star"
         android:title="Starred"
-        android:icon="@drawable/filled_star" />
+        android:visible="false" />
 
     <item
         android:id="@+id/tenantViewRequestsFragment"
