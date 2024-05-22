@@ -1,13 +1,17 @@
 package com.example.siabilik
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.demo.data.AuthVM
 import com.example.siabilik.databinding.ActivityMainBinding
+import com.example.siabilik.tenantAcc.data.RequestViewModel
+import com.example.siabilik.tenantAcc.data.ListingViewModel as TenantLVM
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +36,17 @@ class MainActivity : AppCompatActivity() {
         R.id.adminProfileFragment
     )
 
+    // Pre-load view models
+    private val tenantVM: TenantLVM by viewModels()
+    private val requestVM: RequestViewModel by viewModels()
+    private val authVM: AuthVM by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // TODO(7): Initialize view models (early data loading)
+        tenantVM.init()
+        requestVM.init()
+        authVM.init()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

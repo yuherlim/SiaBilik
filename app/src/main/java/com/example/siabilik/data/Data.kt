@@ -66,4 +66,14 @@ data class Listing(
 
 val LISTING = Firebase.firestore.collection("Listing")
 
+data class Request(
+    @DocumentId
+    var id : String = "",
+    var message: String ="",
+    var title: String ="",
+    var tenantId: String ="",
+)
+
+val REQUEST = Firebase.firestore.collection("Request")
+
 
