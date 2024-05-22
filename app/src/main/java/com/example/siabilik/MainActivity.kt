@@ -13,6 +13,7 @@ import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.ActivityMainBinding
 import com.example.siabilik.tenantAcc.data.RequestViewModel
 import com.example.siabilik.tenantAcc.data.ListingViewModel as TenantLVM
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
 
@@ -58,30 +59,28 @@ class MainActivity : AppCompatActivity() {
         // Insert code to get user type here. Pass in user type to configureNavigationBasedOnUserType
 
         // Observe the LiveData
-//        userViewModel.loggedInUserLD.observe(this, Observer { loggedInUser ->
-//            when (loggedInUser.userType) {
-//                "Owner" -> {
-//                    configureNavigationBasedOnUserType("Owner")
-//                    setupActionBarWithNavController(nav, abc)
-//                }
-//                "Tenant" -> {
-//                    configureNavigationBasedOnUserType("Tenant")
-//                    setupActionBarWithNavController(nav, abc)
-//                }
-//                "Admin" -> {
-//                    configureNavigationBasedOnUserType("Admin")
-//                    setupActionBarWithNavController(nav, abc)
-//                }
-//                else -> setupActionBarWithNavController(nav, abc)
-//            }
-//        })
+        userViewModel.loggedInUserLD.observe(this, Observer { loggedInUser ->
+            when (loggedInUser!!.userType) {
+                "Owner" -> {
+                    configureNavigationBasedOnUserType("Owner")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                "Tenant" -> {
+                    configureNavigationBasedOnUserType("Tenant")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                "Admin" -> {
+                    configureNavigationBasedOnUserType("Admin")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                else -> setupActionBarWithNavController(nav, abc)
+            }
+        })
 
         //configureNavigationBasedOnUserType("Owner")
 
         // Action bar and bottom nav
         setSupportActionBar(binding.topAppBar)
-        configureNavigationBasedOnUserType("Tenant")
-        setupActionBarWithNavController(nav, abc)
         binding.bv.setupWithNavController(nav)
 
 
