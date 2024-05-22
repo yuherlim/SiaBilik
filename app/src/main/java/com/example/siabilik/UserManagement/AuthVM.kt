@@ -5,6 +5,8 @@ import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.siabilik.data.Admin
+import com.example.siabilik.data.LISTING
+import com.example.siabilik.data.Listing
 import com.example.siabilik.data.Owner
 import com.example.siabilik.data.Tenant
 import com.google.firebase.firestore.FieldPath
@@ -230,6 +232,11 @@ class AuthVM(val app: Application) : AndroidViewModel(app) {
         }
         return "NA"
     }
+
+    fun setPhoto(tenant: Tenant) {
+        TENANT.document(tenant.id).set(tenant)
+    }
+
 
 
 }

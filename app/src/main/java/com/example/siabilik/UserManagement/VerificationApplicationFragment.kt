@@ -1,60 +1,104 @@
 package com.example.siabilik.UserManagement
 
 import android.os.Bundle
+import android.provider.ContactsContract.Contacts.Photo
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.example.demo.data.AuthVM
 import com.example.siabilik.R
+import com.example.siabilik.cropToBlob
+import com.example.siabilik.data.Tenant
+import com.example.siabilik.databinding.FragmentRegisterBinding
+import com.example.siabilik.databinding.FragmentVerificationApplicationBinding
+import com.example.siabilik.ownerAcc.data.ListingViewModel
+import com.example.siabilik.toast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [VerificationApplicationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class VerificationApplicationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
+    private lateinit var binding: FragmentVerificationApplicationBinding
+    private val nav by lazy { findNavController() }
+    private val vm: AuthVM by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_verification_application, container, false)
-    }
+        binding = FragmentVerificationApplicationBinding.inflate(inflater, container, false)
+        var photoType : String
+        binding.tbUserType.check(binding.studentIDButton.id)
+        binding.tbUserType.addOnButtonCheckedListener { buttons, checkedId, isChecked ->
+            // Perform actions based on the selected RadioButton
+            if (isChecked == true) {
+                when (checkedId) {
+                    binding.studentIDButton.id -> {
+                        photoType = "Student ID"
+                        binding.photo.setOnClickListener{selectStudentIDPhoto()}
+                        Log.d("MyTag", "Student ID button clicked")
+                    }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment verificationApplication.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            VerificationApplicationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    binding.selfieButton.id -> {
+                        photoType = "Selfie"
+                        binding.photo.setOnClickListener{selectSelfiePhoto()}
+                        Log.d("MyTag", "Selfie button clicked")
+                    }
                 }
             }
+
+        }
+
+        // Inflate the layout for this fragment
+        return binding.root
     }
+
+    private fun addStudentID(){
+
+        var studentID = Tenant(
+        studentID = binding.photo.cropToBlob(1000,1000)
+        )
+
+        vm.setPhoto(studentID)
+        toast( "Student ID added")
+        binding.submit.setOnClickListener{addStudentID()}
+        nav.navigate(R.id.selfieButton)
+    }
+
+    private fun addSelfiePhoto(){
+
+        var selfie = Tenant(
+            selfiePhoto = binding.photo.cropToBlob(1000,1000)
+        )
+
+        vm.setPhoto(selfie)
+        toast( "Selfie Photo added")
+        binding.submit.setOnClickListener{addSelfiePhoto()}
+        nav.navigate(R.id.frameLayout2)//Change the Navigate Destination
+    }
+
+    private val getStudentIDPhoto = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        binding.photo.setImageURI(it)
+    }
+
+    private fun selectStudentIDPhoto() {
+        getStudentIDPhoto.launch("image/*")
+    }
+
+    private val getSelfiePhoto = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        binding.photo.setImageURI(it)
+    }
+
+    private fun selectSelfiePhoto() {
+        getSelfiePhoto.launch("image/*")
+    }
+
 }
