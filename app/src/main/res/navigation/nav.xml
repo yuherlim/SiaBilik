@@ -5,7 +5,6 @@
     android:id="@+id/nav"
     app:startDestination="@id/login">
 
-
     <fragment
         android:id="@+id/adminListFragment"
         android:name="com.example.siabilik.adminAcc.ui.AdminListFragment"
@@ -123,7 +122,7 @@
     <fragment
         android:id="@+id/editPassword"
         android:name="com.example.siabilik.UserManagement.EditPassword"
-        android:label="fragment_edit_password"
+        android:label="Edit Password"
         tools:layout="@layout/fragment_edit_password" />
     <fragment
         android:id="@+id/forgotPassword"
