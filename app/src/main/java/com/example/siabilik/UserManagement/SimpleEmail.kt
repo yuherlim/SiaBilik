@@ -3,6 +3,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.net.PasswordAuthentication
 import java.util.Properties
 import javax.mail.Authenticator
 import javax.mail.Message
@@ -21,7 +22,7 @@ class SimpleEmail(
     // --- UPDATE THE FOLLOWINGS -------------------------------------------------------------------
 
     private val username = "siabilik69@gmail.com"// EMAIL ACCOUNT
-    private val password = "Siabilikdick69!"   // APP PASSWORD
+    private val password = "syoedslvougbbcuu"   // APP PASSWORD
     private val personal = "SIABILIK"   // DISPLAY NAME
 
     private val host = "smtp.gmail.com"
