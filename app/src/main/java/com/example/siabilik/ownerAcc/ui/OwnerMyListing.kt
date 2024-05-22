@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentOwnerMyListingBinding
 import com.example.siabilik.ownerAcc.data.ListingViewModel
 import com.example.siabilik.ownerAcc.util.CardViewListingAdapter
@@ -19,13 +20,13 @@ class OwnerMyListing : Fragment() {
     private lateinit var binding: FragmentOwnerMyListingBinding
     private val nav by lazy { findNavController() }
     private val listingVM: ListingViewModel by activityViewModels()
-
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOwnerMyListingBinding.inflate(inflater, container, false)
-
+        var usrID = userViewModel.loggedInUserLD!!.value?.userID
         val adapter = CardViewListingAdapter { h, listing ->
             h.binding.listingCardView.setOnClickListener{
                 nav.navigate(R.id.ownerMyListingDetails, bundleOf(
@@ -37,7 +38,7 @@ class OwnerMyListing : Fragment() {
         binding.rvTenantViewListings.adapter = adapter
         binding.rvTenantViewListings.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         listingVM.listingLD().observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            adapter.submitList(it.filter { it.ownerID == usrID })
         }
 
         binding.addButton.setOnClickListener { nav.navigate(R.id.ownerAddListing) }
