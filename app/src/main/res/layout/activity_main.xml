@@ -10,28 +10,28 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/topAppBar_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
             app:liftOnScroll="true">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"
                 android:background="@color/md_theme_primary"
+                android:minHeight="?attr/actionBarSize"
                 app:logo="@mipmap/ic_launcher"
                 app:menu="@menu/empty_action_bar_menu"
-                app:titleTextColor="@color/md_theme_onPrimary"
-                app:title="SiaBilik" />
+                app:title="SiaBilik"
+                app:titleTextColor="@color/md_theme_onPrimary" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
