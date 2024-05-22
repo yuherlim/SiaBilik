@@ -28,7 +28,7 @@ class ListingAdapter (
 
         holder.binding.listingListTitle.text = listing.title
         holder.binding.listingListPrice.text = "RM ${listing.rental}"
-        //holder.binding.listingPhoto.setImageBlob(listing)
+        holder.binding.listingPhoto.setImageBlob(listing.propertyPhoto)
 
         fn(holder, listing)
     }
