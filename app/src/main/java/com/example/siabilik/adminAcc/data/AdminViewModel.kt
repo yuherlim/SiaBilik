@@ -71,8 +71,8 @@ class  AdminViewModel(app : Application) : AndroidViewModel(app) {
                 e += "- Password must contain at leat one symbol.\n"
         }
 
-        e += if (a.phoneNumber.isEmpty() || a.phoneNumber.length < 11 || a.phoneNumber.length > 12
-            || !a.phoneNumber.startsWith("60")) "- Invalid phone number format. Must start with 60 and be 11 or 12 digits long.\n"
+        e += if (a.phoneNumber.isEmpty() || a.phoneNumber.length < 10 || a.phoneNumber.length > 11
+            || !a.phoneNumber.startsWith("0")) "- Invalid phone number format. Must start with 0 and be 10 or 11 digits long.\n"
         else ""
 
         return e
