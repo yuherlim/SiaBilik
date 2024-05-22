@@ -1,16 +1,20 @@
 package com.example.siabilik.adminAcc.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.siabilik.adminAcc.data.AccountApproveViewModel
-import com.example.siabilik.adminAcc.data.ListingApproveViewModel
 import com.example.siabilik.databinding.FragmentAdminAccountApproveDetailsBinding
 import com.example.siabilik.setImageBlob
+import android.app.AlertDialog
+import com.example.siabilik.UserManagement.SimpleEmail
+import com.example.siabilik.snackbar
 
 class AdminAccountApproveDetailsFragment : Fragment() {
 
@@ -46,10 +50,52 @@ class AdminAccountApproveDetailsFragment : Fragment() {
             accountVM.set(account)
             nav.navigateUp()
             //maybe can prompt a dialog to input reason and send email
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Enter Reason ")
+
+            // Set up the input
+            val input = EditText(requireContext())
+            builder.setView(input)
+
+            // Set up the buttons
+            builder.setPositiveButton("OK") { dialog, _ ->
+                val enteredText = input.text.toString()
+                sendEmail(enteredText, account.email)
+                dialog.dismiss()
+            }
+            builder.setNegativeButton("Cancel") { dialog, _ ->
+                dialog.cancel()
+            }
+
+            builder.show()
+
         }
 
         return binding.root
 
 
     }
+
+    private fun sendEmail(reason : String, email : String){
+        val subject = "Reason of reject the account verification";
+        val content = """
+            <p><b>Reason</b></p>
+            <h1 style="color: red">$reason</h1>
+            <p>Thank you.</p>
+        """.trimIndent();
+
+        // TODO(1): Send email
+        SimpleEmail()
+            .to(email)
+            .subject(subject)
+            .content(content)
+            .isHtml()
+            .send {
+                snackbar("Email sent.")
+            }
+
+    }
+
+
 }
