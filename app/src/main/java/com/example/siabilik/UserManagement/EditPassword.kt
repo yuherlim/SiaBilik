@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentEditPasswordBinding
 import com.example.demo.data.AuthVM
+import com.example.siabilik.R
 import com.example.siabilik.snackbar
 import com.example.siabilik.toast
 import com.google.android.material.textfield.TextInputLayout
@@ -39,19 +40,19 @@ class EditPassword : Fragment() {
 
         // Observe the LiveData
         userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
-            when (loggedInUser.userType) {
+            when (loggedInUser!!.userType) {
                 "Owner" -> {
-                    val user = allUserViewModel.getOwnerById(loggedInUser.userID)
+                    val user = allUserViewModel.getOwnerById(loggedInUser!!.userID)
                     userOriPassword = user!!.password
                     binding.txtUsername.setText(user!!.userName)
                 }
                 "Tenant" -> {
-                    val user = allUserViewModel.getTenantById(loggedInUser.userID)
+                    val user = allUserViewModel.getTenantById(loggedInUser!!.userID)
                     userOriPassword = user!!.password
                     binding.txtUsername.setText(user!!.userName)
                 }
                 "Admin" -> {
-                    val user = allUserViewModel.getAdminById(loggedInUser.userID)
+                    val user = allUserViewModel.getAdminById(loggedInUser!!.userID)
                     userOriPassword = user!!.password
                     binding.txtUsername.setText(user!!.userName)
                 }
@@ -69,18 +70,21 @@ class EditPassword : Fragment() {
             if(validatePassword(currentPassword,password,confirmPassword,userOriPassword)) {
 
                 userViewModel.loggedInUserLD.observe(viewLifecycleOwner, Observer { loggedInUser ->
-                    when (loggedInUser.userType) {
+                    when (loggedInUser!!.userType) {
                         "Owner" -> {
                             val user = allUserViewModel.getOwnerById(loggedInUser.userID)
                             userOriPassword = user!!.password
                             user!!.password = password
                             allUserViewModel.setOwner(user)
+                            nav.navigate(R.id.ownerMyListing)
+
                         }
                         "Tenant" -> {
                             val user = allUserViewModel.getTenantById(loggedInUser.userID)
                             userOriPassword = user!!.password
                             user!!.password = password
                             allUserViewModel.setTenant(user)
+                            nav.navigate(R.id.tenantViewListingsFragment)
                         }
                         "Admin" -> {
                             val user = allUserViewModel.getAdminById(loggedInUser.userID)

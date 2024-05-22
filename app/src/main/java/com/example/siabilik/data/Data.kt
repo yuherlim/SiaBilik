@@ -32,6 +32,7 @@ data class Tenant (
     var verificationStatus: String = "",
     var aboutDescription: String = "",
     var selfiePhoto : Blob = Blob.fromBytes(ByteArray(0)),
+    var studentID : Blob = Blob.fromBytes(ByteArray(0)),
 )
 
 val TENANT = Firebase.firestore.collection("Tenant")
