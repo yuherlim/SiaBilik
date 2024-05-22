@@ -48,6 +48,7 @@ class OwnerListingDetails : Fragment() {
             binding.features.text = featureString
             binding.rental.text = String.format("RM %.2f", selectedListing.rental.toDouble())
             binding.propertyPhoto.setImageBlob(selectedListing.propertyPhoto)
+            binding.description.text = selectedListing.description
 
         }
     }
