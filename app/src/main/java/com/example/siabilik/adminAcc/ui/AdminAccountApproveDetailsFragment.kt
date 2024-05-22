@@ -29,7 +29,7 @@ class AdminAccountApproveDetailsFragment : Fragment() {
         binding = FragmentAdminAccountApproveDetailsBinding.inflate(inflater, container, false)
 
         val account = accountVM.get(accountID)
-        if(account == null){
+        if (account == null) {
             nav.navigateUp()
             return null
         }
@@ -77,10 +77,9 @@ class AdminAccountApproveDetailsFragment : Fragment() {
         }
 
         return binding.root
-
-
     }
 
+    // Function to send an email
     private fun sendEmail(reason: String, email: String) {
         val subject = "Reason for Rejecting Account Verification"
         val content = """

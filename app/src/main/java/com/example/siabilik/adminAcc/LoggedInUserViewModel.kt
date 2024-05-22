@@ -17,7 +17,7 @@ class LoggedInUserViewModel(app : Application) : AndroidViewModel(app) {
     }
 
     fun clearData() {
-        _loggedInUserLD.value = null
+        _loggedInUserLD.value!!.userType = "NA"
     }
 
 
