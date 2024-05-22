@@ -103,7 +103,8 @@ class RegisterFragment : Fragment() {
                         userName = binding.txtUsername.text.toString().trim(),
                         email = binding.txtEmail.text.toString().trim(),
                         phoneNumber = binding.txtPhone.text.toString().trim(),
-                        password = binding.txtPassword.text.toString().trim()
+                        password = binding.txtPassword.text.toString().trim(),
+                        verificationStatus = "Pending"
                     )
 
 //                val e = vm.validateTenant(user)

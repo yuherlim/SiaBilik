@@ -61,7 +61,12 @@ class OwnerMyListingDetails : Fragment() {
             binding.title.text = selectedListing.title
             binding.Listingstatus.text = selectedListing.status
             binding.Approvalstatus.text = selectedListing.approvalStatus
-            binding.features.text = selectedListing.features
+            val featureList = selectedListing.features.split(',')
+            var featureString = "Features:\n"
+            featureList.forEach {
+                featureString += "- ${it.trim()}\n"
+            }
+            binding.features.text = featureString
             binding.address.text = selectedListing.address
             binding.rental.text = String.format("RM %.2f", selectedListing.rental.toDouble())
             binding.propertyPhoto.setImageBlob(selectedListing.propertyPhoto)

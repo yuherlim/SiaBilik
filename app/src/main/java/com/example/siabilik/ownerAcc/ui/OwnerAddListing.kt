@@ -1,6 +1,7 @@
 package com.example.siabilik.ownerAcc.ui
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,9 @@ import com.example.siabilik.data.Listing
 import com.example.siabilik.databinding.FragmentOwnerAddListingBinding
 import com.example.siabilik.databinding.FragmentOwnerMyListingBinding
 import com.example.siabilik.ownerAcc.data.ListingViewModel
+import com.example.siabilik.snackbar
 import com.example.siabilik.toast
+import com.google.android.material.textfield.TextInputLayout
 
 
 class OwnerAddListing : Fragment() {
@@ -51,13 +54,18 @@ class OwnerAddListing : Fragment() {
     fun addListing() {
         val newListingID = newListingID()
         var usrID = userViewModel.loggedInUserLD!!.value?.userID
+        val formattedValue: Double = if (binding.txtRental.text.toString().isNotEmpty()) {
+            String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble()
+        } else {
+            0.0
+        }
         var newListing = usrID?.let {
             Listing(
                 id = newListingID,
                 title = binding.txtTitle.text.toString(),
                 features = binding.txtFeatures.text.toString(),
                 description = binding.txtDescription.text.toString(),
-                rental = String.format("%.2f", binding.txtRental.text.toString().toDouble()).toDouble(),
+                rental = formattedValue,
                 status = "Unavailable",
                 approvalStatus ="Pending",
                 ownerID = it,
@@ -68,10 +76,13 @@ class OwnerAddListing : Fragment() {
         }
 
         if (newListing != null) {
-            listingVM.setListing(newListing)
+            if(validateInput(newListing)) {
+                listingVM.setListing(newListing)
+                toast( "New Listing added")
+                nav.navigateUp()
+            }
         }
-        toast( "New Listing added")
-        nav.navigateUp()
+
 
     }
 
@@ -105,6 +116,54 @@ class OwnerAddListing : Fragment() {
         getOwnerShipPhoto.launch("image/*")
     }
 
+
+    private fun validateInput( listing:Listing
+    ): Boolean {
+        var isPass = true
+        if (TextUtils.isEmpty(listing.title)) {
+            binding.txtLayoutTitle.error = "Title is required"
+            isPass = false
+        }
+        if (TextUtils.isEmpty(listing.description)) {
+            binding.txtDescription.error = "Description is required"
+            isPass = false
+        }
+        if (TextUtils.isEmpty(listing.address)) {
+            binding.txtAdress.error = "Address is required"
+            isPass = false
+        }
+        if (TextUtils.isEmpty(listing.features)) {
+            binding.txtFeatures.error = "Features is required"
+            isPass = false
+        }
+        if (listing.rental.toDouble()==0.0) {
+            binding.txtRental.error = "Rental cannot be 0.0"
+            isPass = false
+        }
+        if (isValidString(listing.features)) {
+            binding.txtFeatures.error = "Features only accept text, number and comma as delimeter"
+            isPass = false
+        }
+        if (listing.propertyPhoto.toBytes().isEmpty()) {
+            snackbar("Property Photo is required")
+            isPass = false
+        }
+
+        if (listing.ownershipProof.toBytes().isEmpty()) {
+            snackbar("Property Photo is required")
+            isPass = false
+        }
+        if (isPass){
+            return true
+        }else{
+            return false
+        }
+    }
+
+    fun isValidString(input: String): Boolean {
+        val regex = "^[a-zA-Z0-9,]+$"
+        return input.matches(regex.toRegex())
+    }
 
 
 }
