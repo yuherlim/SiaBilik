@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.demo.data.AuthVM
 import com.example.siabilik.MainActivity
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.FragmentLoginBinding
 import com.example.siabilik.errorDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +25,7 @@ class Login : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     private val nav by lazy { findNavController() }
     private val auth: AuthVM by activityViewModels()
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -81,18 +84,21 @@ class Login : Fragment() {
                     when(loginResult){
                         "NA" -> errorDialog("Invalid login credentials.")
                         "Tenant" -> {
+                            userViewModel.setLoggedInUser(loginResult, "userID")
                             nav.navigate(R.id.tenantViewListingsFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
                             ))
                         } // remember to change both of the layout
                         "Owner" -> {
+                            userViewModel.setLoggedInUser(loginResult,"userID")
                             nav.navigate(R.id.ownerMyListing, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
                             ))
                         }
                         "Admin" -> {
+                            userViewModel.setLoggedInUser(loginResult,"userID")
                             nav.navigate(R.id.adminListingApproveFragment, bundleOf(
                                 "userID" to "userID",
                                 "userType" to "userType"
