@@ -19,6 +19,8 @@ class  AdminViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
+    fun init() = Unit
+
     fun getAdminLD() = adminLD
 
     fun get(id: String) = adminLD.value?.find { it.id == id }
