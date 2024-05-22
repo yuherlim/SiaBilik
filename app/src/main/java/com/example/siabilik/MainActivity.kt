@@ -1,63 +1,125 @@
 package com.example.siabilik
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.demo.data.AuthVM
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
 import com.example.siabilik.databinding.ActivityMainBinding
+import com.example.siabilik.tenantAcc.data.RequestViewModel
+import com.example.siabilik.tenantAcc.data.ListingViewModel as TenantLVM
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private val nav by lazy { supportFragmentManager.findFragmentById(R.id.host)!!.findNavController() }
+    private lateinit var abc: AppBarConfiguration
+
+    private val userViewModel: LoggedInUserViewModel by viewModels()
+
+    private val tenantTLD = setOf(
+        R.id.tenantViewListingsFragment,
+        R.id.tenantViewStarredListingsFragment,
+        R.id.tenantViewRequestsFragment,
+        R.id.tenantAccountFragment
+    )
+    private val ownerTLD = setOf(
+        R.id.ownerMyListing,
+        R.id.ownerListing,
+        R.id.ownerProfile,
+    )
+    private val adminTLD = setOf(
+        R.id.adminListingApproveFragment,
+        R.id.adminListFragment,
+        R.id.adminAccountApproveFragment,
+        R.id.adminProfileFragment
+    )
+
+    // Pre-load view models
+    private val tenantVM: TenantLVM by viewModels()
+    private val requestVM: RequestViewModel by viewModels()
+    private val authVM: AuthVM by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        // TODO(7): Initialize view models (early data loading)
+        tenantVM.init()
+        requestVM.init()
+        authVM.init()
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-
-        }
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(MyListing())
 
-        binding.bv.setOnItemSelectedListener {
+        // Insert code to get user type here. Pass in user type to configureNavigationBasedOnUserType
 
-            when(it.itemId){
+        // Observe the LiveData
+//        userViewModel.loggedInUserLD.observe(this, Observer { loggedInUser ->
+//            when (loggedInUser.userType) {
+//                "Owner" -> {
+//                    configureNavigationBasedOnUserType("Owner")
+//                    setupActionBarWithNavController(nav, abc)
+//                }
+//                "Tenant" -> {
+//                    configureNavigationBasedOnUserType("Tenant")
+//                    setupActionBarWithNavController(nav, abc)
+//                }
+//                "Admin" -> {
+//                    configureNavigationBasedOnUserType("Admin")
+//                    setupActionBarWithNavController(nav, abc)
+//                }
+//                else -> setupActionBarWithNavController(nav, abc)
+//            }
+//        })
 
-                R.id.listing -> replaceFragment(Listing())
-                R.id.myListing -> replaceFragment(MyListing())
-                R.id.profile -> replaceFragment(Profile())
+        //configureNavigationBasedOnUserType("Owner")
 
-                else ->{
+        // Action bar and bottom nav
+        setSupportActionBar(binding.topAppBar)
+        configureNavigationBasedOnUserType("Tenant")
+        setupActionBarWithNavController(nav, abc)
+        binding.bv.setupWithNavController(nav)
 
-                }
-
-            }
-            true
-        }
 
     }
 
-    private fun replaceFragment(fragment : Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main,fragment)
-        fragmentTransaction.commit()
+    private fun configureNavigationBasedOnUserType(s: String) {
+        configureABC(s)
+        configureBottomNav(s)
     }
 
-    private fun ButtonClick(fragment: Fragment){
-        val buttonClick = findViewById<Button>(R.id.btnEdit)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this,itemList::class.java)
-            startActivity(intent)
+    private fun configureABC(s: String) {
+        when (s) {
+            "Tenant" -> { abc = AppBarConfiguration(tenantTLD) }
+            "Owner" -> { abc = AppBarConfiguration(ownerTLD) }
+            "Admin" -> { abc = AppBarConfiguration(adminTLD) }
         }
+    }
+
+    private fun configureBottomNav(s: String) {
+        when (s) {
+            "Tenant" -> { binding.bv.inflateMenu(R.menu.tenant_bottom_nav_menu) }
+            "Owner" -> { binding.bv.inflateMenu(R.menu.owner_bottom_nav_menu) }
+            "Admin" -> { binding.bv.inflateMenu(R.menu.admin_bottom_nav_menu) }
+            else -> Unit
+        }
+    }
+
+    //Action bar up button
+    override fun onSupportNavigateUp(): Boolean {
+        return nav.navigateUp(abc) || super.onSupportNavigateUp()
+    }
+
+    fun hideTopAppBar() {
+        supportActionBar?.hide()
+    }
+
+    fun showTopAppBar() {
+        supportActionBar?.show()
     }
 
 }

@@ -1,0 +1,102 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.siabilik.UserManagement.VerificationApplicationFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/verificationApplication"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#495D92"
+        android:paddingTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/back"
+        app:title="Verification Application"
+        app:titleTextAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:titleTextColor="#FAFDFD"></androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tbUserType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verificationApplication"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/studentIDButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="1. Student ID" />
+
+
+        <Button
+            android:id="@+id/selfieButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="2. Selfie" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="256dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/baseline_interests_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbUserType" />
+
+    <ImageView
+        android:id="@+id/editProfileBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/editbtn"
+        app:layout_constraintBottom_toBottomOf="@+id/photo"
+        app:layout_constraintEnd_toEndOf="@+id/photo" />
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto"
+        android:lines="2"
+        android:text="Please provide a Photo of the\nFront of your Student ID"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instruction" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,10 @@ plugins {
 
     // for firebase
     id("com.google.gms.google-services") version "4.4.1"
+
 }
+
+
 
 android {
     namespace = "com.example.siabilik"
@@ -12,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.siabilik"
-        minSdk = 26
+        minSdk = 30
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -35,9 +38,17 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures{
+    buildFeatures {
         viewBinding = true
     }
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/NOTICE.md")
+            excludes.add("/META-INF/LICENSE.md")
+        }
+    }
+
 }
 
 dependencies {
@@ -47,11 +58,19 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation("com.google.android.material:material:1.13.0-alpha02")
 
     // for firebase
     implementation("com.google.firebase:firebase-firestore:24.11.0")
 
-    //
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-    implementation("io.coil-kt:coil:2.4.0")
+    // for navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    // for email
+    implementation("com.sun.mail:android-mail:1.6.7")
+    implementation("com.sun.mail:android-activation:1.6.7")
+
 }
+
+
