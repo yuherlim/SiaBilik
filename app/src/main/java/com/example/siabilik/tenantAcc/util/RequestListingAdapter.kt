@@ -23,7 +23,7 @@ class RequestListingAdapter (val fn: (ViewHolder, Request) -> Unit = { _, _ -> }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val request = getItem(position)
         holder.binding.txtRequestTitle.text = request.title
-        holder.binding.txtRequestDesc.text = request.message.slice(0..60) + "..."
+        holder.binding.txtRequestDesc.text = request.message
         fn(holder, request)
     }
 
