@@ -9,11 +9,16 @@ import com.example.siabilik.data.LoggedInUser
 
 class LoggedInUserViewModel(app : Application) : AndroidViewModel(app) {
 
-    private val _loggedInUserLD = MutableLiveData<LoggedInUser>()
-    val loggedInUserLD: LiveData<LoggedInUser> get() = _loggedInUserLD
+    private val _loggedInUserLD = MutableLiveData<LoggedInUser?>()
+    val loggedInUserLD: LiveData<LoggedInUser?> get() = _loggedInUserLD
 
     fun setLoggedInUser(userType: String, userID: String) {
         _loggedInUserLD.value = LoggedInUser(userType, userID)
     }
+
+    fun clearData() {
+        _loggedInUserLD.value = null
+    }
+
 
 }

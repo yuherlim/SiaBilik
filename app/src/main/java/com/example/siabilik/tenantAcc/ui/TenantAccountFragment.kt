@@ -5,27 +5,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.siabilik.R
+import com.example.siabilik.adminAcc.LoggedInUserViewModel
+import com.example.siabilik.databinding.FragmentAdminProfileBinding
+import com.example.siabilik.databinding.FragmentTenantAccountBinding
 
 
 class TenantAccountFragment : Fragment() {
+
+    private lateinit var binding: FragmentTenantAccountBinding
     private val nav by lazy { findNavController() }
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    private val userViewModel: LoggedInUserViewModel by activityViewModels()
 
-        //clear back stack every time enter top level destination
-        nav.popBackStack(R.id.tenantAccountFragment, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = FragmentTenantAccountBinding.inflate(inflater, container, false)
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tenant_account, container, false)
+        binding.clEditProfile.setOnClickListener {
+            nav.navigate(R.id.editProfile)
+        }
 
+        binding.clEditPassword.setOnClickListener {
+            nav.navigate(R.id.editPassword)
+        }
 
+        binding.clLogout.setOnClickListener {
+            userViewModel.clearData()
+            nav.navigate(R.id.login)
+
+        }
+
+        binding.clAccountVerification.setOnClickListener {
+            nav.navigate(R.id.verificationApplicationFragment)
+        }
+
+        return binding.root
     }
 }
