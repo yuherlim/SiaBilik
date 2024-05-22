@@ -47,21 +47,28 @@ class MainActivity : AppCompatActivity() {
         // Insert code to get user type here. Pass in user type to configureNavigationBasedOnUserType
 
         // Observe the LiveData
-        userViewModel.loggedInUser.observe(this, Observer { loggedInUser ->
-            if(loggedInUser.userType == "Owner")
-                configureNavigationBasedOnUserType("Owner")
-            else if(loggedInUser.userType == "Tenant")
-                configureNavigationBasedOnUserType("Tenant")
-            else
-                configureNavigationBasedOnUserType("Admin")
+        userViewModel.loggedInUserLD.observe(this, Observer { loggedInUser ->
+            when (loggedInUser.userType) {
+                "Owner" -> {
+                    configureNavigationBasedOnUserType("Owner")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                "Tenant" -> {
+                    configureNavigationBasedOnUserType("Tenant")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                "Admin" -> {
+                    configureNavigationBasedOnUserType("Admin")
+                    setupActionBarWithNavController(nav, abc)
+                }
+                else -> setupActionBarWithNavController(nav, abc)
+            }
         })
 
         //configureNavigationBasedOnUserType("Owner")
 
-
         // Action bar and bottom nav
         setSupportActionBar(binding.topAppBar)
-        setupActionBarWithNavController(nav, abc)
         binding.bv.setupWithNavController(nav)
 
 
