@@ -63,6 +63,8 @@ class AdminListingApproveDetailsFragment : Fragment() {
         }
 
         binding.btnReject.setOnClickListener {
+            listing.approvalStatus = "Rejected"
+            listingVM.set(listing)
             showRejectionReasonDialog(owner.email)
         }
 
